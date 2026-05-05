@@ -89,11 +89,13 @@ textarea {
   }
 
   .btn-outline-navy {
-    @apply border-navy/75 bg-transparent text-navy hover:bg-navy hover:text-cream;
+    @apply bg-transparent text-navy transition duration-300 hover:bg-navy hover:text-cream;
+    border-color: hsl(var(--navy) / 0.75);
   }
 
   .btn-outline-cream {
-    @apply border-cream/70 bg-transparent text-cream hover:bg-cream hover:text-navy;
+    @apply bg-transparent text-cream transition duration-300 hover:bg-cream hover:text-navy;
+    border-color: hsl(var(--cream) / 0.7);
   }
 
   .double-rule,
@@ -207,7 +209,16 @@ textarea {
   }
 
   .field {
-    @apply w-full border border-navy/16 bg-paper px-5 py-4 text-[15px] text-ink placeholder:text-ink/42 focus:border-navy/50 focus:outline-none;
+    @apply w-full border bg-paper px-5 py-4 text-[15px] text-ink focus:outline-none;
+    border-color: hsl(var(--navy) / 0.16);
+  }
+
+  .field::placeholder {
+    color: hsl(var(--ink) / 0.42);
+  }
+
+  .field:focus {
+    border-color: hsl(var(--navy) / 0.5);
   }
 
   .markdown-body h2 {
@@ -215,15 +226,18 @@ textarea {
   }
 
   .markdown-body p {
-    @apply mt-6 text-[17px] leading-[1.7] text-ink/84;
+    @apply mt-6 text-[17px] leading-[1.7];
+    color: hsl(var(--ink) / 0.84);
   }
 
   .markdown-body ul {
-    @apply mt-6 space-y-4 border-l border-navy/12 pl-6;
+    @apply mt-6 space-y-4 border-l pl-6;
+    border-color: hsl(var(--navy) / 0.12);
   }
 
   .markdown-body li {
-    @apply text-[17px] leading-[1.7] text-ink/84;
+    @apply text-[17px] leading-[1.7];
+    color: hsl(var(--ink) / 0.84);
   }
 
   [data-reveal] {
