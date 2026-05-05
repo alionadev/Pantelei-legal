@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" fill="none">
+  <rect width="900" height="1200" fill="#d9d4cc"/>
+  <rect x="72" y="72" width="756" height="1056" stroke="#112250" stroke-opacity=".3" stroke-width="2"/>
+  <ellipse cx="458" cy="385" rx="162" ry="188" fill="#b7b0a6"/>
+  <path d="M268 972c26-173 118-266 191-266 84 0 176 96 202 266H268Z" fill="#a49d94"/>
+  <path d="M316 402c23-119 83-197 141-197 60 0 125 79 151 197-38-45-87-67-146-67-56 0-107 22-146 67Z" fill="#8f887f"/>
+  <path d="M316 971c24-128 64-214 145-214 78 0 124 87 142 214H316Z" stroke="#112250" stroke-opacity=".25" stroke-width="3"/>
+  <path d="M223 1026h455" stroke="#112250" stroke-opacity=".3" stroke-width="2"/>
+  <text x="453" y="1086" fill="#112250" fill-opacity=".72" font-family="Georgia, serif" font-size="46" font-style="italic" text-anchor="middle">ALIONA PANTELEI</text>
+</svg>
