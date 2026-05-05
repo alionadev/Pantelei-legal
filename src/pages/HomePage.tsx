@@ -12,43 +12,58 @@ const partners = ["Ionescu & Partners", "Nestor Advisory", "Bucharest Estates", 
 
 export const HomePage = () => {
   const { locale, t } = useLocale();
+  const heroPortraitSrc = "/aliona-portrait-main.png";
+  const aboutPortraitSrc = "/aliona-office.png";
+  const heroLines =
+    locale === "ru"
+      ? ["Юридическая строгость", "со спокойной интонацией", "и твёрдой позицией."]
+      : ["Rigoare juridică", "cu ton calm", "și poziție fermă."];
 
   return (
     <>
-      <section className="relative overflow-hidden bg-navy text-cream">
+      <section className="relative h-[calc(100svh-68px)] max-h-[calc(100svh-68px)] overflow-hidden bg-navy text-cream">
         <div className="paper-grain" />
-        <Watermark value="I" className="right-10 top-8 hidden md:block text-[clamp(280px,42vw,720px)] text-cream/5" />
-        <div className="container-x grid min-h-[calc(100vh-68px)] items-center gap-14 py-16 lg:grid-cols-[1.35fr_1fr]">
-          <div className="relative" data-reveal="true" style={{ transitionDelay: "60ms" }}>
+        <Watermark value="I" className="right-[5%] top-[14%] hidden xl:block text-[clamp(220px,18vw,320px)] text-cream/5" />
+        <div className="container-x grid h-full items-center gap-10 py-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(440px,0.95fr)] lg:gap-12 lg:py-10 xl:grid-cols-[minmax(0,1.02fr)_minmax(540px,0.98fr)]">
+          <div className="relative z-10 flex h-full max-w-none flex-col justify-center" data-reveal="true" style={{ transitionDelay: "60ms" }}>
             <div className="flex items-center gap-4">
               <div className="eyebrow text-cream/74">{t.hero.eyebrow}</div>
               <span className="h-px w-9 bg-cream/40" />
             </div>
             <div className="mt-10">
-              <h1 className="max-w-4xl font-serif text-[clamp(56px,9.5vw,140px)] leading-[0.98] tracking-[-0.015em]">
-                <span>{t.hero.titleTop}</span>
-                <span className="block font-light italic opacity-90">{t.hero.titleBottom}</span>
+              <h1 className="max-w-[11.5ch] font-serif text-[clamp(54px,6vw,108px)] leading-[0.94] tracking-[-0.02em]">
+                <span className="block">{heroLines[0]}</span>
+                <span className="mt-4 block font-light italic opacity-90">{heroLines[1]}</span>
+                <span className="block font-light italic opacity-90">{heroLines[2]}</span>
               </h1>
             </div>
-            <div className="double-rule-cream mt-10 w-[120px]" />
-            <p className="mt-10 max-w-xl text-[17px] leading-[1.7] text-cream/82">{t.hero.description}</p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button href={withLocalePath(locale, "/contact")} variant="solid-cream">
-                {t.hero.primaryCta}
-              </Button>
-              <Button href={withLocalePath(locale, `/servicii/${practiceData[0].slug}`)} variant="outline-cream">
-                {t.hero.secondaryCta}
-              </Button>
-            </div>
-            <div className="absolute left-0 top-1/2 hidden -translate-x-14 -translate-y-1/2 items-center gap-5 md:flex">
-              <div className="vertical-note">{t.labels.established}</div>
-              <div className="seal">PL</div>
+            <div className="mt-10 w-full max-w-[620px]">
+              <div className="double-rule-cream w-[120px]" />
+              <p className="mt-8 max-w-[39rem] text-[16px] leading-[1.72] text-cream/82 lg:text-[17px]">
+                {t.hero.description}
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button href={withLocalePath(locale, "/contact")} variant="solid-cream">
+                  {t.hero.primaryCta}
+                </Button>
+                <Button href={`${withLocalePath(locale, "/")}#services`} variant="outline-cream">
+                  {t.hero.secondaryCta}
+                </Button>
+              </div>
             </div>
           </div>
-          <div className="relative hidden lg:block" data-reveal="true" style={{ transitionDelay: "120ms" }}>
-            <div className="border border-cream/35 p-[10px]">
-              <div className="relative aspect-[3/4] overflow-hidden border border-cream/18">
-                <img src="/portrait-placeholder.svg" alt="Aliona Pantelei" className="h-full w-full object-cover grayscale-[15%]" />
+          <div className="relative z-10 hidden h-full items-center justify-end lg:flex" data-reveal="true" style={{ transitionDelay: "120ms" }}>
+            <div className="w-full max-w-[760px]">
+              <div className="relative aspect-[4/5] max-h-[80vh] overflow-hidden border border-cream/24 p-3">
+                <img
+                  src={heroPortraitSrc}
+                  alt="Aliona Pantelei"
+                  className="h-full w-full object-cover object-center grayscale-[6%]"
+                  onError={(event) => {
+                    event.currentTarget.onerror = null;
+                    event.currentTarget.src = "/portrait-placeholder.svg";
+                  }}
+                />
                 <div className="photo-overlay" />
                 <div className="absolute bottom-0 left-0 bg-cream px-5 py-3 text-[11px] uppercase tracking-[0.18em] text-navy">
                   {t.hero.portraitTag}
@@ -105,7 +120,7 @@ export const HomePage = () => {
         </div>
       </section>
 
-      <section className="section-y relative overflow-hidden bg-navy text-cream">
+      <section id="services" className="section-y relative scroll-mt-28 overflow-hidden bg-navy text-cream">
         <div className="paper-grain" />
         <Watermark value="II" className="bottom-[-40px] left-0 hidden md:block text-[clamp(320px,34vw,560px)] text-cream/5" />
         <div className="container-x relative">
@@ -131,7 +146,15 @@ export const HomePage = () => {
         <div className="container-x grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div data-reveal="true" style={{ transitionDelay: "60ms" }}>
             <div className="border border-navy/12 p-3">
-              <img src="/portrait-placeholder.svg" alt="Aliona Pantelei" className="aspect-[4/5] w-full border border-navy/12 object-cover" />
+              <img
+                src={aboutPortraitSrc}
+                alt="Aliona Pantelei"
+                className="aspect-[4/5] w-full border border-navy/12 object-cover"
+                onError={(event) => {
+                  event.currentTarget.onerror = null;
+                  event.currentTarget.src = "/portrait-placeholder.svg";
+                }}
+              />
             </div>
           </div>
           <div data-reveal="true" style={{ transitionDelay: "120ms" }} className="border-l-2 border-navy pl-[clamp(24px,3vw,56px)]">

@@ -9,28 +9,29 @@ import { FaqPage } from "./pages/FaqPage";
 import { ContactPage } from "./pages/ContactPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
-const localizedRoutes = [
-  { path: "/", element: <HomePage /> },
-  { path: "/despre-aliona", element: <AboutPage /> },
-  { path: "/servicii/:slug", element: <PracticePage /> },
-  { path: "/blog", element: <BlogPage /> },
-  { path: "/blog/:slug", element: <BlogPostPage /> },
-  { path: "/faq", element: <FaqPage /> },
-  { path: "/contact", element: <ContactPage /> },
-];
-
 const App = () => (
   <Routes>
-    <Route element={<Layout />}>
-      {localizedRoutes.map((route) => (
-        <Route key={`ro${route.path}`} path={route.path} element={route.element} />
-      ))}
-      {localizedRoutes.map((route) => (
-        <Route key={`ru${route.path}`} path={`/ru${route.path === "/" ? "" : route.path}`} element={route.element} />
-      ))}
-      <Route path="/ru/" element={<Navigate to="/ru" replace />} />
+    <Route path="/" element={<Layout />}>
+      <Route index element={<HomePage />} />
+      <Route path="despre-aliona" element={<AboutPage />} />
+      <Route path="servicii/:slug" element={<PracticePage />} />
+      <Route path="blog" element={<BlogPage />} />
+      <Route path="blog/:slug" element={<BlogPostPage />} />
+      <Route path="faq" element={<FaqPage />} />
+      <Route path="contact" element={<ContactPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
+    <Route path="/ru" element={<Layout />}>
+      <Route index element={<HomePage />} />
+      <Route path="despre-aliona" element={<AboutPage />} />
+      <Route path="servicii/:slug" element={<PracticePage />} />
+      <Route path="blog" element={<BlogPage />} />
+      <Route path="blog/:slug" element={<BlogPostPage />} />
+      <Route path="faq" element={<FaqPage />} />
+      <Route path="contact" element={<ContactPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Route>
+    <Route path="/ru/" element={<Navigate to="/ru" replace />} />
   </Routes>
 );
 

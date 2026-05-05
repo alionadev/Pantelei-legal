@@ -5,6 +5,7 @@ import { Watermark } from "../components/ui/Watermark";
 
 export const AboutPage = () => {
   const { locale, t } = useLocale();
+  const aboutPagePortraitSrc = "/aliona-office.png";
 
   return (
     <>
@@ -13,7 +14,15 @@ export const AboutPage = () => {
         <div className="container-x grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <div data-reveal="true" style={{ transitionDelay: "60ms" }}>
             <div className="border border-navy/12 p-3">
-              <img src="/portrait-placeholder.svg" alt="Aliona Pantelei" className="aspect-[4/5] w-full border border-navy/12 object-cover" />
+              <img
+                src={aboutPagePortraitSrc}
+                alt="Aliona Pantelei"
+                className="aspect-[4/5] w-full border border-navy/12 object-cover"
+                onError={(event) => {
+                  event.currentTarget.onerror = null;
+                  event.currentTarget.src = "/portrait-placeholder.svg";
+                }}
+              />
             </div>
           </div>
           <div data-reveal="true" style={{ transitionDelay: "120ms" }}>

@@ -10,6 +10,7 @@ export const ContactPage = () => {
   const { t } = useLocale();
   const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
+  const consultationImageSrc = "/aliona-consultation.png";
 
   const onChange = (field: keyof typeof initialForm) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const value = field === "phone" ? formatPhoneInput(event.target.value) : event.target.value;
@@ -43,6 +44,17 @@ export const ContactPage = () => {
           </form>
         </div>
         <div className="space-y-6" data-reveal="true" style={{ transitionDelay: "120ms" }}>
+          <div className="border border-navy/12 p-3">
+            <img
+              src={consultationImageSrc}
+              alt="Aliona Pantelei during a client consultation"
+              className="aspect-[4/3] w-full border border-navy/12 object-cover"
+              onError={(event) => {
+                event.currentTarget.onerror = null;
+                event.currentTarget.src = "/map-placeholder.svg";
+              }}
+            />
+          </div>
           <article className="border border-navy/12 bg-paper p-8">
             <div className="eyebrow text-navy/58">{t.contactPage.blockTitle}</div>
             <div className="double-rule mt-6" />
@@ -58,9 +70,6 @@ export const ContactPage = () => {
               })}
             </div>
           </article>
-          <div className="border border-navy/12 p-3">
-            <img src="/map-placeholder.svg" alt="București map placeholder" className="aspect-[4/3] w-full border border-navy/12 object-cover" />
-          </div>
         </div>
       </div>
     </section>

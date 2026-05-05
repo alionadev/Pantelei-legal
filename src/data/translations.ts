@@ -10,6 +10,11 @@ export const translations = {
       blog: "Blog",
       faq: "FAQ",
       contact: "Contact",
+      servicesEyebrow: "Arii de practică",
+      servicesPromptTitle: "Nu ați găsit exact ceea ce căutați?",
+      servicesPromptText: "Scrieți direct. Un context clar trimis la timp ajută mai mult decât o presupunere grăbită.",
+      servicesPromptCta: "MERGEȚI LA CONTACT",
+      latestPosts: "Ultimele articole",
     },
     labels: {
       phone: "Telefon",
@@ -191,6 +196,11 @@ export const translations = {
       blog: "Блог",
       faq: "FAQ",
       contact: "Контакты",
+      servicesEyebrow: "Практики",
+      servicesPromptTitle: "Не нашли именно то, что искали?",
+      servicesPromptText: "Напишите напрямую. Кратко изложенный контекст полезнее, чем поспешное предположение.",
+      servicesPromptCta: "ПЕРЕЙТИ К КОНТАКТАМ",
+      latestPosts: "Последние статьи",
     },
     labels: {
       phone: "Телефон",
