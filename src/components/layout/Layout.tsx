@@ -32,7 +32,7 @@ export const Layout = () => {
 
   return (
     <div className="min-h-screen bg-cream text-ink">
-      <Navigation locale={locale} pathname={pathname} switchLocale={switchLocale} nav={t.nav} />
+      <Navigation locale={locale} pathname={pathname} switchLocale={switchLocale} nav={t.nav} ctaLabel={t.hero.primaryCta} />
       <main>
         <Outlet />
       </main>

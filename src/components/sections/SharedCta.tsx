@@ -28,11 +28,18 @@ export const SharedCta = ({
       <div className="mt-14 grid divide-y divide-cream/14 border border-cream/16 md:grid-cols-2 md:divide-x xl:grid-cols-4 xl:divide-y-0">
         {items.map((item, index) => {
           const Icon = item.icon;
+          const isEmail = item.value.includes("@");
           return (
             <div key={item.value} className="flex min-h-[170px] flex-col justify-center gap-4 p-8">
               <Icon className="h-8 w-8 text-cream/76" />
               <div className="eyebrow text-cream/55">Contact</div>
-              <div className="font-serif text-[34px] italic leading-none">{item.value}</div>
+              <div
+                className={`font-serif italic leading-[1.05] text-[clamp(22px,8vw,34px)] ${
+                  isEmail ? "break-all text-[clamp(18px,6.2vw,30px)] leading-[1.12]" : ""
+                }`}
+              >
+                {item.value}
+              </div>
             </div>
           );
         })}

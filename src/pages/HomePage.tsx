@@ -14,34 +14,40 @@ export const HomePage = () => {
   const { locale, t } = useLocale();
   const heroPortraitSrc = "/aliona-portrait-main.png";
   const aboutPortraitSrc = "/aliona-office.png";
-  const heroLines =
-    locale === "ru"
-      ? ["Юридическая строгость", "со спокойной интонацией", "и твёрдой позицией."]
-      : ["Rigoare juridică", "cu ton calm", "și poziție fermă."];
 
   return (
     <>
-      <section className="relative h-[calc(100svh-68px)] max-h-[calc(100svh-68px)] overflow-hidden bg-navy text-cream">
+      <section className="relative h-[calc(100svh-68px)] overflow-hidden bg-navy text-cream">
         <div className="paper-grain" />
-        <Watermark value="I" className="right-[5%] top-[14%] hidden xl:block text-[clamp(220px,18vw,320px)] text-cream/5" />
-        <div className="container-x grid h-full items-center gap-10 py-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(440px,0.95fr)] lg:gap-12 lg:py-10 xl:grid-cols-[minmax(0,1.02fr)_minmax(540px,0.98fr)]">
-          <div className="relative z-10 flex h-full max-w-none flex-col justify-center" data-reveal="true" style={{ transitionDelay: "60ms" }}>
+        <div className="container-x grid h-full items-center gap-10 py-8 lg:grid-cols-[minmax(0,1.18fr)_minmax(460px,0.82fr)] lg:gap-12 lg:py-10 xl:grid-cols-[minmax(0,1.24fr)_minmax(560px,0.76fr)]">
+          <div className="relative z-10 flex h-full flex-col justify-center" data-reveal="true" style={{ transitionDelay: "60ms" }}>
             <div className="flex items-center gap-4">
               <div className="eyebrow text-cream/74">{t.hero.eyebrow}</div>
               <span className="h-px w-9 bg-cream/40" />
             </div>
             <div className="mt-10">
-              <h1 className="max-w-[11.5ch] font-serif text-[clamp(54px,6vw,108px)] leading-[0.94] tracking-[-0.02em]">
-                <span className="block">{heroLines[0]}</span>
-                <span className="mt-4 block font-light italic opacity-90">{heroLines[1]}</span>
-                <span className="block font-light italic opacity-90">{heroLines[2]}</span>
+              <h1 className="font-serif text-[clamp(54px,6vw,108px)] leading-[0.9] tracking-[-0.02em]">
+                <span className="block">{t.hero.titleTop}</span>
+                <span className="mt-3 block font-light italic opacity-90">{t.hero.titleBottom}</span>
               </h1>
             </div>
-            <div className="mt-10 w-full max-w-[620px]">
+            <div className="mt-10 w-full">
               <div className="double-rule-cream w-[120px]" />
-              <p className="mt-8 max-w-[39rem] text-[16px] leading-[1.72] text-cream/82 lg:text-[17px]">
+              <p className="mt-8 text-[16px] leading-[1.72] text-cream/82 lg:text-[17px]">
                 {t.hero.description}
               </p>
+              <div className="mt-8 grid gap-0 border-y border-cream/16 md:grid-cols-3">
+                {t.hero.highlights.map((item, index) => (
+                  <div
+                    key={item}
+                    className={`px-0 py-5 text-[clamp(20px,1.8vw,26px)] font-serif leading-[1.28] text-cream/90 ${
+                      index < 2 ? "md:border-r md:border-cream/16 md:pr-6" : ""
+                    } ${index > 0 ? "md:pl-6" : ""}`}
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button href={withLocalePath(locale, "/contact")} variant="solid-cream">
                   {t.hero.primaryCta}
@@ -53,7 +59,7 @@ export const HomePage = () => {
             </div>
           </div>
           <div className="relative z-10 hidden h-full items-center justify-end lg:flex" data-reveal="true" style={{ transitionDelay: "120ms" }}>
-            <div className="w-full max-w-[760px]">
+            <div className="w-full max-w-[820px]">
               <div className="relative aspect-[4/5] max-h-[80vh] overflow-hidden border border-cream/24 p-3">
                 <img
                   src={heroPortraitSrc}
@@ -74,21 +80,7 @@ export const HomePage = () => {
         </div>
       </section>
 
-      <section className="section-y bg-cream">
-        <div className="container-x">
-          <div className="double-rule" />
-          <div className="grid gap-6 py-10 md:grid-cols-3">
-            {t.stats.map((stat, index) => (
-              <div key={stat.label} className={`relative py-6 ${index < 2 ? "md:border-r md:border-navy/12" : ""}`} data-reveal="true" style={{ transitionDelay: `${60 + index * 60}ms` }}>
-                <div className="eyebrow text-navy/56">{stat.roman}</div>
-                <div className="mt-3 font-serif text-[clamp(72px,11vw,180px)] italic leading-none text-navy">{stat.value}</div>
-                <div className="eyebrow mt-4 text-navy/68">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-          <div className="double-rule" />
-        </div>
-      </section>
+      
 
       <section className="section-y bg-paper">
         <div className="container-x">

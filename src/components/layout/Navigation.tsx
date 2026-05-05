@@ -12,10 +12,10 @@ type NavigationProps = {
   pathname: string;
   switchLocale: (locale: Locale) => void;
   nav: Record<string, string>;
+  ctaLabel: string;
 };
 
 const navItems = [
-  { labelKey: "home", href: "/" },
   { labelKey: "about", href: "/despre-aliona" },
   { labelKey: "services", href: "/#services" },
   { labelKey: "blog", href: "/blog" },
@@ -23,7 +23,7 @@ const navItems = [
   { labelKey: "contact", href: "/contact" },
 ];
 
-export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationProps) => {
+export const Navigation = ({ locale, pathname, switchLocale, nav, ctaLabel }: NavigationProps) => {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesAnchor = `${withLocalePath(locale, "/")}#services`;
@@ -133,6 +133,9 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
           <a href="tel:+40757296443" className="nav-link">
             +40 757 296 443
           </a>
+          <Link to={withLocalePath(locale, "/contact")} className="btn-base btn-solid-cream px-6 py-3">
+            {ctaLabel}
+          </Link>
           <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em]">
             <button type="button" onClick={() => switchLocale("ro")} className={cn("transition duration-300", locale === "ro" ? "opacity-100" : "opacity-50 hover:opacity-80")}>
               RO
@@ -198,6 +201,11 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
                 RU
               </button>
             </div>
+          </div>
+          <div className="mt-5">
+            <Link to={withLocalePath(locale, "/contact")} className="btn-base btn-solid-cream w-full justify-center" onClick={() => setOpen(false)}>
+              {ctaLabel}
+            </Link>
           </div>
         </div>
       </div>

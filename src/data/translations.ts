@@ -33,19 +33,20 @@ export const translations = {
     },
     hero: {
       eyebrow: "Avocat · București",
-      titleTop: "Rigoare juridică",
-      titleBottom: "cu ton calm și poziție fermă.",
+      titleTop: "Suport juridic în România",
+      titleBottom: "pentru business și imigrare.",
       description:
-        "Pantelei Legal oferă consultanță și reprezentare pentru clienți care preferă claritatea, discreția și o strategie bine cântărită în locul zgomotului.",
-      primaryCta: "SOLICITĂ CONSULTAȚIE",
-      secondaryCta: "VEZI SERVICIILE",
+        "Deschiderea companiilor, permise de ședere, cetățenie și asistență pentru tranzacții, fără erori, întârzieri și riscuri inutile.",
+      primaryCta: "OBȚINEȚI O CONSULTAȚIE",
+      secondaryCta: "SERVICII",
       portraitTag: "N° 01 — Aliona Pantelei",
+      highlights: [
+        "Lucrăm cu antreprenori și expați",
+        "Asistență completă la cheie",
+        "Colaborare posibilă la distanță",
+      ],
     },
-    stats: [
-      { roman: "I", value: "200+", label: "Cazuri" },
-      { roman: "II", value: "150+", label: "Clienți" },
-      { roman: "III", value: "8+", label: "Ani" },
-    ],
+    
     forWhom: {
       eyebrow: "Pentru cine",
       title: "Consiliere pentru situații care nu admit improvizație.",
@@ -191,7 +192,7 @@ export const translations = {
     siteTitle: "Pantelei Legal",
     nav: {
       home: "Главная",
-      about: "Об Алионе",
+      about: "Об Алёне",
       services: "Практики",
       blog: "Блог",
       faq: "FAQ",
@@ -219,13 +220,18 @@ export const translations = {
     },
     hero: {
       eyebrow: "Адвокат · Бухарест",
-      titleTop: "Юридическая строгость",
-      titleBottom: "со спокойной интонацией и твёрдой позицией.",
+      titleTop: "Юридическая поддержка в Румынии",
+      titleBottom: "для бизнеса и иммиграции.",
       description:
-        "Pantelei Legal консультирует и представляет клиентов, которым важны ясность, сдержанность и продуманная стратегия вместо шума.",
-      primaryCta: "ЗАПРОСИТЬ КОНСУЛЬТАЦИЮ",
-      secondaryCta: "ПОСМОТРЕТЬ ПРАКТИКИ",
+        "Открытие компаний, ВНЖ, гражданство и сопровождение сделок, без ошибок, задержек и рисков.",
+      primaryCta: "ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ",
+      secondaryCta: "УСЛУГИ",
       portraitTag: "N° 01 — Aliona Pantelei",
+      highlights: [
+        "Работаем с предпринимателями и экспатами",
+        "Полное сопровождение под ключ",
+        "Возможна работа дистанционно",
+      ],
     },
     stats: [
       { roman: "I", value: "200+", label: "Дел" },
@@ -258,10 +264,10 @@ export const translations = {
       title: "Оглавление для юридических задач, требующих точности.",
     },
     aboutSnippet: {
-      eyebrow: "Об Алионе",
+      eyebrow: "Об Алёне",
       title: "Практика, построенная на профессиональной дисциплине и внимании к детали, которая меняет исход дела.",
       text:
-        "Aliona Pantelei сочетает структуру, конфиденциальность и ясность объяснения. Каждый мандат начинается со сдержанной оценки и продолжается только тогда, когда стратегия обоснована юридически и практически.",
+        "Алёна Пантелей сочетает структуру, конфиденциальность и ясность объяснения. Каждый мандат начинается со сдержанной оценки и продолжается только тогда, когда стратегия обоснована юридически и практически.",
       cta: "ПОДРОБНЕЕ ОБ АЛИОНЕ",
     },
     whyUs: {
@@ -298,7 +304,7 @@ export const translations = {
       copyright: "© 2026 Pantelei Legal. Все права защищены.",
     },
     aboutPage: {
-      eyebrow: "Об Алионе Пантелей",
+      eyebrow: "Об Алёне Пантелей",
       title: "Уверенный юридический голос, сформированный дисциплиной и ориентированный на результат.",
       bio:
         "Практика Pantelei Legal создана для клиентов, которым нужен не просто ответ, а цельная правовая позиция. Тон остаётся сдержанным, а метод опирается на внимательную работу: документы читаются целиком, риски очерчиваются ясно, стратегия формулируется без излишнего эффекта.",
