@@ -100,6 +100,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
   useEffect(() => {
     if (open) {
       setCollapsed(false);
+      setActiveDropdown(null);
     }
   }, [open]);
 
@@ -116,7 +117,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
         onClick={() => setOpen((value) => !value)}
         aria-label={open ? "Close navigation" : "Open navigation"}
         className={cn(
-          "fixed right-5 top-5 z-[60] hidden h-12 w-12 items-center justify-center border border-navy/14 bg-paper/96 text-navy backdrop-blur transition-all duration-300 lg:flex",
+          "fixed right-5 top-5 z-[70] hidden h-12 w-12 items-center justify-center bg-paper/96 text-navy backdrop-blur transition-all duration-300 lg:flex",
           desktopBurgerVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-4 opacity-0",
         )}
       >
@@ -338,70 +339,82 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
           </div>
         </div>
 
-        <div className={cn("overflow-hidden border-t border-navy/10 bg-paper transition-all duration-300", open ? "max-h-[80vh]" : "max-h-0")}>
-          <div className="container-x py-6">
-            <div className="space-y-4 lg:grid lg:grid-cols-[1fr_auto] lg:items-start lg:gap-12 lg:space-y-0">
-              <div className="space-y-4">
-                {navItems.map((item) =>
-                  item.labelKey === "services" ? (
-                    <div key={item.labelKey}>
-                      <div className="flex items-center justify-between gap-4">
-                        <Link to={servicesAnchor} className="nav-link block text-navy" onClick={closeAll}>
-                          {nav.services}
-                        </Link>
-                        <button type="button" onClick={() => setServicesOpen((value) => !value)} className="nav-link flex items-center gap-2 text-navy">
-                          <span>Menu</span>
-                          <ChevronDown className={cn("h-4 w-4 transition duration-300", servicesOpen ? "rotate-180" : "")} />
-                        </button>
-                      </div>
-                      <div className={cn("grid transition-all duration-300", servicesOpen ? "grid-rows-[1fr] pt-3" : "grid-rows-[0fr]")}>
-                        <div className="overflow-hidden">
-                          <div className="space-y-3 border-l border-navy/10 pl-4">
-                            {nav.servicesMenu.map((itemLabel) => (
-                              <Link key={itemLabel} to={servicesAnchor} className="block text-[16px] text-navy/82" onClick={closeAll}>
-                                {itemLabel}
-                              </Link>
-                            ))}
-                          </div>
+      </header>
+
+      <div
+        className={cn(
+          "fixed inset-y-0 right-0 z-[65] w-full bg-navy text-cream transition-transform duration-500 ease-out lg:hidden",
+          open ? "translate-x-0" : "translate-x-full",
+        )}
+      >
+        <div className="container-x flex min-h-screen flex-col justify-between py-8 pt-24">
+          <div>
+            <div className="eyebrow text-cream/52">{locale === "ru" ? "Навигация" : "Navigare"}</div>
+            <div className="mt-8 space-y-3">
+              {navItems.map((item) =>
+                item.labelKey === "services" ? (
+                  <div key={item.labelKey}>
+                    <div className="flex items-center justify-between gap-4 border-b border-cream/12 py-4">
+                      <Link to={servicesAnchor} className="font-serif text-[34px] italic leading-none text-cream" onClick={closeAll}>
+                        {nav.services}
+                      </Link>
+                      <button type="button" onClick={() => setServicesOpen((value) => !value)} className="text-cream">
+                        <ChevronDown className={cn("h-5 w-5 transition duration-300", servicesOpen ? "rotate-180" : "")} />
+                      </button>
+                    </div>
+                    <div className={cn("grid transition-all duration-300", servicesOpen ? "grid-rows-[1fr] pt-3" : "grid-rows-[0fr]")}>
+                      <div className="overflow-hidden">
+                        <div className="space-y-3 border-l border-cream/12 pl-4">
+                          {practiceData.map((practice) => (
+                            <Link
+                              key={practice.slug}
+                              to={withLocalePath(locale, `/servicii/${practice.slug}`)}
+                              className="block text-[16px] text-cream/76"
+                              onClick={closeAll}
+                            >
+                              {practice.title[locale]}
+                            </Link>
+                          ))}
                         </div>
                       </div>
                     </div>
-                  ) : (
-                    <Link key={item.labelKey} to={withLocalePath(locale, item.href)} className="nav-link block text-navy" onClick={closeAll}>
-                      {nav[item.labelKey]}
-                    </Link>
-                  ),
-                )}
-              </div>
-
-              <div className="hidden border-l border-navy/10 pl-10 lg:block">
-                <div className="eyebrow text-navy/58">Language</div>
-                <div className="mt-4 flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-navy">
-                  <Globe className="h-4 w-4 text-navy/68" />
-                  <button type="button" onClick={() => switchLocale("ro")} className={locale === "ro" ? "opacity-100" : "opacity-55 hover:opacity-80"}>
-                    RO
-                  </button>
-                  <button type="button" onClick={() => switchLocale("ru")} className={locale === "ru" ? "opacity-100" : "opacity-55 hover:opacity-80"}>
-                    RU
-                  </button>
-                </div>
-              </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={item.labelKey}
+                    to={withLocalePath(locale, item.href)}
+                    className="group flex items-center justify-between gap-6 border-b border-cream/12 py-4 font-serif text-[34px] italic leading-none text-cream transition duration-300 hover:text-cream/74"
+                    onClick={closeAll}
+                  >
+                    <span>{nav[item.labelKey]}</span>
+                    <ArrowRight className="h-4 w-4 shrink-0 transition duration-300 group-hover:translate-x-1" />
+                  </Link>
+                ),
+              )}
             </div>
+          </div>
 
-            <div className="mt-6 flex items-center justify-between border-t border-navy/10 pt-5 lg:hidden">
-              <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-navy">
-                <Globe className="h-4 w-4 text-navy/68" />
-                <button type="button" onClick={() => switchLocale("ro")} className={locale === "ro" ? "opacity-100" : "opacity-55"}>
-                  RO
-                </button>
-                <button type="button" onClick={() => switchLocale("ru")} className={locale === "ru" ? "opacity-100" : "opacity-55"}>
-                  RU
-                </button>
-              </div>
+          <div className="border-t border-cream/12 pt-6">
+            <div className="eyebrow text-cream/52">{locale === "ru" ? "Контакт" : "Contact"}</div>
+            <a href="tel:+40757296443" className="mt-4 block font-serif text-[28px] italic leading-none text-cream">
+              +40 757 296 443
+            </a>
+            <a href="mailto:pantelei.legaladviser@gmail.com" className="mt-3 block text-[15px] text-cream/74">
+              pantelei.legaladviser@gmail.com
+            </a>
+            <div className="mt-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-cream">
+              <Globe className="h-4 w-4 text-cream/68" />
+              <button type="button" onClick={() => switchLocale("ro")} className={locale === "ro" ? "opacity-100" : "opacity-55 hover:opacity-80"}>
+                RO
+              </button>
+              <span className="opacity-35">/</span>
+              <button type="button" onClick={() => switchLocale("ru")} className={locale === "ru" ? "opacity-100" : "opacity-55 hover:opacity-80"}>
+                RU
+              </button>
             </div>
           </div>
         </div>
-      </header>
+      </div>
     </>
   );
 };

@@ -29,7 +29,7 @@ export const HomePage = () => {
   return (
     <>
       <section className="relative flex min-h-[68vh] items-center overflow-hidden bg-paper text-ink">
-        <div className={cn("hero-reveal-curtain hidden lg:block", ready && "is-ready")}>
+        <div className={cn("hero-reveal-curtain", ready && "is-ready")}>
           <a href="#for-whom" className="hero-reveal-scroll" aria-label="Scroll to next section">
             <ArrowDown className="h-5 w-5" />
           </a>
@@ -67,6 +67,19 @@ export const HomePage = () => {
               ready ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0",
             )}
           >
+            <div className="mb-8 lg:hidden">
+              <div className="relative mx-auto aspect-[4/5] max-w-[420px] overflow-hidden bg-cream">
+                <img
+                  src={heroPortraitSrc}
+                  alt="Aliona Pantelei"
+                  className="h-full w-full object-cover object-center"
+                  onError={(event) => {
+                    event.currentTarget.onerror = null;
+                    event.currentTarget.src = "/portrait-placeholder.svg";
+                  }}
+                />
+              </div>
+            </div>
             <div className="eyebrow text-navy/58">{t.hero.eyebrow}</div>
             <div className="mt-6">
               <h1 className="font-serif text-[clamp(54px,6vw,100px)] italic font-light leading-[0.94] tracking-[-0.03em] text-navy">

@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "../../lib/utils";
 import type { ReactNode } from "react";
@@ -24,6 +25,7 @@ export const Button = ({ children, href, onClick, variant = "solid", className }
     return (
       <Link to={href} className={classes}>
         <span>{children}</span>
+        <ArrowRight className="h-4 w-4 shrink-0" />
       </Link>
     );
   }
@@ -31,6 +33,7 @@ export const Button = ({ children, href, onClick, variant = "solid", className }
   return (
     <button type="button" onClick={onClick} className={classes}>
       <span>{children}</span>
+      <ArrowRight className="h-4 w-4 shrink-0" />
     </button>
   );
 };
