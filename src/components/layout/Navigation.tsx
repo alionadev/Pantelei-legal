@@ -347,6 +347,14 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
           open ? "translate-x-0" : "translate-x-full",
         )}
       >
+        <button
+          type="button"
+          onClick={() => setOpen(false)}
+          aria-label="Close mobile navigation"
+          className="absolute right-5 top-5 z-[75] flex h-12 w-12 items-center justify-center text-cream"
+        >
+          <X className="h-6 w-6" />
+        </button>
         <div className="container-x flex min-h-screen flex-col justify-between py-8 pt-24">
           <div>
             <div className="eyebrow text-cream/52">{locale === "ru" ? "Навигация" : "Navigare"}</div>
