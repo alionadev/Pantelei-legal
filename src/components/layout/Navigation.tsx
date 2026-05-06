@@ -1,214 +1,407 @@
-import { Menu, X, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { Menu, X, ChevronDown, Globe, ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { practiceData } from "../../data/practiceData";
-import { blogData } from "../../data/blogData";
 import { isRouteActive, withLocalePath } from "../../lib/locale";
 import { cn } from "../../lib/utils";
 import type { Locale } from "../../lib/types";
+import { blogData } from "../../data/blogData";
+import { practiceData } from "../../data/practiceData";
 
 type NavigationProps = {
   locale: Locale;
   pathname: string;
   switchLocale: (locale: Locale) => void;
-  nav: Record<string, string>;
-  ctaLabel: string;
+  nav: {
+    home: string;
+    about: string;
+    services: string;
+    blog: string;
+    contact: string;
+    faq: string;
+    servicesMenu: readonly string[];
+  };
 };
 
 const navItems = [
-  { labelKey: "about", href: "/despre-aliona" },
   { labelKey: "services", href: "/#services" },
+  { labelKey: "about", href: "/despre-aliona" },
   { labelKey: "blog", href: "/blog" },
-  { labelKey: "faq", href: "/faq" },
   { labelKey: "contact", href: "/contact" },
-];
+  { labelKey: "faq", href: "/faq" },
+] as const;
 
-export const Navigation = ({ locale, pathname, switchLocale, nav, ctaLabel }: NavigationProps) => {
+export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationProps) => {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<"services" | "blog" | null>(null);
   const servicesAnchor = `${withLocalePath(locale, "/")}#services`;
   const latestPosts = blogData.slice(0, 3);
+  const desktopBurgerVisible = collapsed || open;
+  const desktopDropdownOpen = activeDropdown !== null;
+
+  const servicesCta =
+    locale === "ru"
+      ? {
+          title: "Не нашли то, что нужно?",
+          text: "Опишите ситуацию напрямую. Если вопрос не вписывается в типовой список, это не повод откладывать контакт.",
+          button: "НАПИСАТЬ",
+        }
+      : {
+          title: "Nu ați găsit ce vă trebuie?",
+          text: "Descrieți situația direct. Dacă întrebarea nu intră într-o categorie standard, asta nu înseamnă că trebuie amânată.",
+          button: "SCRIEȚI-NE",
+        };
+
+  const blogPanelLabel = locale === "ru" ? "Последние статьи" : "Ultimele articole";
+  const blogReadLabel = locale === "ru" ? "ЧИТАТЬ" : "CITEȘTE";
+  const allServicesLabel = locale === "ru" ? "ВСЕ УСЛУГИ" : "TOATE SERVICIILE";
+  const allPostsLabel = locale === "ru" ? "ВСЕ ПОСТЫ" : "TOATE ARTICOLELE";
+  const servicesIntro =
+    locale === "ru"
+      ? {
+          title: "Услуги",
+          text: "Практики для частных клиентов, предпринимателей и компаний в Румынии.",
+        }
+      : {
+          title: "Servicii",
+          text: "Arii de practică pentru clienți privați, antreprenori și companii în România.",
+        };
+  const blogIntro =
+    locale === "ru"
+      ? {
+          title: "Блог",
+          text: "Короткие материалы о сделках, договорах, налоговых и миграционных вопросах.",
+        }
+      : {
+          title: "Blog",
+          text: "Texte scurte despre tranzacții, contracte, fiscalitate și teme de imigrare.",
+        };
+
+  useEffect(() => {
+    let lastScroll = window.scrollY;
+
+    const onScroll = () => {
+      const current = window.scrollY;
+
+      if (current > lastScroll && current > 140 && !open) {
+        setCollapsed(true);
+      } else if (current < lastScroll || current < 40) {
+        setCollapsed(false);
+      }
+
+      lastScroll = current;
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [open]);
+
+  useEffect(() => {
+    if (open) {
+      setCollapsed(false);
+    }
+  }, [open]);
+
+  const closeAll = () => {
+    setOpen(false);
+    setServicesOpen(false);
+    setActiveDropdown(null);
+  };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-cream/15 bg-navy text-cream">
-      <div className="container-x flex h-[68px] items-center justify-between gap-5">
-        <Link to={withLocalePath(locale, "/")} className="text-[13px] uppercase tracking-[0.22em] text-cream transition duration-300 hover:opacity-80">
-          Pantelei Legal
-        </Link>
-        <nav className="hidden items-center gap-7 lg:flex">
-          {navItems.map((item) =>
-            item.labelKey === "services" ? (
-              <div key={item.labelKey} className="group relative">
-                <Link
-                  to={servicesAnchor}
-                  className={cn("nav-link", isRouteActive(pathname, "/servicii") && "opacity-100")}
-                >
-                  {nav[item.labelKey]}
-                </Link>
-                <div className="pointer-events-none absolute left-0 top-full pt-5 opacity-0 transition duration-300 group-hover:pointer-events-auto group-hover:opacity-100">
-                  <div className="grid w-[min(980px,calc(100vw-80px))] grid-cols-[1.15fr_0.85fr] border border-cream/15 bg-navy">
-                    <div className="p-6">
-                      <div className="eyebrow text-cream/70">{nav.servicesEyebrow}</div>
-                      <div className="mt-4 space-y-3">
-                        {practiceData.map((practice, index) => (
-                          <Link
-                            key={practice.slug}
-                            to={withLocalePath(locale, `/servicii/${practice.slug}`)}
-                            className="group/item flex items-center justify-between border-b border-cream/12 pb-3 text-cream/86 transition duration-300 hover:text-cream"
-                          >
-                            <div>
-                              <div className="text-[11px] uppercase tracking-[0.18em] text-cream/52">{String(index + 1).padStart(2, "0")}</div>
-                              <div className="mt-1 font-serif text-[30px] italic leading-none">{practice.title[locale]}</div>
-                            </div>
-                            <ChevronRight className="h-4 w-4 transition duration-300 group-hover/item:translate-x-1" />
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="border-l border-cream/12 p-6">
-                      <Link
-                        to={withLocalePath(locale, "/contact")}
-                        className="block min-h-full border border-cream/14 bg-cream/6 p-6 transition duration-300 hover:bg-cream/10"
-                      >
-                        <div className="eyebrow text-cream/58">{nav.contact}</div>
-                        <h3 className="mt-5 max-w-xs font-serif text-[38px] italic leading-none text-cream">{nav.servicesPromptTitle}</h3>
-                        <p className="mt-5 max-w-sm text-[16px] leading-[1.7] text-cream/78">{nav.servicesPromptText}</p>
-                        <span className="editorial-link mt-8 text-cream">
-                          {nav.servicesPromptCta}
-                        </span>
-                        <div className="mt-8 border-t border-cream/12 pt-5">
-                          <p className="text-[15px] leading-[1.7] text-cream/62">
-                            +40 757 296 443 · pantelei.legaladviser@gmail.com
-                          </p>
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : item.labelKey === "blog" ? (
-              <div key={item.labelKey} className="group relative">
-                <Link
-                  to={withLocalePath(locale, item.href)}
-                  className={cn("nav-link", isRouteActive(pathname, item.href) && "opacity-100")}
-                >
-                  {nav[item.labelKey]}
-                </Link>
-                <div className="pointer-events-none absolute left-0 top-full pt-5 opacity-0 transition duration-300 group-hover:pointer-events-auto group-hover:opacity-100">
-                  <div className="w-[min(560px,calc(100vw-80px))] border border-cream/15 bg-navy">
-                    <div className="p-6">
-                      <div className="eyebrow text-cream/62">{nav.latestPosts}</div>
-                      <div className="mt-5 space-y-4">
-                        {latestPosts.map((post) => (
-                          <Link
-                            key={post.slug}
-                            to={withLocalePath(locale, `/blog/${post.slug}`)}
-                            className="block border border-cream/12 bg-cream/5 p-5 transition duration-300 hover:bg-cream/10"
-                          >
-                            <div className="flex items-center justify-between gap-4 border-b border-cream/12 pb-4">
-                              <span className="eyebrow text-cream/44">{post.date}</span>
-                              <span className="eyebrow text-cream/52">{post.readTime}</span>
-                            </div>
-                            <div className="mt-4 font-serif text-[30px] italic leading-none text-cream">{post.title[locale]}</div>
-                            <p className="mt-4 max-w-lg text-[15px] leading-[1.7] text-cream/74">{post.excerpt[locale]}</p>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <Link
-                key={item.labelKey}
-                to={withLocalePath(locale, item.href)}
-                className={cn("nav-link", isRouteActive(pathname, item.href) && "opacity-100")}
-              >
-                {nav[item.labelKey]}
-              </Link>
-            ),
+    <>
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-label={open ? "Close navigation" : "Open navigation"}
+        className={cn(
+          "fixed right-5 top-5 z-[60] hidden h-12 w-12 items-center justify-center border border-navy/14 bg-paper/96 text-navy backdrop-blur transition-all duration-300 lg:flex",
+          desktopBurgerVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-4 opacity-0",
+        )}
+      >
+        {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+      </button>
+
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 border-b backdrop-blur transition-transform duration-300",
+          desktopDropdownOpen ? "border-cream/14 bg-navy/98 text-cream" : "border-navy/10 bg-paper/95 text-navy",
+          collapsed && !open ? "-translate-y-full" : "translate-y-0",
+        )}
+        onMouseLeave={() => setActiveDropdown(null)}
+      >
+        <div
+          className={cn(
+            "container-x flex h-[84px] items-center justify-between gap-5 transition-colors duration-300",
+            desktopDropdownOpen ? "bg-navy text-cream" : "bg-paper/95 text-navy",
           )}
-        </nav>
-        <div className="hidden items-center gap-5 lg:flex">
-          <a href="tel:+40757296443" className="nav-link">
-            +40 757 296 443
-          </a>
-          <Link to={withLocalePath(locale, "/contact")} className="btn-base btn-solid-cream px-6 py-3">
-            {ctaLabel}
+        >
+          <Link
+            to={withLocalePath(locale, "/")}
+            className={cn(
+              "text-[13px] uppercase tracking-[0.22em] transition duration-300 hover:opacity-70",
+              desktopDropdownOpen ? "text-cream" : "text-navy",
+            )}
+          >
+            Pantelei Legal
           </Link>
-          <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em]">
-            <button type="button" onClick={() => switchLocale("ro")} className={cn("transition duration-300", locale === "ro" ? "opacity-100" : "opacity-50 hover:opacity-80")}>
-              RO
-            </button>
-            <span className="opacity-35">/</span>
-            <button type="button" onClick={() => switchLocale("ru")} className={cn("transition duration-300", locale === "ru" ? "opacity-100" : "opacity-50 hover:opacity-80")}>
-              RU
-            </button>
-          </div>
-        </div>
-        <button type="button" onClick={() => setOpen((value) => !value)} className="lg:hidden">
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-      </div>
-      <div className={cn("overflow-hidden border-t border-cream/12 bg-navy transition-all duration-300 lg:hidden", open ? "max-h-[80vh]" : "max-h-0")}>
-        <div className="container-x py-6">
-          <div className="space-y-4">
-            {navItems.map((item) =>
-              item.labelKey === "services" ? (
-                <div key={item.labelKey}>
-                  <div className="flex items-center justify-between gap-4">
-                    <Link to={servicesAnchor} className="nav-link block" onClick={() => setOpen(false)}>
-                      {nav.services}
+
+          <nav className="hidden items-center gap-8 lg:flex">
+            {navItems.map((item) => {
+              if (item.labelKey === "services") {
+                return (
+                  <div key={item.labelKey}>
+                    <Link
+                      to={servicesAnchor}
+                      onClick={closeAll}
+                      onMouseEnter={() => setActiveDropdown("services")}
+                      className={cn(
+                        "nav-link flex items-center gap-2",
+                        desktopDropdownOpen ? "text-cream opacity-82 hover:opacity-100" : "text-navy",
+                        isRouteActive(pathname, "/servicii") && "opacity-100",
+                      )}
+                    >
+                      <span>{nav[item.labelKey]}</span>
+                      <ChevronDown className="h-3.5 w-3.5" />
                     </Link>
-                    <button type="button" onClick={() => setServicesOpen((value) => !value)} className="nav-link flex items-center gap-2">
-                      <span>{nav.servicesEyebrow}</span>
-                      <ChevronRight className={cn("h-4 w-4 transition duration-300", servicesOpen ? "rotate-90" : "")} />
-                    </button>
                   </div>
-                  <div className={cn("grid transition-all duration-300", servicesOpen ? "grid-rows-[1fr] pt-3" : "grid-rows-[0fr]")}>
-                    <div className="overflow-hidden">
-                      <div className="space-y-3 border-l border-cream/15 pl-4">
-                        {practiceData.map((practice) => (
-                          <Link
-                            key={practice.slug}
-                            to={withLocalePath(locale, `/servicii/${practice.slug}`)}
-                            className="block text-[16px] text-cream/82"
-                            onClick={() => setOpen(false)}
-                          >
-                            {practice.title[locale]}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
+                );
+              }
+
+              if (item.labelKey === "blog") {
+                return (
+                  <div key={item.labelKey}>
+                    <Link
+                      to={withLocalePath(locale, item.href)}
+                      onClick={closeAll}
+                      onMouseEnter={() => setActiveDropdown("blog")}
+                      className={cn(
+                        "nav-link flex items-center gap-2",
+                        desktopDropdownOpen ? "text-cream opacity-82 hover:opacity-100" : "text-navy",
+                        isRouteActive(pathname, item.href) && "opacity-100",
+                      )}
+                    >
+                      <span>{nav[item.labelKey]}</span>
+                      <ChevronDown className="h-3.5 w-3.5" />
+                    </Link>
                   </div>
-                </div>
-              ) : (
-                <Link key={item.labelKey} to={withLocalePath(locale, item.href)} className="nav-link block" onClick={() => setOpen(false)}>
+                );
+              }
+
+              return (
+                <Link
+                  key={item.labelKey}
+                  to={withLocalePath(locale, item.href)}
+                  onClick={closeAll}
+                  className={cn(
+                    "nav-link",
+                    desktopDropdownOpen ? "text-cream opacity-82 hover:opacity-100" : "text-navy",
+                    isRouteActive(pathname, item.href) && "opacity-100",
+                  )}
+                >
                   {nav[item.labelKey]}
                 </Link>
-              ),
-            )}
-          </div>
-          <div className="mt-6 flex items-center justify-between border-t border-cream/12 pt-5">
-            <a href="tel:+40757296443" className="nav-link">
-              +40 757 296 443
-            </a>
-            <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.18em]">
-              <button type="button" onClick={() => switchLocale("ro")} className={locale === "ro" ? "opacity-100" : "opacity-55"}>
+              );
+            })}
+          </nav>
+
+          <div className="hidden items-center gap-3 lg:flex">
+            <Globe className={cn("h-4 w-4", desktopDropdownOpen ? "text-cream/68" : "text-navy/68")} />
+            <div className={cn("flex items-center gap-2 text-[11px] uppercase tracking-[0.18em]", desktopDropdownOpen ? "text-cream" : "text-navy")}>
+              <button type="button" onClick={() => switchLocale("ro")} className={cn("transition duration-300", locale === "ro" ? "opacity-100" : "opacity-50 hover:opacity-80")}>
                 RO
               </button>
-              <button type="button" onClick={() => switchLocale("ru")} className={locale === "ru" ? "opacity-100" : "opacity-55"}>
+              <span className="opacity-35">/</span>
+              <button type="button" onClick={() => switchLocale("ru")} className={cn("transition duration-300", locale === "ru" ? "opacity-100" : "opacity-50 hover:opacity-80")}>
                 RU
               </button>
             </div>
           </div>
-          <div className="mt-5">
-            <Link to={withLocalePath(locale, "/contact")} className="btn-base btn-solid-cream w-full justify-center" onClick={() => setOpen(false)}>
-              {ctaLabel}
-            </Link>
+
+          <button type="button" onClick={() => setOpen((value) => !value)} className="text-navy lg:hidden">
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+
+        <div
+          className={cn(
+            "hidden overflow-hidden border-t border-cream/14 bg-navy text-cream transition-all duration-300 lg:block",
+            desktopDropdownOpen ? "max-h-[540px] opacity-100" : "max-h-0 opacity-0",
+          )}
+        >
+          <div className="container-x py-8">
+            {activeDropdown === "services" ? (
+              <div className="grid gap-0 lg:grid-cols-[0.54fr_0.9fr_0.7fr]">
+                <div className="border-b border-cream/14 pb-8 lg:border-b-0 lg:pr-10">
+                  <h3 className="font-serif text-[46px] italic leading-[0.96] text-cream">{servicesIntro.title}</h3>
+                  <p className="mt-6 max-w-[28ch] text-[16px] leading-[1.75] text-cream/72">{servicesIntro.text}</p>
+                  <Link
+                    to={servicesAnchor}
+                    onClick={closeAll}
+                    className="mt-10 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-cream transition duration-300 hover:opacity-72"
+                  >
+                    <span>{allServicesLabel}</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+
+                <div className="border-b border-cream/14 py-8 lg:border-b-0 lg:border-l lg:border-r lg:border-cream/12 lg:px-10 lg:py-0">
+                  <div className="grid gap-x-10 gap-y-2 md:grid-cols-2">
+                    {practiceData.map((practice) => (
+                      <Link
+                        key={practice.slug}
+                        to={withLocalePath(locale, `/servicii/${practice.slug}`)}
+                        onClick={closeAll}
+                        className="group/item border-b border-cream/12 py-4 transition duration-300 hover:opacity-72"
+                      >
+                        <div className="flex items-center justify-between gap-4">
+                          <span className="font-serif text-[24px] italic leading-none text-cream">{practice.title[locale]}</span>
+                          <ArrowRight className="h-4 w-4 shrink-0 text-cream transition duration-300 group-hover/item:translate-x-1" />
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-8 lg:pl-10 lg:pt-0">
+                  <Link
+                    to={withLocalePath(locale, "/contact")}
+                    onClick={closeAll}
+                    className="flex h-full min-h-[248px] flex-col justify-between border border-cream/16 bg-cream/6 p-8 transition duration-300 hover:bg-cream/10"
+                  >
+                    <div>
+                      <div className="eyebrow text-cream/58">{nav.contact}</div>
+                      <h3 className="mt-6 max-w-[12ch] font-serif text-[48px] italic leading-[0.96] text-cream">
+                        {servicesCta.title}
+                      </h3>
+                      <p className="mt-6 max-w-md text-[16px] leading-[1.7] text-cream/72">{servicesCta.text}</p>
+                    </div>
+                    <div className="mt-10 flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-cream">
+                      <span>{servicesCta.button}</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            ) : activeDropdown === "blog" ? (
+              <div className="grid gap-0 lg:grid-cols-[0.56fr_1fr]">
+                <div className="border-b border-cream/14 pb-8 lg:border-b-0 lg:pr-10">
+                  <h3 className="font-serif text-[46px] italic leading-[0.96] text-cream">{blogIntro.title}</h3>
+                  <p className="mt-6 max-w-[30ch] text-[16px] leading-[1.75] text-cream/72">{blogIntro.text}</p>
+                  <Link
+                    to={withLocalePath(locale, "/blog")}
+                    onClick={closeAll}
+                    className="mt-10 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-cream transition duration-300 hover:opacity-72"
+                  >
+                    <span>{allPostsLabel}</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+
+                <div className="pt-8 lg:border-l lg:border-cream/12 lg:pl-10 lg:pt-0">
+                  <div className="eyebrow text-cream/58">{blogPanelLabel}</div>
+                  <div className="mt-4">
+                    {blogData.map((post, index) => (
+                      <Link
+                        key={post.slug}
+                        to={withLocalePath(locale, `/blog/${post.slug}`)}
+                        onClick={closeAll}
+                        className={cn(
+                          "group/post flex items-center justify-between gap-8 border-b border-cream/12 py-5 transition duration-300 hover:translate-x-1",
+                          index === 0 ? "border-t border-cream/12" : "",
+                        )}
+                      >
+                        <div>
+                          <div className="eyebrow text-cream/48">
+                            {new Intl.DateTimeFormat(locale === "ru" ? "ru-RU" : "ro-RO", {
+                              day: "2-digit",
+                              month: "short",
+                              year: "numeric",
+                            }).format(new Date(post.date))}{" "}
+                            · {post.readTime}
+                          </div>
+                          <h4 className="mt-3 font-serif text-[30px] italic leading-[1] text-cream transition duration-300 group-hover/post:text-cream/72">
+                            {post.title[locale]}
+                          </h4>
+                        </div>
+                        <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-cream">
+                          <span>{blogReadLabel}</span>
+                          <ArrowRight className="h-4 w-4 transition duration-300 group-hover/post:translate-x-1" />
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
-      </div>
-    </header>
+
+        <div className={cn("overflow-hidden border-t border-navy/10 bg-paper transition-all duration-300", open ? "max-h-[80vh]" : "max-h-0")}>
+          <div className="container-x py-6">
+            <div className="space-y-4 lg:grid lg:grid-cols-[1fr_auto] lg:items-start lg:gap-12 lg:space-y-0">
+              <div className="space-y-4">
+                {navItems.map((item) =>
+                  item.labelKey === "services" ? (
+                    <div key={item.labelKey}>
+                      <div className="flex items-center justify-between gap-4">
+                        <Link to={servicesAnchor} className="nav-link block text-navy" onClick={closeAll}>
+                          {nav.services}
+                        </Link>
+                        <button type="button" onClick={() => setServicesOpen((value) => !value)} className="nav-link flex items-center gap-2 text-navy">
+                          <span>Menu</span>
+                          <ChevronDown className={cn("h-4 w-4 transition duration-300", servicesOpen ? "rotate-180" : "")} />
+                        </button>
+                      </div>
+                      <div className={cn("grid transition-all duration-300", servicesOpen ? "grid-rows-[1fr] pt-3" : "grid-rows-[0fr]")}>
+                        <div className="overflow-hidden">
+                          <div className="space-y-3 border-l border-navy/10 pl-4">
+                            {nav.servicesMenu.map((itemLabel) => (
+                              <Link key={itemLabel} to={servicesAnchor} className="block text-[16px] text-navy/82" onClick={closeAll}>
+                                {itemLabel}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <Link key={item.labelKey} to={withLocalePath(locale, item.href)} className="nav-link block text-navy" onClick={closeAll}>
+                      {nav[item.labelKey]}
+                    </Link>
+                  ),
+                )}
+              </div>
+
+              <div className="hidden border-l border-navy/10 pl-10 lg:block">
+                <div className="eyebrow text-navy/58">Language</div>
+                <div className="mt-4 flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-navy">
+                  <Globe className="h-4 w-4 text-navy/68" />
+                  <button type="button" onClick={() => switchLocale("ro")} className={locale === "ro" ? "opacity-100" : "opacity-55 hover:opacity-80"}>
+                    RO
+                  </button>
+                  <button type="button" onClick={() => switchLocale("ru")} className={locale === "ru" ? "opacity-100" : "opacity-55 hover:opacity-80"}>
+                    RU
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 flex items-center justify-between border-t border-navy/10 pt-5 lg:hidden">
+              <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-navy">
+                <Globe className="h-4 w-4 text-navy/68" />
+                <button type="button" onClick={() => switchLocale("ro")} className={locale === "ro" ? "opacity-100" : "opacity-55"}>
+                  RO
+                </button>
+                <button type="button" onClick={() => switchLocale("ru")} className={locale === "ru" ? "opacity-100" : "opacity-55"}>
+                  RU
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </>
   );
 };

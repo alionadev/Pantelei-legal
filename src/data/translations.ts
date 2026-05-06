@@ -5,16 +5,18 @@ export const translations = {
     siteTitle: "Pantelei Legal",
     nav: {
       home: "Acasă",
-      about: "Despre Aliona",
+      about: "Despre",
       services: "Servicii",
       blog: "Blog",
       faq: "FAQ",
       contact: "Contact",
-      servicesEyebrow: "Arii de practică",
-      servicesPromptTitle: "Nu ați găsit exact ceea ce căutați?",
-      servicesPromptText: "Scrieți direct. Un context clar trimis la timp ajută mai mult decât o presupunere grăbită.",
-      servicesPromptCta: "MERGEȚI LA CONTACT",
-      latestPosts: "Ultimele articole",
+      servicesMenu: [
+        "Deschidere Companii",
+        "Outsourcing Juridic",
+        "Servicii Imigrare",
+        "Imobiliare",
+        "Documente Traduceri",
+      ],
     },
     labels: {
       phone: "Telefon",
@@ -34,7 +36,7 @@ export const translations = {
     hero: {
       eyebrow: "Avocat · București",
       titleTop: "Suport juridic în România",
-      titleBottom: "pentru business și imigrare.",
+      titleBottom: "pentru business și imigrare",
       description:
         "Deschiderea companiilor, permise de ședere, cetățenie și asistență pentru tranzacții, fără erori, întârzieri și riscuri inutile.",
       primaryCta: "OBȚINEȚI O CONSULTAȚIE",
@@ -74,9 +76,9 @@ export const translations = {
     },
     aboutSnippet: {
       eyebrow: "Despre Aliona",
-      title: "O practică construită pe disciplină profesională și atenție pentru detaliul care schimbă dosarul.",
+      title: "Sprijin juridic pe care vă puteți baza.",
       text:
-        "Aliona Pantelei lucrează cu o combinație rară de structură, discreție și claritate în explicație. Fiecare mandat începe cu o evaluare sobru formulată și continuă doar atunci când strategia are sens juridic și practic.",
+        "Mă numesc Aliona Pantelei, avocat și fondator PANTELEI LEGAL CONSULTING. Ajut antreprenori și clienți privați să rezolve probleme juridice în România: de la înregistrarea unei companii până la obținerea cetățeniei și asistență în tranzacții.",
       cta: "MAI MULT DESPRE ALIONA",
     },
     whyUs: {
@@ -114,16 +116,16 @@ export const translations = {
     },
     aboutPage: {
       eyebrow: "Despre Aliona Pantelei",
-      title: "O voce juridică sigură, formată în disciplină și orientată spre rezultat.",
+      title: "Sprijin juridic pe care vă puteți baza.",
       bio:
-        "Practica Pantelei Legal a fost construită pentru clienți care caută nu doar un răspuns, ci o poziție coerentă. Tonul este sobru, iar metoda este una de lucru atentă: documente citite integral, riscuri delimitate limpede, strategie formulată fără exces.",
+        "Mă numesc Aliona Pantelei, avocat și fondator PANTELEI LEGAL CONSULTING. Ajut antreprenori și clienți privați să rezolve probleme juridice în România: de la înregistrarea unei companii până la obținerea cetățeniei și asistență în tranzacții. Scopul meu nu este doar să pregătesc documente, ci să vă protejez interesele și să evit riscurile. Fiecare proiect este gestionat cu atenție la detalii și cu responsabilitate deplină pentru rezultat.",
       educationTitle: "Educație și formare",
       education: [
         "Studii juridice și formare continuă în drept civil, comercial și fiscal.",
         "Actualizare constantă privind practica instanțelor și modificările legislative relevante.",
       ],
       valuesTitle: "Valori de lucru",
-      values: ["Rigoare", "Discreție", "Claritate", "Respect pentru timpul clientului"],
+      values: ["Abordare individuală", "Condiții transparente", "Asistență în toate etapele"],
       experienceTitle: "Experiență practică",
       experience:
         "Experiența acumulată include consultanță pentru persoane private, antreprenori și companii, în dosare care au cerut atât finețe de redactare, cât și fermitate procedurală.",
@@ -192,16 +194,18 @@ export const translations = {
     siteTitle: "Pantelei Legal",
     nav: {
       home: "Главная",
-      about: "Об Алёне",
+      about: "Despre",
       services: "Практики",
       blog: "Блог",
       faq: "FAQ",
       contact: "Контакты",
-      servicesEyebrow: "Практики",
-      servicesPromptTitle: "Не нашли именно то, что искали?",
-      servicesPromptText: "Напишите напрямую. Кратко изложенный контекст полезнее, чем поспешное предположение.",
-      servicesPromptCta: "ПЕРЕЙТИ К КОНТАКТАМ",
-      latestPosts: "Последние статьи",
+      servicesMenu: [
+        "Deschidere Companii",
+        "Outsourcing Juridic",
+        "Servicii Imigrare",
+        "Imobiliare",
+        "Documente Traduceri",
+      ],
     },
     labels: {
       phone: "Телефон",
@@ -221,7 +225,7 @@ export const translations = {
     hero: {
       eyebrow: "Адвокат · Бухарест",
       titleTop: "Юридическая поддержка в Румынии",
-      titleBottom: "для бизнеса и иммиграции.",
+      titleBottom: "для бизнеса и иммиграции",
       description:
         "Открытие компаний, ВНЖ, гражданство и сопровождение сделок, без ошибок, задержек и рисков.",
       primaryCta: "ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ",
@@ -265,10 +269,10 @@ export const translations = {
     },
     aboutSnippet: {
       eyebrow: "Об Алёне",
-      title: "Практика, построенная на профессиональной дисциплине и внимании к детали, которая меняет исход дела.",
+      title: "Юридическая поддержка, на которую можно опереться.",
       text:
-        "Алёна Пантелей сочетает структуру, конфиденциальность и ясность объяснения. Каждый мандат начинается со сдержанной оценки и продолжается только тогда, когда стратегия обоснована юридически и практически.",
-      cta: "ПОДРОБНЕЕ ОБ АЛИОНЕ",
+        "Меня зовут Алёна Пантелей — юрист и основатель PANTELEI LEGAL CONSULTING. Я помогаю предпринимателям и частным клиентам решать юридические вопросы в Румынии: от регистрации бизнеса до получения гражданства и сопровождения сделок.",
+      cta: "ПОДРОБНЕЕ ОБ АЛЁНЕ",
     },
     whyUs: {
       eyebrow: "Почему Pantelei Legal",
@@ -305,16 +309,16 @@ export const translations = {
     },
     aboutPage: {
       eyebrow: "Об Алёне Пантелей",
-      title: "Уверенный юридический голос, сформированный дисциплиной и ориентированный на результат.",
+      title: "Юридическая поддержка, на которую можно опереться.",
       bio:
-        "Практика Pantelei Legal создана для клиентов, которым нужен не просто ответ, а цельная правовая позиция. Тон остаётся сдержанным, а метод опирается на внимательную работу: документы читаются целиком, риски очерчиваются ясно, стратегия формулируется без излишнего эффекта.",
+        "Меня зовут Алёна Пантелей — юрист и основатель PANTELEI LEGAL CONSULTING. Я помогаю предпринимателям и частным клиентам решать юридические вопросы в Румынии: от регистрации бизнеса до получения гражданства и сопровождения сделок. Моя задача — не просто оформить документы, а защитить ваши интересы и избежать рисков. Каждый проект ведётся с вниманием к деталям и полной ответственностью за результат.",
       educationTitle: "Образование и развитие",
       education: [
         "Юридическое образование и постоянное углубление в гражданское, коммерческое и налоговое право.",
         "Регулярное обновление знаний по судебной практике и актуальным законодательным изменениям.",
       ],
       valuesTitle: "Рабочие принципы",
-      values: ["Строгость", "Конфиденциальность", "Ясность", "Уважение ко времени клиента"],
+      values: ["Индивидуальный подход", "Прозрачные условия", "Сопровождение на всех этапах"],
       experienceTitle: "Практический опыт",
       experience:
         "Накопленный опыт включает сопровождение частных клиентов, предпринимателей и компаний по вопросам, где требовались и точность формулировок, и процессуальная твёрдость.",

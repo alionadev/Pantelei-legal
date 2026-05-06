@@ -23,14 +23,14 @@ export const Button = ({ children, href, onClick, variant = "solid", className }
   if (href) {
     return (
       <Link to={href} className={classes}>
-        {children}
+        <span>{children}</span>
       </Link>
     );
   }
 
   return (
     <button type="button" onClick={onClick} className={classes}>
-      {children}
+      <span>{children}</span>
     </button>
   );
 };

@@ -4,7 +4,12 @@ import type { Locale } from "../../lib/types";
 
 type FooterProps = {
   locale: Locale;
-  nav: Record<string, string>;
+  nav: {
+    home: string;
+    about: string;
+    blog: string;
+    contact: string;
+  };
   footer: {
     navTitle: string;
     languageTitle: string;

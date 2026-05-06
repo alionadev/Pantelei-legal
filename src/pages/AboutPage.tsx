@@ -46,11 +46,10 @@ export const AboutPage = () => {
           <article data-reveal="true" style={{ transitionDelay: "90ms" }} className="border border-navy/12 p-8 bg-paper">
             <div className="eyebrow text-navy/60">{t.aboutPage.valuesTitle}</div>
             <div className="double-rule mt-6" />
-            <div className="mt-6 space-y-4">
-              {t.aboutPage.values.map((value, index) => (
-                <div key={value} className="flex items-center gap-4 border-b border-navy/10 pb-4">
-                  <span className="font-serif text-[34px] italic leading-none text-navy/58">{String(index + 1).padStart(2, "0")}</span>
-                  <span className="text-[17px] text-ink/84">{value}</span>
+            <div className="mt-6 grid gap-4">
+              {t.aboutPage.values.map((value) => (
+                <div key={value} className="border border-navy/10 bg-cream px-6 py-8 text-center font-serif text-[clamp(24px,2.2vw,34px)] leading-[1.3] text-navy">
+                  {value}
                 </div>
               ))}
             </div>

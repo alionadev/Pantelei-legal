@@ -1,8 +1,10 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { practiceData } from "../data/practiceData";
 import { useLocale } from "../hooks/useLocale";
 import { withLocalePath } from "../lib/locale";
+import { cn } from "../lib/utils";
 import { Button } from "../components/ui/Button";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { Watermark } from "../components/ui/Watermark";
@@ -14,67 +16,73 @@ export const HomePage = () => {
   const { locale, t } = useLocale();
   const heroPortraitSrc = "/aliona-portrait-main.png";
   const aboutPortraitSrc = "/aliona-office.png";
+  const [ready, setReady] = useState(false);
+  const [parallax, setParallax] = useState(0);
+
+  useEffect(() => {
+    setReady(true);
+    const onScroll = () => setParallax(window.scrollY * 0.08);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
-      <section className="relative h-[calc(100svh-68px)] overflow-hidden bg-navy text-cream">
-        <div className="paper-grain" />
-        <div className="container-x grid h-full items-center gap-10 py-8 lg:grid-cols-[minmax(0,1.18fr)_minmax(460px,0.82fr)] lg:gap-12 lg:py-10 xl:grid-cols-[minmax(0,1.24fr)_minmax(560px,0.76fr)]">
-          <div className="relative z-10 flex h-full flex-col justify-center" data-reveal="true" style={{ transitionDelay: "60ms" }}>
-            <div className="flex items-center gap-4">
-              <div className="eyebrow text-cream/74">{t.hero.eyebrow}</div>
-              <span className="h-px w-9 bg-cream/40" />
-            </div>
-            <div className="mt-10">
-              <h1 className="font-serif text-[clamp(54px,6vw,108px)] leading-[0.9] tracking-[-0.02em]">
-                <span className="block">{t.hero.titleTop}</span>
-                <span className="mt-3 block font-light italic opacity-90">{t.hero.titleBottom}</span>
-              </h1>
-            </div>
-            <div className="mt-10 w-full">
-              <div className="double-rule-cream w-[120px]" />
-              <p className="mt-8 text-[16px] leading-[1.72] text-cream/82 lg:text-[17px]">
-                {t.hero.description}
-              </p>
-              <div className="mt-8 grid gap-0 border-y border-cream/16 md:grid-cols-3">
-                {t.hero.highlights.map((item, index) => (
-                  <div
-                    key={item}
-                    className={`px-0 py-5 text-[clamp(20px,1.8vw,26px)] font-serif leading-[1.28] text-cream/90 ${
-                      index < 2 ? "md:border-r md:border-cream/16 md:pr-6" : ""
-                    } ${index > 0 ? "md:pl-6" : ""}`}
-                  >
-                    {item}
-                  </div>
-                ))}
+      <section className="relative flex min-h-[68vh] items-center overflow-hidden bg-paper text-ink">
+        <div className={cn("hero-reveal-curtain hidden lg:block", ready && "is-ready")}>
+          <a href="#for-whom" className="hero-reveal-scroll" aria-label="Scroll to next section">
+            <ArrowDown className="h-5 w-5" />
+          </a>
+        </div>
+        <div className="container-x grid items-center gap-10 py-10 lg:min-h-[68vh] lg:grid-cols-[minmax(420px,0.92fr)_minmax(0,1fr)] lg:gap-16 xl:grid-cols-[minmax(520px,0.96fr)_minmax(0,0.98fr)]">
+          <div
+            className={cn(
+              "relative hidden justify-start lg:flex",
+              ready ? "scale-100 opacity-100" : "scale-[0.3] opacity-0",
+            )}
+            style={{ transitionDelay: "200ms" }}
+          >
+            <div className="flex w-full items-stretch gap-8">
+              <div className="hero-vertical-rail hidden xl:flex">
+                <div className="vertical-hero-title">PANTELEI LEGAL</div>
               </div>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button href={withLocalePath(locale, "/contact")} variant="solid-cream">
-                  {t.hero.primaryCta}
-                </Button>
-                <Button href={`${withLocalePath(locale, "/")}#services`} variant="outline-cream">
-                  {t.hero.secondaryCta}
-                </Button>
+              <div className="w-full max-w-[720px]" style={{ transform: `translateY(${parallax}px)` }}>
+                <div className="relative aspect-[4/5] overflow-hidden bg-cream">
+                  <img
+                    src={heroPortraitSrc}
+                    alt="Aliona Pantelei"
+                    className="h-full w-full object-cover object-center"
+                    onError={(event) => {
+                      event.currentTarget.onerror = null;
+                      event.currentTarget.src = "/portrait-placeholder.svg";
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
-          <div className="relative z-10 hidden h-full items-center justify-end lg:flex" data-reveal="true" style={{ transitionDelay: "120ms" }}>
-            <div className="w-full max-w-[820px]">
-              <div className="relative aspect-[4/5] max-h-[80vh] overflow-hidden border border-cream/24 p-3">
-                <img
-                  src={heroPortraitSrc}
-                  alt="Aliona Pantelei"
-                  className="h-full w-full object-cover object-center grayscale-[6%]"
-                  onError={(event) => {
-                    event.currentTarget.onerror = null;
-                    event.currentTarget.src = "/portrait-placeholder.svg";
-                  }}
-                />
-                <div className="photo-overlay" />
-                <div className="absolute bottom-0 left-0 bg-cream px-5 py-3 text-[11px] uppercase tracking-[0.18em] text-navy">
-                  {t.hero.portraitTag}
-                </div>
-              </div>
+          <div
+            className={cn(
+              "max-w-[760px] transition-all duration-[800ms] ease-out",
+              ready ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0",
+            )}
+          >
+            <div className="eyebrow text-navy/58">{t.hero.eyebrow}</div>
+            <div className="mt-6">
+              <h1 className="font-serif text-[clamp(54px,6vw,100px)] italic font-light leading-[0.94] tracking-[-0.03em] text-navy">
+                {t.hero.titleTop}
+                <span className="mt-3 block text-[clamp(42px,4.8vw,78px)] italic font-light tracking-[-0.025em] text-navy/92">
+                  {t.hero.titleBottom}
+                </span>
+              </h1>
+            </div>
+            <p className="mt-8 text-[18px] leading-[1.72] text-ink/72">
+                {t.hero.description}
+            </p>
+            <div className="mt-10">
+              <Button href={withLocalePath(locale, "/contact")} variant="solid">
+                  {t.hero.primaryCta}
+              </Button>
             </div>
           </div>
         </div>
@@ -82,7 +90,7 @@ export const HomePage = () => {
 
       
 
-      <section className="section-y bg-paper">
+      <section id="for-whom" className="section-y bg-paper">
         <div className="container-x">
           <SectionHeading eyebrow={t.forWhom.eyebrow} title={t.forWhom.title} />
           <div className="mt-12 grid gap-6 xl:grid-cols-3">
@@ -151,10 +159,17 @@ export const HomePage = () => {
           </div>
           <div data-reveal="true" style={{ transitionDelay: "120ms" }} className="border-l-2 border-navy pl-[clamp(24px,3vw,56px)]">
             <div className="eyebrow text-navy/62">{t.aboutSnippet.eyebrow}</div>
-            <h2 className="mt-6 max-w-3xl font-serif text-[clamp(42px,5vw,74px)] italic leading-[1.02] tracking-[-0.015em]">
+            <h2 className="mt-6 max-w-4xl font-serif text-[clamp(42px,5vw,74px)] leading-[1.02] tracking-[-0.015em]">
               {t.aboutSnippet.title}
             </h2>
             <p className="mt-8 max-w-2xl text-[17px] leading-[1.7] text-ink/82">{t.aboutSnippet.text}</p>
+            <div className="mt-10 grid gap-4 md:grid-cols-3">
+              {t.aboutPage.values.map((value) => (
+                <div key={value} className="border border-navy/12 bg-cream px-5 py-6 text-center font-serif text-[22px] leading-[1.35] text-navy">
+                  {value}
+                </div>
+              ))}
+            </div>
             <div className="mt-10">
               <Button href={withLocalePath(locale, "/despre-aliona")} variant="outline-navy">
                 {t.aboutSnippet.cta}
