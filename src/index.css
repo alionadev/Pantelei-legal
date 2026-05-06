@@ -24,7 +24,7 @@ html {
 
 body {
   margin: 0;
-  background: hsl(var(--cream));
+  background: hsl(var(--paper));
   color: hsl(var(--ink));
   font-family: "Jost", sans-serif;
   font-size: 17px;

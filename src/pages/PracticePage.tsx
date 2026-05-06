@@ -13,24 +13,34 @@ export const PracticePage = () => {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-navy section-y text-cream">
-        <div className="paper-grain" />
-        <Watermark value="IV" className="right-8 top-0 hidden md:block text-[clamp(280px,32vw,520px)] text-cream/5" />
-        <div className="container-x relative">
-          <div className="max-w-5xl" data-reveal="true">
-            <div className="eyebrow text-cream/65">{t.practicePage.eyebrow}</div>
-            <h1 className="mt-6 font-serif text-[clamp(56px,8vw,110px)] italic leading-[0.98] tracking-[-0.015em]">
+      <section className="relative overflow-hidden bg-paper section-y text-ink">
+        <Watermark value="IV" className="right-8 top-6 hidden md:block text-[clamp(280px,32vw,520px)] text-navy/4" />
+        <div className="container-x relative grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+          <div data-reveal="true" className="max-w-4xl">
+            <h1 className="max-w-[10ch] font-serif text-[clamp(54px,7vw,108px)] leading-[0.92] tracking-[-0.03em] text-navy">
               {practice.title[locale]}
             </h1>
-            <div className="double-rule-cream mt-8 w-[120px]" />
-            <p className="mt-8 max-w-3xl text-[18px] leading-[1.7] text-cream/84">{practice.intro[locale]}</p>
+            <div className="mt-8 h-px w-[140px] bg-navy/72" />
+            <p className="mt-8 max-w-3xl text-[clamp(22px,2.2vw,34px)] leading-[1.28] text-ink/46">
+              {practice.intro[locale]}
+            </p>
+          </div>
+
+          <div data-reveal="true" style={{ transitionDelay: "90ms" }} className="grid gap-8 lg:pt-[clamp(100px,12vw,180px)]">
+            <div className="min-h-[320px] bg-cream" />
+            <p className="max-w-xl text-[17px] leading-[1.8] text-ink/78">{practice.summary[locale]}</p>
           </div>
         </div>
       </section>
 
       <section className="section-y bg-paper">
-        <div className="container-x grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-          <SectionHeading eyebrow={t.practicePage.servicesTitle} title={practice.summary[locale]} />
+        <div className="container-x grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+          <div data-reveal="true">
+            <div className="eyebrow text-navy/58">{t.practicePage.servicesTitle}</div>
+            <h2 className="mt-6 max-w-[8ch] font-serif text-[clamp(44px,6vw,84px)] leading-[0.94] tracking-[-0.03em] text-navy">
+              {locale === "ru" ? "Что входит" : "Ce include"}
+            </h2>
+          </div>
           <div className="space-y-4">
             {practice.services[locale].map((service, index) => (
               <div key={service} data-reveal="true" style={{ transitionDelay: `${60 + index * 50}ms` }} className="flex items-start gap-5 border-b border-navy/12 pb-4">

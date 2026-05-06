@@ -43,9 +43,6 @@ export const HomePage = () => {
             style={{ transitionDelay: "200ms" }}
           >
             <div className="flex w-full items-stretch gap-8">
-              <div className="hero-vertical-rail hidden xl:flex">
-                <div className="vertical-hero-title">PANTELEI LEGAL</div>
-              </div>
               <div className="w-full max-w-[720px]" style={{ transform: `translateY(${parallax}px)` }}>
                 <div className="relative aspect-[4/5] overflow-hidden bg-cream">
                   <img
@@ -80,7 +77,6 @@ export const HomePage = () => {
                 />
               </div>
             </div>
-            <div className="eyebrow text-navy/58">{t.hero.eyebrow}</div>
             <div className="mt-6">
               <h1 className="font-serif text-[clamp(54px,6vw,100px)] italic font-light leading-[0.94] tracking-[-0.03em] text-navy">
                 {t.hero.titleTop}
@@ -171,8 +167,7 @@ export const HomePage = () => {
             </div>
           </div>
           <div data-reveal="true" style={{ transitionDelay: "120ms" }} className="border-l-2 border-navy pl-[clamp(24px,3vw,56px)]">
-            <div className="eyebrow text-navy/62">{t.aboutSnippet.eyebrow}</div>
-            <h2 className="mt-6 max-w-4xl font-serif text-[clamp(42px,5vw,74px)] leading-[1.02] tracking-[-0.015em]">
+            <h2 className="max-w-4xl font-serif text-[clamp(42px,5vw,74px)] leading-[1.02] tracking-[-0.015em]">
               {t.aboutSnippet.title}
             </h2>
             <p className="mt-8 max-w-2xl text-[17px] leading-[1.7] text-ink/82">{t.aboutSnippet.text}</p>

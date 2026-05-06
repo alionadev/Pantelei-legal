@@ -126,27 +126,19 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
 
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 border-b backdrop-blur transition-transform duration-300",
-          desktopDropdownOpen ? "border-cream/14 bg-navy/98 text-cream" : "border-navy/10 bg-paper/95 text-navy",
+          "fixed inset-x-0 top-0 z-50 transition-transform duration-300",
+          desktopDropdownOpen ? "bg-navy/98 text-cream" : "bg-transparent text-navy",
           collapsed && !open ? "-translate-y-full" : "translate-y-0",
         )}
         onMouseLeave={() => setActiveDropdown(null)}
       >
         <div
           className={cn(
-            "container-x flex h-[84px] items-center justify-between gap-5 transition-colors duration-300",
-            desktopDropdownOpen ? "bg-navy text-cream" : "bg-paper/95 text-navy",
+            "container-x flex h-[84px] items-center justify-between gap-5 transition-colors duration-300 lg:pl-[132px]",
+            desktopDropdownOpen ? "bg-navy text-cream" : "bg-transparent text-navy",
           )}
         >
-          <Link
-            to={withLocalePath(locale, "/")}
-            className={cn(
-              "text-[13px] uppercase tracking-[0.22em] transition duration-300 hover:opacity-70",
-              desktopDropdownOpen ? "text-cream" : "text-navy",
-            )}
-          >
-            Pantelei Legal
-          </Link>
+          <div className="w-8 lg:w-14" />
 
           <nav className="hidden items-center gap-8 lg:flex">
             {navItems.map((item) => {
@@ -227,11 +219,11 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
 
         <div
           className={cn(
-            "hidden overflow-hidden border-t border-cream/14 bg-navy text-cream transition-all duration-300 lg:block",
+            "hidden overflow-hidden bg-navy text-cream transition-all duration-300 lg:block",
             desktopDropdownOpen ? "max-h-[540px] opacity-100" : "max-h-0 opacity-0",
           )}
         >
-          <div className="container-x py-8">
+          <div className="container-x py-8 lg:pl-[132px]">
             {activeDropdown === "services" ? (
               <div className="grid gap-0 lg:grid-cols-[0.54fr_0.9fr_0.7fr]">
                 <div className="border-b border-cream/14 pb-8 lg:border-b-0 lg:pr-10">

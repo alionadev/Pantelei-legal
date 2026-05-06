@@ -4,56 +4,89 @@ export const practiceData: Practice[] = [
   {
     slug: "drept-civil",
     title: {
-      ro: "Drept civil",
-      ru: "Гражданское право",
+      ro: "Deschidere și suport pentru afaceri",
+      ru: "Открытие и сопровождение бизнеса",
     },
     intro: {
-      ro: "Strategie juridică pentru raporturi patrimoniale, obligații și litigii care cer precizie calmă.",
-      ru: "Юридическая стратегия для имущественных отношений, обязательств и споров, где важны точность и выдержка.",
+      ro: "Înregistrarea companiei în România: de la alegerea formei juridice până la obținerea certificatelor și licențelor necesare. Vă economisim timpul și vă scăpăm de birocrație.",
+      ru: "Регистрация компаний в Румынии — от выбора правовой формы до получения необходимых сертификатов и лицензий. Экономим ваше время и избавляем от бюрократии.",
     },
     summary: {
-      ro: "Asistență în redactare, negociere și reprezentare pentru persoane fizice și juridice.",
-      ru: "Сопровождение при подготовке документов, переговорах и представительстве интересов частных и корпоративных клиентов.",
+      ro: "Deschiderea unei afaceri în România poate părea dificilă pentru un antreprenor străin. Cunosc toate etapele procesului, de la pregătirea documentelor până la obținerea certificatului de înregistrare. Îi ajut pe clienți să aleagă forma juridică optimă (SRL, PFA, sucursală) și rezolv toate aspectele birocratice.",
+      ru: "Открытие бизнеса в Румынии может показаться сложным для иностранного предпринимателя. Я знаю все этапы процесса, от подготовки документов до получения Свидетельства о регистрации. Помогаю клиентам выбрать оптимальную правовую форму (SRL, PFA, филиал) и решаю все бюрократические вопросы.",
     },
     services: {
-      ro: ["Contracte civile", "Recuperare creanțe", "Despăgubiri", "Acțiuni în răspundere civilă", "Consultanță preventivă"],
-      ru: ["Гражданские договоры", "Взыскание задолженности", "Возмещение убытков", "Иски о гражданской ответственности", "Превентивные консультации"],
+      ro: [
+        "Înregistrarea SRL, PFA, sucursalei",
+        "Obținerea CUI (cod unic de înregistrare)",
+        "Deschiderea contului bancar corporativ",
+        "Înregistrarea la ANAF",
+        "Obținerea licențelor și autorizațiilor necesare",
+        "EORI, NIF pentru comerț internațional",
+        "Modificări la Registrul Comerțului",
+      ],
+      ru: [
+        "Регистрация SRL, PFA, филиала",
+        "Получение CUI (Уникальный регистрационный код)",
+        "Открытие корпоративного банковского счёта",
+        "Регистрация в ANAF (Налоговая)",
+        "Получение необходимых лицензий и разрешений",
+        "EORI, NIF для международной торговли",
+        "Изменения в Торговом реестре",
+      ],
     },
     process: {
-      ro: ["Analiză documentară și evaluarea riscului", "Definirea poziției juridice", "Negociere sau reprezentare în instanță", "Monitorizare până la executare"],
-      ru: ["Анализ документов и оценка рисков", "Формирование правовой позиции", "Переговоры или судебное представительство", "Сопровождение до стадии исполнения"],
+      ro: [
+        "Consultație. Analizăm afacerea dvs. și alegem forma juridică optimă.",
+        "Pregătirea documentelor. Redactăm toate actele necesare pentru înregistrare.",
+        "Depunere și înregistrare. Depunem documentele la Registrul Comerțului și obținem CUI.",
+        "Finalizare. Primiți compania pregătită pentru activitate, contul bancar și înregistrarea fiscală.",
+      ],
+      ru: [
+        "Консультация. Анализируем ваш бизнес и выбираем оптимальную правовую форму.",
+        "Подготовка документов. Готовим все необходимые документы для регистрации.",
+        "Подача и регистрация. Подаём документы в Торговый реестр и получаем CUI.",
+        "Завершение. Вы получаете готовую к работе компанию, банковский счёт и налоговую регистрацию.",
+      ],
     },
     faq: [
       {
-        question: { ro: "Când este utilă consultația preventivă?", ru: "Когда полезна превентивная консультация?" },
+        question: { ro: "Cât durează înregistrarea unei companii?", ru: "Сколько времени занимает регистрация компании?" },
         answer: {
-          ro: "Înainte de semnarea unui contract sau de inițierea unui litigiu, pentru a evita costuri disproporționate.",
-          ru: "До подписания договора или начала спора, чтобы избежать несоразмерных расходов.",
+          ro: "În medie, 3-7 zile lucrătoare din momentul depunerii pachetului complet de documente.",
+          ru: "В среднем 3–7 рабочих дней с момента подачи полного пакета документов.",
         },
       },
       {
-        question: { ro: "Lucrați și cu companii?", ru: "Вы работаете и с компаниями?" },
+        question: { ro: "Care este capitalul social minim pentru SRL?", ru: "Какой минимальный уставный капитал нужен для SRL?" },
         answer: {
-          ro: "Da, inclusiv pentru raporturi comerciale cu componentă civilă și litigii contractuale.",
-          ru: "Да, в том числе по коммерческим отношениям с гражданско-правовой составляющей и договорным спорам.",
+          ro: "În prezent, cerința este simbolică, însă structura companiei și documentele constitutive trebuie pregătite corect încă de la început.",
+          ru: "Сейчас требование символическое, но структура компании и учредительные документы должны быть подготовлены корректно с самого начала.",
+        },
+      },
+      {
+        question: { ro: "Pot deschide o companie fără să mă aflu în România?", ru: "Могу ли я открыть компанию, не находясь в Румынии?" },
+        answer: {
+          ro: "Da, în multe situații procedura poate fi organizată prin procură și coordonare la distanță, în funcție de formatul afacerii și de documentele disponibile.",
+          ru: "Да, во многих случаях процедуру можно организовать по доверенности и дистанционно, в зависимости от формата бизнеса и доступных документов.",
         },
       },
     ],
   },
   {
     slug: "drept-comercial",
-    title: { ro: "Drept comercial", ru: "Коммерческое право" },
+    title: { ro: "Outsourcing juridic", ru: "Юридический аутсорсинг" },
     intro: {
-      ro: "Suport pentru decizii comerciale bine documentate, din etapa de structurare până la dispută.",
-      ru: "Поддержка выверенных коммерческих решений от этапа структурирования до урегулирования спора.",
+      ro: "Suport juridic externalizat pentru companii care au nevoie de contracte clare, negocieri sigure și asistență constantă.",
+      ru: "Юридический аутсорсинг для компаний, которым нужны понятные договоры, безопасные переговоры и постоянное сопровождение.",
     },
     summary: {
-      ro: "Cadru juridic solid pentru societăți, antreprenori și relații contractuale complexe.",
-      ru: "Надёжная правовая база для компаний, предпринимателей и сложных договорных отношений.",
+      ro: "Economisiți pe un jurist intern și reduceți riscurile.",
+      ru: "Экономите на штатном юристе и снижаете риски.",
     },
     services: {
-      ro: ["Revizuire contracte B2B", "Negociere clauze comerciale", "Litigii între profesioniști", "Politici interne", "Due diligence contractual"],
-      ru: ["Проверка B2B-договоров", "Переговоры по коммерческим условиям", "Споры между профессиональными участниками", "Внутренние политики", "Договорной due diligence"],
+      ro: ["Verificare și redactare contracte", "Suport în negocieri", "Asistență juridică permanentă"],
+      ru: ["Проверка и составление договоров", "Поддержка в переговорах", "Постоянное сопровождение"],
     },
     process: {
       ro: ["Audit juridic al relației comerciale", "Setarea priorităților de business", "Documentare și negociere", "Implementare și follow-up"],
@@ -78,18 +111,18 @@ export const practiceData: Practice[] = [
   },
   {
     slug: "drept-imobiliar",
-    title: { ro: "Drept imobiliar", ru: "Недвижимость" },
+    title: { ro: "Servicii de imigrare", ru: "Иммиграционные услуги" },
     intro: {
-      ro: "Claritate juridică în tranzacții, titluri și raporturi locative unde un detaliu poate schimba tot.",
-      ru: "Юридическая ясность в сделках, вопросах титула и арендных отношениях, где одна деталь меняет всё.",
+      ro: "Asistență în proceduri de imigrare și cetățenie pentru persoane care se mută sau își stabilesc rezidența în România.",
+      ru: "Помощь в процедурах иммиграции и получения гражданства для тех, кто переезжает или оформляет статус в Румынии.",
     },
     summary: {
-      ro: "Asistență pentru cumpărări, vânzări, închirieri și litigii cu componentă imobiliară.",
-      ru: "Сопровождение купли-продажи, аренды и споров, связанных с недвижимостью.",
+      ro: "Treceți prin proces mai rapid și fără refuzuri.",
+      ru: "Проходите процесс быстрее и без отказов.",
     },
     services: {
-      ro: ["Verificarea titlului", "Promisiuni și contracte", "Locațiuni", "Litigii imobiliare", "Asistență notarială"],
-      ru: ["Проверка титула", "Предварительные и основные договоры", "Аренда", "Споры по недвижимости", "Сопровождение нотариальных сделок"],
+      ro: ["Permis de ședere", "Rezidență permanentă", "Cetățenie română", "Pregătirea documentelor"],
+      ru: ["ВНЖ, ПМЖ", "Гражданство Румынии", "Подготовка документов"],
     },
     process: {
       ro: ["Verificare documente și istoric", "Identificarea vulnerabilităților", "Structurarea tranzacției", "Asistență până la finalizare"],
@@ -114,18 +147,18 @@ export const practiceData: Practice[] = [
   },
   {
     slug: "dreptul-familiei",
-    title: { ro: "Dreptul familiei", ru: "Семейное право" },
+    title: { ro: "Imobiliare", ru: "Недвижимость" },
     intro: {
-      ro: "Abordare fermă și discretă în chestiuni personale care cer tact, structură și protecție juridică.",
-      ru: "Твёрдый и деликатный подход к личным вопросам, требующим такта, структуры и правовой защиты.",
+      ro: "Protecție juridică în achiziții imobiliare, verificări și structurarea sigură a tranzacțiilor.",
+      ru: "Юридическая защита при покупке недвижимости, проверке объекта и безопасном оформлении сделки.",
     },
     summary: {
-      ro: "Sprijin în divorț, autoritate părintească, pensie de întreținere și partaj.",
-      ru: "Помощь при разводе, вопросах родительских прав, алиментах и разделе имущества.",
+      ro: "Cumpărați imobilul în siguranță.",
+      ru: "Покупаете недвижимость безопасно.",
     },
     services: {
-      ro: ["Divorț și separare", "Custodie și program de legături", "Partaj", "Pensie de întreținere", "Protecție în conflicte familiale"],
-      ru: ["Развод и раздельное проживание", "Опека и график общения", "Раздел имущества", "Алименты", "Защита в семейных конфликтах"],
+      ro: ["Verificarea imobilului", "Redactarea contractelor", "Asistență în tranzacție"],
+      ru: ["Проверка объекта", "Составление договоров", "Сопровождение сделки"],
     },
     process: {
       ro: ["Evaluare confidențială", "Stabilirea obiectivelor reale", "Negociere sau acțiune judiciară", "Protejarea interesului pe termen lung"],
@@ -150,18 +183,18 @@ export const practiceData: Practice[] = [
   },
   {
     slug: "drept-fiscal",
-    title: { ro: "Drept fiscal", ru: "Налоговое право" },
+    title: { ro: "Documente și traduceri", ru: "Документы и переводы" },
     intro: {
-      ro: "Apărare riguroasă în raport cu autoritățile fiscale și decizii documentate pentru reducerea expunerii.",
-      ru: "Строгая защита в отношениях с налоговыми органами и документированные решения для снижения рисков.",
+      ro: "Pregătirea documentelor juridice, traduceri legalizate și comunicare oficială fără erori.",
+      ru: "Подготовка юридических документов, заверенные переводы и официальная переписка без ошибок.",
     },
     summary: {
-      ro: "Consultanță și reprezentare în inspecții, contestații și conformare fiscală.",
-      ru: "Консультации и представительство при проверках, обжаловании и налоговом комплаенсе.",
+      ro: "Toate documentele corespund cerințelor legale.",
+      ru: "Все документы соответствуют требованиям законодательства.",
     },
     services: {
-      ro: ["Contestații fiscale", "Asistență în inspecții", "Analiza riscului fiscal", "Poziții și opinii juridice", "Dialog cu autoritățile"],
-      ru: ["Налоговые жалобы", "Сопровождение проверок", "Анализ налоговых рисков", "Юридические заключения", "Взаимодействие с органами"],
+      ro: ["Documente juridice", "Traduceri legalizate", "Corespondență oficială"],
+      ru: ["Юридические документы", "Заверенные переводы", "Официальная переписка"],
     },
     process: {
       ro: ["Revizuirea actelor fiscale", "Strategie de apărare", "Redactare contestații și puncte de vedere", "Reprezentare procedurală"],

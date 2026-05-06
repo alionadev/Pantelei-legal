@@ -11,11 +11,11 @@ export const translations = {
       faq: "FAQ",
       contact: "Contact",
       servicesMenu: [
-        "Deschidere Companii",
+        "Deschidere și suport pentru afaceri",
         "Outsourcing Juridic",
-        "Servicii Imigrare",
+        "Servicii de imigrare",
         "Imobiliare",
-        "Documente Traduceri",
+        "Documente și traduceri",
       ],
     },
     labels: {
@@ -34,11 +34,11 @@ export const translations = {
       success: "Mesajul a fost pregătit. Veți primi un răspuns în cel mai scurt timp.",
     },
     hero: {
-      eyebrow: "Avocat · București",
-      titleTop: "Suport juridic în România",
-      titleBottom: "pentru business și imigrare",
+      eyebrow: "PANTELEI LEGAL CONSULTING · ROMÂNIA",
+      titleTop: "Asistență juridică în România",
+      titleBottom: "pentru afaceri și imigrare",
       description:
-        "Deschiderea companiilor, permise de ședere, cetățenie și asistență pentru tranzacții, fără erori, întârzieri și riscuri inutile.",
+        "Deschiderea companiilor, permise de ședere, cetățenie și asistență pentru tranzacții, fără erori, întârzieri și riscuri.",
       primaryCta: "OBȚINEȚI O CONSULTAȚIE",
       secondaryCta: "SERVICII",
       portraitTag: "N° 01 — Aliona Pantelei",
@@ -51,62 +51,62 @@ export const translations = {
     
     forWhom: {
       eyebrow: "Pentru cine",
-      title: "Consiliere pentru situații care nu admit improvizație.",
+      title: "Pentru cine sunt potrivite serviciile mele",
       cards: [
         {
           roman: "I",
-          title: "Persoane private",
-          items: ["Patrimoniu și obligații", "Dreptul familiei", "Tranzacții și conflicte civile"],
+          title: "Antreprenorilor",
+          items: ["doriți să deschideți o afacere", "aveți nevoie de un jurist externalizat", "planificați extinderea"],
         },
         {
           roman: "II",
-          title: "Antreprenori",
-          items: ["Contracte comerciale", "Negociere și risc", "Suport pentru decizii rapide"],
+          title: "Expaților",
+          items: ["doriți să obțineți permis de ședere", "aveți nevoie de ajutor cu documentele", "vă mutați în România"],
         },
         {
           roman: "III",
-          title: "Companii",
-          items: ["Procese interne", "Poziții fiscale", "Litigii și conformare"],
+          title: "Investitorilor",
+          items: ["cumpărarea unui imobil", "verificare și asistență în tranzacție"],
         },
       ],
     },
     servicesHome: {
-      eyebrow: "Arii de practică",
-      title: "Un tabel de materii pentru probleme juridice tratate cu precizie.",
+      eyebrow: "Servicii",
+      title: "Cu ce vă pot ajuta",
     },
     aboutSnippet: {
       eyebrow: "Despre Aliona",
-      title: "Sprijin juridic pe care vă puteți baza.",
+      title: "Asistență juridică pe care vă puteți baza.",
       text:
-        "Mă numesc Aliona Pantelei, avocat și fondator PANTELEI LEGAL CONSULTING. Ajut antreprenori și clienți privați să rezolve probleme juridice în România: de la înregistrarea unei companii până la obținerea cetățeniei și asistență în tranzacții.",
+        "Mă numesc Aliona Pantelei, jurist și fondator PANTELEI LEGAL CONSULTING. Ajut antreprenori și clienți privați să soluționeze probleme juridice în România: de la înregistrarea unei afaceri până la obținerea cetățeniei și asistență în tranzacții. Sarcina mea nu este doar să pregătesc documentele, ci să vă protejez interesele și să evit riscurile. Fiecare proiect este gestionat cu atenție la detalii și cu responsabilitate deplină pentru rezultat.",
       cta: "MAI MULT DESPRE ALIONA",
     },
     whyUs: {
-      eyebrow: "De ce Pantelei Legal",
-      title: "Avantajele unei abordări fără gesturi inutile.",
+      eyebrow: "De ce aleg",
+      title: "PANTELEI LEGAL CONSULTING",
       items: [
         {
-          title: "Claritate fără teatralitate",
-          text: "Opțiunile sunt explicate direct, cu riscuri și consecințe reale.",
+          title: "Abordare complexă",
+          text: "Analiza nu se oprește la un singur document, ci privește întreaga situație și consecințele ei practice.",
         },
         {
-          title: "Discreție ca reflex profesional",
-          text: "Informațiile sensibile sunt tratate cu rezervă și ordine.",
+          title: "Lucru la cheie",
+          text: "Dosarul este însoțit de la prima consultație până la rezultatul final, fără rupturi între etape.",
         },
         {
-          title: "Strategie adaptată dosarului",
-          text: "Nu se aplică formule prefabricate acolo unde contextul cere finețe.",
+          title: "Minimizarea riscurilor juridice",
+          text: "Documentele și deciziile sunt verificate astfel încât să reducă probabilitatea erorilor, refuzurilor și pierderilor.",
         },
         {
-          title: "Ritm constant",
-          text: "Comunicarea și execuția rămân precise, fără agitație inutilă.",
+          title: "Experiență cu clienți internaționali",
+          text: "Specificul cererilor venite de la expați, investitori și antreprenori care lucrează în România este bine înțeles.",
         },
       ],
     },
     cta: {
-      eyebrow: "Contact direct",
-      title: "Atunci când situația cere o opinie clară, primul pas trebuie să fie unul bine formulat.",
-      button: "PROGRAMEAZĂ O DISCUȚIE",
+      eyebrow: "Consultație",
+      title: "Obțineți o consultație pentru situația dumneavoastră",
+      button: "OBȚINEȚI O CONSULTAȚIE",
     },
     footer: {
       navTitle: "Navigație",
@@ -116,9 +116,9 @@ export const translations = {
     },
     aboutPage: {
       eyebrow: "Despre Aliona Pantelei",
-      title: "Sprijin juridic pe care vă puteți baza.",
+      title: "Asistență juridică pe care vă puteți baza.",
       bio:
-        "Mă numesc Aliona Pantelei, avocat și fondator PANTELEI LEGAL CONSULTING. Ajut antreprenori și clienți privați să rezolve probleme juridice în România: de la înregistrarea unei companii până la obținerea cetățeniei și asistență în tranzacții. Scopul meu nu este doar să pregătesc documente, ci să vă protejez interesele și să evit riscurile. Fiecare proiect este gestionat cu atenție la detalii și cu responsabilitate deplină pentru rezultat.",
+        "Mă numesc Aliona Pantelei, jurist și fondator PANTELEI LEGAL CONSULTING. Ajut antreprenori și clienți privați să soluționeze probleme juridice în România: de la înregistrarea unei afaceri până la obținerea cetățeniei și asistență în tranzacții. Sarcina mea nu este doar să pregătesc documentele, ci să vă protejez interesele și să evit riscurile. Fiecare proiect este gestionat cu atenție la detalii și cu responsabilitate deplină pentru rezultat.",
       educationTitle: "Educație și formare",
       education: [
         "Studii juridice și formare continuă în drept civil, comercial și fiscal.",
@@ -183,11 +183,11 @@ export const translations = {
       cta: "ÎNAPOI ACASĂ",
     },
     practicePage: {
-      eyebrow: "Arie de practică",
-      servicesTitle: "Ce include",
-      processTitle: "Mod de lucru",
-      faqTitle: "Întrebări din practică",
-      cta: "DISCUTAȚI ACEST SUBIECT",
+      eyebrow: "Serviciu",
+      servicesTitle: "Ce este inclus în serviciu",
+      processTitle: "Cum decurge colaborarea",
+      faqTitle: "Întrebări frecvente",
+      cta: "CONSULTAȚIE",
     },
   },
   ru: {
@@ -200,11 +200,11 @@ export const translations = {
       faq: "FAQ",
       contact: "Контакты",
       servicesMenu: [
-        "Deschidere Companii",
+        "Открытие и сопровождение бизнеса",
         "Outsourcing Juridic",
-        "Servicii Imigrare",
-        "Imobiliare",
-        "Documente Traduceri",
+        "Иммиграционные услуги",
+        "Недвижимость",
+        "Документы и переводы",
       ],
     },
     labels: {
@@ -223,11 +223,11 @@ export const translations = {
       success: "Сообщение подготовлено. Ответ будет направлен в ближайшее время.",
     },
     hero: {
-      eyebrow: "Адвокат · Бухарест",
+      eyebrow: "PANTELEI LEGAL CONSULTING · РУМЫНИЯ",
       titleTop: "Юридическая поддержка в Румынии",
       titleBottom: "для бизнеса и иммиграции",
       description:
-        "Открытие компаний, ВНЖ, гражданство и сопровождение сделок, без ошибок, задержек и рисков.",
+        "Открытие компаний, ВНЖ, гражданство и сопровождение сделок — без ошибок, задержек и рисков.",
       primaryCta: "ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ",
       secondaryCta: "УСЛУГИ",
       portraitTag: "N° 01 — Aliona Pantelei",
@@ -244,62 +244,62 @@ export const translations = {
     ],
     forWhom: {
       eyebrow: "Для кого",
-      title: "Сопровождение для ситуаций, которые не допускают импровизации.",
+      title: "Кому подойдут мои услуги",
       cards: [
         {
           roman: "I",
-          title: "Частные клиенты",
-          items: ["Имущество и обязательства", "Семейное право", "Сделки и гражданские споры"],
+          title: "Предпринимателям",
+          items: ["хотите открыть бизнес", "нужен юрист на аутсорсе", "планируете масштабирование"],
         },
         {
           roman: "II",
-          title: "Предприниматели",
-          items: ["Коммерческие договоры", "Переговоры и риски", "Поддержка быстрых решений"],
+          title: "Экспатам",
+          items: ["хотите получить ВНЖ", "нужна помощь с документами", "переезжаете в Румынию"],
         },
         {
           roman: "III",
-          title: "Компании",
-          items: ["Внутренние процессы", "Налоговые позиции", "Споры и комплаенс"],
+          title: "Инвесторам",
+          items: ["покупка недвижимости", "проверка и сопровождение"],
         },
       ],
     },
     servicesHome: {
-      eyebrow: "Практики",
-      title: "Оглавление для юридических задач, требующих точности.",
+      eyebrow: "Услуги",
+      title: "Чем я могу вам помочь",
     },
     aboutSnippet: {
       eyebrow: "Об Алёне",
       title: "Юридическая поддержка, на которую можно опереться.",
       text:
-        "Меня зовут Алёна Пантелей — юрист и основатель PANTELEI LEGAL CONSULTING. Я помогаю предпринимателям и частным клиентам решать юридические вопросы в Румынии: от регистрации бизнеса до получения гражданства и сопровождения сделок.",
+        "Меня зовут Алёна Пантелей — юрист и основатель PANTELEI LEGAL CONSULTING. Я помогаю предпринимателям и частным клиентам решать юридические вопросы в Румынии: от регистрации бизнеса до получения гражданства и сопровождения сделок. Моя задача — не просто оформить документы, а защитить ваши интересы и избежать рисков. Каждый проект ведётся с вниманием к деталям и полной ответственностью за результат.",
       cta: "ПОДРОБНЕЕ ОБ АЛЁНЕ",
     },
     whyUs: {
-      eyebrow: "Почему Pantelei Legal",
-      title: "Преимущества подхода без лишних жестов.",
+      eyebrow: "Почему выбирают",
+      title: "PANTELEI LEGAL CONSULTING",
       items: [
         {
-          title: "Ясность без театральности",
-          text: "Варианты объясняются прямо, с реальными рисками и последствиями.",
+          title: "Комплексный подход",
+          text: "Задача рассматривается не изолированно, а вместе со всеми её правовыми и практическими последствиями.",
         },
         {
-          title: "Конфиденциальность как профессиональный рефлекс",
-          text: "Чувствительная информация ведётся сдержанно и упорядоченно.",
+          title: "Работа «под ключ»",
+          text: "Сопровождение идёт от первой консультации до финального результата, без разрыва этапов.",
         },
         {
-          title: "Стратегия под конкретную ситуацию",
-          text: "Готовые шаблоны не подменяют тонкую работу там, где контекст сложнее.",
+          title: "Минимизация юридических рисков",
+          text: "Документы и решения проверяются так, чтобы снизить вероятность ошибок, отказов и потерь.",
         },
         {
-          title: "Ровный рабочий ритм",
-          text: "Коммуникация и исполнение остаются точными, без лишней суеты.",
+          title: "Опыт работы с иностранными клиентами",
+          text: "Понимаю специфику задач экспатов, инвесторов и предпринимателей, которые работают в Румынии.",
         },
       ],
     },
     cta: {
-      eyebrow: "Прямой контакт",
-      title: "Когда ситуация требует ясного мнения, первый шаг должен быть сформулирован точно.",
-      button: "НАЗНАЧИТЬ ОБСУЖДЕНИЕ",
+      eyebrow: "Консультация",
+      title: "Получите консультацию по вашему вопросу",
+      button: "ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ",
     },
     footer: {
       navTitle: "Навигация",
@@ -376,11 +376,11 @@ export const translations = {
       cta: "НА ГЛАВНУЮ",
     },
     practicePage: {
-      eyebrow: "Практика",
-      servicesTitle: "Что входит",
-      processTitle: "Как строится работа",
-      faqTitle: "Практические вопросы",
-      cta: "ОБСУДИТЬ ЭТУ ТЕМУ",
+      eyebrow: "Услуга",
+      servicesTitle: "Что входит в услугу",
+      processTitle: "Как проходит работа",
+      faqTitle: "Часто задаваемые вопросы",
+      cta: "КОНСУЛЬТАЦИЯ",
     },
   },
 } as const;
