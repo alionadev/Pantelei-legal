@@ -134,12 +134,10 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
       >
         <div
           className={cn(
-            "container-x flex h-[84px] items-center justify-between gap-5 transition-colors duration-300 lg:pl-[132px]",
+            "container-x flex h-[84px] items-center justify-end gap-8 transition-colors duration-300 lg:px-[10vw]",
             desktopDropdownOpen ? "bg-navy text-cream" : "bg-transparent text-navy",
           )}
         >
-          <div className="w-8 lg:w-14" />
-
           <nav className="hidden items-center gap-8 lg:flex">
             {navItems.map((item) => {
               if (item.labelKey === "services") {
@@ -223,7 +221,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
             desktopDropdownOpen ? "max-h-[540px] opacity-100" : "max-h-0 opacity-0",
           )}
         >
-          <div className="container-x py-8 lg:pl-[132px]">
+          <div className="container-x py-8 lg:px-[10vw]">
             {activeDropdown === "services" ? (
               <div className="grid gap-0 lg:grid-cols-[0.54fr_0.9fr_0.7fr]">
                 <div className="border-b border-cream/14 pb-8 lg:border-b-0 lg:pr-10">

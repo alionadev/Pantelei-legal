@@ -44,7 +44,7 @@ export const Layout = () => {
     <div className="min-h-screen bg-paper text-ink">
       <Link
         to={withLocalePath(locale, "/")}
-        className="fixed left-0 top-0 z-40 hidden h-screen w-[132px] items-start justify-center pt-[18px] lg:flex"
+        className="fixed left-0 top-0 z-40 hidden h-screen w-[10vw] items-start justify-center pt-[18px] lg:flex"
         aria-label="Pantelei Legal"
       >
         <div className={logoCollapsed ? "origin-top scale-[0.78] transition duration-300" : "origin-top scale-100 transition duration-300"}>
@@ -52,10 +52,10 @@ export const Layout = () => {
         </div>
       </Link>
       <Navigation locale={locale} pathname={pathname} switchLocale={switchLocale} nav={t.nav} />
-      <main className="pt-[84px] lg:pl-[132px]">
-        <Outlet />
-      </main>
-      <div className="lg:pl-[132px]">
+      <div className="lg:mx-[10vw]">
+        <main className="pt-[84px]">
+          <Outlet />
+        </main>
         <Footer locale={locale} nav={t.nav} footer={t.footer} />
       </div>
     </div>

@@ -20,7 +20,7 @@ type FooterProps = {
 
 export const Footer = ({ locale, nav, footer }: FooterProps) => (
   <footer className="bg-navy text-cream">
-    <div className="container-x section-y">
+    <div className="container-x section-y pb-[clamp(28px,4vw,52px)]">
       <div className="double-rule-cream" />
       <div className="grid gap-10 py-10 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
         <div>

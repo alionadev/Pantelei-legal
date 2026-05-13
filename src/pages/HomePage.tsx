@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowRight, MessageCircle, Phone, Send } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { practiceData } from "../data/practiceData";
@@ -14,36 +14,62 @@ const partners = ["Ionescu & Partners", "Nestor Advisory", "Bucharest Estates", 
 
 export const HomePage = () => {
   const { locale, t } = useLocale();
+  const servicesPanel =
+    locale === "ru"
+      ? {
+          title: "Практики и сопровождение",
+          text: "Юридическая поддержка для частных клиентов, предпринимателей и компаний в Румынии: от запуска бизнеса и иммиграционных процедур до сделок с недвижимостью и подготовки документов.",
+        }
+      : {
+          title: "Practici și asistență juridică",
+          text: "Asistență juridică pentru clienți privați, antreprenori și companii în România: de la lansarea afacerii și proceduri de imigrare până la tranzacții imobiliare și documentație completă.",
+        };
   const heroPortraitSrc = "/aliona-portrait-main.png";
   const aboutPortraitSrc = "/aliona-office.png";
   const [ready, setReady] = useState(false);
   const [parallax, setParallax] = useState(0);
+  const [cardParallax, setCardParallax] = useState([0, 0, 0]);
 
   useEffect(() => {
     setReady(true);
-    const onScroll = () => setParallax(window.scrollY * 0.08);
+    const onScroll = () => {
+      const scrollY = window.scrollY;
+      setParallax(scrollY * 0.08);
+      setCardParallax([scrollY * -0.02, scrollY * -0.015, scrollY * -0.01]);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <>
-      <section className="relative flex min-h-[68vh] items-center overflow-hidden bg-paper text-ink">
+      <section className="relative flex min-h-[68vh] items-center overflow-hidden bg-paper text-ink lg:-mx-[10vw] lg:w-[calc(100%+20vw)] lg:px-[10vw]">
         <div className={cn("hero-reveal-curtain", ready && "is-ready")}>
           <a href="#for-whom" className="hero-reveal-scroll" aria-label="Scroll to next section">
+            <div className="hero-contact-icons">
+              <span className="hero-contact-icon" aria-label="Phone">
+                <Phone className="h-4 w-4" />
+              </span>
+              <span className="hero-contact-icon" aria-label="Viber">
+                <MessageCircle className="h-4 w-4" />
+              </span>
+              <span className="hero-contact-icon" aria-label="Telegram">
+                <Send className="h-4 w-4" />
+              </span>
+            </div>
             <ArrowDown className="h-5 w-5" />
           </a>
         </div>
-        <div className="container-x grid items-center gap-10 py-10 lg:min-h-[68vh] lg:grid-cols-[minmax(420px,0.92fr)_minmax(0,1fr)] lg:gap-16 xl:grid-cols-[minmax(520px,0.96fr)_minmax(0,0.98fr)]">
+        <div className="container-x grid items-center gap-10 py-10 md:min-h-[68vh] md:grid-cols-[40%_minmax(0,1fr)] md:gap-16">
           <div
             className={cn(
-              "relative hidden justify-start lg:flex",
+              "relative hidden justify-start md:flex",
               ready ? "scale-100 opacity-100" : "scale-[0.3] opacity-0",
             )}
             style={{ transitionDelay: "200ms" }}
           >
             <div className="flex w-full items-stretch gap-8">
-              <div className="w-full max-w-[720px]" style={{ transform: `translateY(${parallax}px)` }}>
+              <div className="w-full" style={{ transform: `translateY(${parallax}px)` }}>
                 <div className="relative aspect-[4/5] overflow-hidden bg-cream">
                   <img
                     src={heroPortraitSrc}
@@ -60,7 +86,7 @@ export const HomePage = () => {
           </div>
           <div
             className={cn(
-              "max-w-[760px] transition-all duration-[800ms] ease-out",
+              "w-full transition-all duration-[800ms] ease-out",
               ready ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0",
             )}
           >
@@ -101,19 +127,20 @@ export const HomePage = () => {
 
       <section id="for-whom" className="section-y bg-paper">
         <div className="container-x">
-          <SectionHeading eyebrow={t.forWhom.eyebrow} title={t.forWhom.title} />
+          <SectionHeading eyebrow="" title={t.forWhom.title} />
           <div className="mt-12 grid gap-6 xl:grid-cols-3">
             {t.forWhom.cards.map((card, index) => (
               <article
                 key={card.title}
                 data-reveal="true"
-                style={{ transitionDelay: `${60 + index * 60}ms` }}
-                className={`relative min-h-[380px] overflow-hidden border p-8 ${index === 0 ? "border-navy bg-navy text-cream" : index === 1 ? "border-navy/14 bg-cream text-ink" : "border-navy/12 bg-paper text-ink"}`}
+                style={{
+                  transitionDelay: `${60 + index * 60}ms`,
+                  transform: `translateY(${cardParallax[index]}px)`,
+                }}
+                className={`relative min-h-[380px] overflow-hidden p-8 ${index === 0 ? "bg-navy text-cream" : index === 1 ? "bg-cream text-ink" : "bg-paper text-ink"}`}
               >
-                <Watermark value={card.roman} className={`right-2 top-1 text-[280px] ${index === 0 ? "text-cream/6" : "text-navy/5"}`} />
                 <div className="relative">
-                  <div className={`eyebrow ${index === 0 ? "text-cream/58" : "text-navy/52"}`}>{card.roman}</div>
-                  <h3 className="mt-8 font-serif text-[36px] italic leading-none">{card.title}</h3>
+                  <h3 className="mt-2 font-serif text-[36px] italic leading-none">{card.title}</h3>
                   <div className={`mt-8 h-px w-full ${index === 0 ? "bg-cream/16" : "bg-navy/12"}`} />
                   <div className="mt-6 space-y-4">
                     {card.items.map((item) => (
@@ -129,19 +156,36 @@ export const HomePage = () => {
         </div>
       </section>
 
-      <section id="services" className="section-y relative scroll-mt-28 overflow-hidden bg-navy text-cream">
-        <div className="paper-grain" />
-        <Watermark value="II" className="bottom-[-40px] left-0 hidden md:block text-[clamp(320px,34vw,560px)] text-cream/5" />
-        <div className="container-x relative">
-          <SectionHeading eyebrow={t.servicesHome.eyebrow} title={t.servicesHome.title} inverse />
-          <ol className="mt-14">
+      <section id="services" className="section-y relative scroll-mt-28 overflow-hidden bg-paper text-ink">
+        <div className="container-x relative grid gap-8 lg:grid-cols-[40%_minmax(0,1fr)] lg:gap-16">
+          <div data-reveal="true" className="bg-navy p-8 text-cream md:p-10 xl:sticky xl:top-28 xl:h-fit xl:min-h-[360px]">
+            <div className="eyebrow text-cream/62">{t.servicesHome.eyebrow}</div>
+            <h2 className="mt-7 max-w-[16ch] font-serif text-[clamp(34px,4vw,58px)] italic leading-[0.98] tracking-[-0.02em] text-cream">
+              {servicesPanel.title}
+            </h2>
+            <p className="mt-8 max-w-[52ch] text-[16px] leading-[1.72] text-cream/76">{servicesPanel.text}</p>
+          </div>
+          <ol className="mt-10 grid gap-6 md:grid-cols-2">
             {practiceData.map((practice, index) => (
-              <li key={practice.slug} data-reveal="true" style={{ transitionDelay: `${60 + index * 45}ms` }} className="border-b border-cream/22 py-8 md:py-9">
-                <Link to={withLocalePath(locale, `/servicii/${practice.slug}`)} className="group grid gap-6 md:grid-cols-[80px_1fr_auto] md:items-center">
-                  <div className="font-serif text-[60px] italic leading-none text-cream/60">{["I", "II", "III", "IV", "V"][index]}</div>
-                  <div className="font-serif text-[clamp(28px,3.4vw,44px)] italic leading-none">{practice.title[locale]}</div>
-                  <div className="flex items-center justify-between gap-6 md:justify-end">
-                    <div className="max-w-md text-[11px] uppercase tracking-[0.18em] text-cream/68 md:text-right">{practice.summary[locale]}</div>
+              <li
+                key={practice.slug}
+                data-reveal="true"
+                style={{ transitionDelay: `${60 + index * 45}ms` }}
+                className="border border-navy/12 bg-paper p-8 transition duration-300 hover:border-navy/20 hover:bg-cream/8"
+              >
+                <Link to={withLocalePath(locale, `/servicii/${practice.slug}`)} className="group flex h-full flex-col justify-between gap-8">
+                  <div>
+                    <div className="font-serif text-[clamp(32px,4vw,54px)] italic leading-[0.96] text-navy service-title-gradient">
+                      {practice.title[locale]}
+                    </div>
+                    <p className="mt-5 max-w-[44ch] text-[17px] leading-[1.78] text-navy/70">
+                      {practice.intro[locale]}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 text-navy/60 transition duration-300 group-hover:text-navy">
+                    <span className="text-[13px] uppercase tracking-[0.18em] font-medium">
+                      {t.labels.readMore}
+                    </span>
                     <ArrowRight className="h-5 w-5 transition duration-300 group-hover:translate-x-2" />
                   </div>
                 </Link>
