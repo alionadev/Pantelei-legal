@@ -33,6 +33,7 @@ const navItems = [
 export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationProps) => {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileLocaleOpen, setMobileLocaleOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<"services" | "blog" | null>(null);
   const servicesAnchor = `${withLocalePath(locale, "/")}#services`;
@@ -101,6 +102,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
     if (open) {
       setCollapsed(false);
       setActiveDropdown(null);
+      setMobileLocaleOpen(false);
     }
   }, [open]);
 
@@ -108,6 +110,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
     setOpen(false);
     setServicesOpen(false);
     setActiveDropdown(null);
+    setMobileLocaleOpen(false);
   };
 
   return (
@@ -134,10 +137,24 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
       >
         <div
           className={cn(
-            "container-x flex h-[84px] items-center justify-end gap-8 transition-colors duration-300 lg:px-[10vw]",
-            desktopDropdownOpen ? "bg-navy text-cream" : "bg-transparent text-navy",
+            "container-x flex h-[84px] items-center justify-between gap-8 transition-colors duration-300 lg:justify-end lg:px-[10vw]",
+            "bg-paper text-navy",
+            desktopDropdownOpen && "lg:bg-navy lg:text-cream",
           )}
         >
+          <div className="flex min-w-0 items-center gap-4 lg:hidden">
+            <Link
+              to={withLocalePath(locale, "/")}
+              onClick={closeAll}
+              className={cn(
+                "truncate font-serif text-[26px] italic leading-none tracking-[-0.02em]",
+                desktopDropdownOpen ? "text-cream" : "text-navy",
+              )}
+            >
+              Aliona Pantelei
+            </Link>
+          </div>
+
           <nav className="hidden items-center gap-8 lg:flex">
             {navItems.map((item) => {
               if (item.labelKey === "services") {
@@ -210,9 +227,54 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
             </div>
           </div>
 
-          <button type="button" onClick={() => setOpen((value) => !value)} className="text-navy lg:hidden">
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <div className="flex items-center gap-3 lg:hidden">
+            <div className="relative flex items-center">
+              <button
+                type="button"
+                onClick={() => setMobileLocaleOpen((value) => !value)}
+                aria-label="Switch language"
+                className={cn("transition duration-300", desktopDropdownOpen ? "text-cream" : "text-navy")}
+              >
+                <Globe className={cn("h-4 w-4 transition duration-300", mobileLocaleOpen ? "scale-90 opacity-0" : "scale-100 opacity-100")} />
+              </button>
+              <div
+                className={cn(
+                  "absolute right-0 flex items-center gap-2 text-[10px] uppercase tracking-[0.16em] transition-all duration-300",
+                  desktopDropdownOpen ? "text-cream" : "text-navy",
+                  mobileLocaleOpen ? "translate-x-0 opacity-100" : "pointer-events-none translate-x-2 opacity-0",
+                )}
+              >
+                <button
+                  type="button"
+                  onClick={() => {
+                    switchLocale("ro");
+                    setMobileLocaleOpen(false);
+                  }}
+                  className={locale === "ro" ? "opacity-100" : "opacity-48"}
+                >
+                  RO
+                </button>
+                <span className="opacity-35">/</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    switchLocale("ru");
+                    setMobileLocaleOpen(false);
+                  }}
+                  className={locale === "ru" ? "opacity-100" : "opacity-48"}
+                >
+                  RU
+                </button>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setOpen((value) => !value)}
+              className={cn(desktopDropdownOpen ? "text-cream" : "text-navy")}
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
         <div
@@ -400,16 +462,6 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
             <a href="mailto:pantelei.legaladviser@gmail.com" className="mt-3 block text-[15px] text-cream/74">
               pantelei.legaladviser@gmail.com
             </a>
-            <div className="mt-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-cream">
-              <Globe className="h-4 w-4 text-cream/68" />
-              <button type="button" onClick={() => switchLocale("ro")} className={locale === "ro" ? "opacity-100" : "opacity-55 hover:opacity-80"}>
-                RO
-              </button>
-              <span className="opacity-35">/</span>
-              <button type="button" onClick={() => switchLocale("ru")} className={locale === "ru" ? "opacity-100" : "opacity-55 hover:opacity-80"}>
-                RU
-              </button>
-            </div>
           </div>
         </div>
       </div>

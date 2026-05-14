@@ -29,6 +29,7 @@ export const HomePage = () => {
   const [ready, setReady] = useState(false);
   const [parallax, setParallax] = useState(0);
   const [cardParallax, setCardParallax] = useState([0, 0, 0]);
+  const [mobileContactsOpen, setMobileContactsOpen] = useState(false);
 
   useEffect(() => {
     setReady(true);
@@ -59,6 +60,27 @@ export const HomePage = () => {
             </div>
             <ArrowDown className="h-5 w-5" />
           </a>
+        </div>
+        <div className="hero-mobile-contact-toggle md:hidden">
+          <button
+            type="button"
+            aria-label="Open contact shortcuts"
+            onClick={() => setMobileContactsOpen((value) => !value)}
+            className="hero-mobile-contact-button"
+          >
+            <MessageCircle className="h-4 w-4" />
+          </button>
+          <div className={cn("hero-mobile-contact-menu", mobileContactsOpen && "is-open")}>
+            <a href="tel:+40757296443" className="hero-mobile-contact-link" aria-label="Phone">
+              <Phone className="h-4 w-4" />
+            </a>
+            <a href="viber://chat?number=%2B40757296443" className="hero-mobile-contact-link" aria-label="Viber">
+              <MessageCircle className="h-4 w-4" />
+            </a>
+            <a href="https://t.me/" className="hero-mobile-contact-link" aria-label="Telegram">
+              <Send className="h-4 w-4" />
+            </a>
+          </div>
         </div>
         <div className="container-x grid items-center gap-10 py-10 md:min-h-[68vh] md:grid-cols-[40%_minmax(0,1fr)] md:gap-16">
           <div
@@ -144,7 +166,7 @@ export const HomePage = () => {
                   <div className={`mt-8 h-px w-full ${index === 0 ? "bg-cream/16" : "bg-navy/12"}`} />
                   <div className="mt-6 space-y-4">
                     {card.items.map((item) => (
-                      <div key={item} className={`border-b pb-4 text-[16px] ${index === 0 ? "border-cream/12 text-cream/82" : "border-navy/10 text-ink/82"}`}>
+                      <div key={item} className={`pb-4 text-[16px] ${index === 0 ? "text-cream/82" : "text-ink/82"}`}>
                         {item}
                       </div>
                     ))}
@@ -156,7 +178,7 @@ export const HomePage = () => {
         </div>
       </section>
 
-      <section id="services" className="section-y relative scroll-mt-28 overflow-hidden bg-paper text-ink">
+      <section id="services" className="relative scroll-mt-28 overflow-hidden bg-paper text-ink">
         <div className="container-x relative grid gap-8 lg:grid-cols-[40%_minmax(0,1fr)] lg:gap-16">
           <div data-reveal="true" className="bg-navy p-8 text-cream md:p-10 xl:sticky xl:top-28 xl:h-fit xl:min-h-[360px]">
             <div className="eyebrow text-cream/62">{t.servicesHome.eyebrow}</div>
@@ -165,28 +187,23 @@ export const HomePage = () => {
             </h2>
             <p className="mt-8 max-w-[52ch] text-[16px] leading-[1.72] text-cream/76">{servicesPanel.text}</p>
           </div>
-          <ol className="mt-10 grid gap-6 md:grid-cols-2">
+          <ol>
             {practiceData.map((practice, index) => (
-              <li
-                key={practice.slug}
-                data-reveal="true"
-                style={{ transitionDelay: `${60 + index * 45}ms` }}
-                className="border border-navy/12 bg-paper p-8 transition duration-300 hover:border-navy/20 hover:bg-cream/8"
-              >
-                <Link to={withLocalePath(locale, `/servicii/${practice.slug}`)} className="group flex h-full flex-col justify-between gap-8">
-                  <div>
-                    <div className="font-serif text-[clamp(32px,4vw,54px)] italic leading-[0.96] text-navy service-title-gradient">
-                      {practice.title[locale]}
-                    </div>
-                    <p className="mt-5 max-w-[44ch] text-[17px] leading-[1.78] text-navy/70">
-                      {practice.intro[locale]}
-                    </p>
+              <li key={practice.slug} data-reveal="true" style={{ transitionDelay: `${60 + index * 45}ms` }} className="py-5 md:py-6">
+                <Link to={withLocalePath(locale, `/servicii/${practice.slug}`)} className="group">
+                  <div className="mb-4 h-[2px] w-full bg-navy/20 overflow-hidden">
+                    <div className="h-full w-0 bg-navy transition-all duration-500 ease-out group-hover:w-full" />
                   </div>
-                  <div className="flex items-center justify-between gap-4 text-navy/60 transition duration-300 group-hover:text-navy">
-                    <span className="text-[13px] uppercase tracking-[0.18em] font-medium">
-                      {t.labels.readMore}
-                    </span>
-                    <ArrowRight className="h-5 w-5 transition duration-300 group-hover:translate-x-2" />
+                  <div className="flex items-center justify-between gap-6">
+                    <div className="flex-1">
+                      <div className="font-serif text-[clamp(28px,3.5vw,48px)] italic leading-[0.98] text-navy/70 transition duration-300 group-hover:text-navy">
+                        {practice.title[locale]}
+                      </div>
+                      <div className="mt-4 max-w-[50ch] text-[15px] leading-[1.7] text-navy/70">
+                        {practice.intro[locale]}
+                      </div>
+                    </div>
+                    <ArrowRight className="h-5 w-5 shrink-0 text-navy/70 transition duration-300 group-hover:text-navy group-hover:translate-x-2" />
                   </div>
                 </Link>
               </li>
@@ -236,7 +253,7 @@ export const HomePage = () => {
           <SectionHeading eyebrow={t.whyUs.eyebrow} title={t.whyUs.title} />
           <div className="space-y-6">
             {t.whyUs.items.map((item, index) => (
-              <div key={item.title} data-reveal="true" style={{ transitionDelay: `${60 + index * 60}ms` }} className="border-b border-navy/12 pb-6">
+              <div key={item.title} data-reveal="true" style={{ transitionDelay: `${60 + index * 60}ms` }} className="pb-6">
                 <div className="flex gap-5">
                   <div className="w-12 shrink-0 font-serif text-[36px] italic leading-none text-navy/60">{String(index + 1).padStart(2, "0")}</div>
                   <div>
