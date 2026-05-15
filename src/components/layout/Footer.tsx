@@ -63,10 +63,10 @@ export const Footer = ({ locale, nav, footer }: FooterProps) => (
         <div>
           <div className="eyebrow text-cream/72">{footer.languageTitle}</div>
           <div className="mt-5 flex gap-6">
-            <Link className="editorial-link" to="/">
+            <Link className="editorial-link" to={withLocalePath("ro", "/")}>
               RO
             </Link>
-            <Link className="editorial-link" to="/ru">
+            <Link className="editorial-link" to={withLocalePath("ru", "/")}>
               RU
             </Link>
           </div>
