@@ -5,7 +5,7 @@ export const translations = {
     siteTitle: "Pantelei Legal",
     nav: {
       home: "Acasă",
-      about: "Despre",
+      about: "Despre Aliona",
       services: "Servicii",
       blog: "Blog",
       faq: "FAQ",
@@ -194,7 +194,7 @@ export const translations = {
     siteTitle: "Pantelei Legal",
     nav: {
       home: "Главная",
-      about: "Despre",
+      about: "Об Алёне",
       services: "Практики",
       blog: "Блог",
       faq: "FAQ",
