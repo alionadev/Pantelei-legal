@@ -7,13 +7,14 @@ type ButtonProps = {
   children: ReactNode;
   href?: string;
   onClick?: () => void;
-  variant?: "solid" | "solid-cream" | "outline-navy" | "outline-cream";
+  variant?: "solid" | "solid-cream" | "solid-navy" | "outline-navy" | "outline-cream";
   className?: string;
 };
 
 const variants = {
   solid: "btn-solid",
   "solid-cream": "btn-solid-cream",
+  "solid-navy": "btn-solid-navy",
   "outline-navy": "btn-outline-navy",
   "outline-cream": "btn-outline-cream",
 };

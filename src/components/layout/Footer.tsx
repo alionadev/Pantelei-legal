@@ -25,10 +25,23 @@ export const Footer = ({ locale, nav, footer }: FooterProps) => (
       <div className="grid gap-10 py-10 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
         <div>
           <div className="eyebrow text-cream/72">Pantelei Legal</div>
-          <p className="mt-5 max-w-md text-[17px] leading-[1.7] text-cream/82">
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("București, România")}`}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-5 block max-w-md text-[17px] leading-[1.7] text-cream/82 transition duration-300 hover:text-cream"
+          >
             București, România · Lun–Vin 9:00–18:00
-          </p>
-          <p className="mt-3 text-[17px] leading-[1.7] text-cream/82">+40 757 296 443 · pantelei.legaladviser@gmail.com</p>
+          </a>
+          <div className="mt-3 flex flex-wrap gap-x-2 text-[17px] leading-[1.7] text-cream/82">
+            <a href="tel:+40757296443" className="transition duration-300 hover:text-cream">
+              +40 757 296 443
+            </a>
+            <span className="text-cream/46">·</span>
+            <a href="mailto:pantelei.legaladviser@gmail.com" className="transition duration-300 hover:text-cream">
+              pantelei.legaladviser@gmail.com
+            </a>
+          </div>
         </div>
         <div>
           <div className="eyebrow text-cream/72">{footer.navTitle}</div>
@@ -57,7 +70,14 @@ export const Footer = ({ locale, nav, footer }: FooterProps) => (
               RU
             </Link>
           </div>
-          <p className="mt-8 text-[15px] leading-[1.7] text-cream/68">{footer.address}</p>
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(footer.address)}`}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-8 block text-[15px] leading-[1.7] text-cream/68 transition duration-300 hover:text-cream/88"
+          >
+            {footer.address}
+          </a>
         </div>
       </div>
       <div className="double-rule-cream" />

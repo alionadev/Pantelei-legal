@@ -9,6 +9,9 @@ export const AboutPage = () => {
   const [progress, setProgress] = useState(0);
   const [mobileProgressTop, setMobileProgressTop] = useState(84);
   const [isMobileViewport, setIsMobileViewport] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  const addressUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(t.footer.address)}`;
 
   useEffect(() => {
     const updateProgress = () => {
@@ -20,6 +23,7 @@ export const AboutPage = () => {
       const total = Math.max(rect.height - viewportHeight * 0.72, 1);
       const next = Math.min(Math.max((viewportHeight * 0.14 - rect.top) / total, 0), 1);
       setProgress(next);
+      setScrollY(window.scrollY);
     };
 
     updateProgress();
@@ -125,7 +129,14 @@ export const AboutPage = () => {
                     <MapPin className="mt-1 h-4 w-4 text-cream/66" />
                     <div>
                       <div className="eyebrow text-cream/48">{t.labels.address}</div>
-                      <div className="mt-2 text-[15px] leading-[1.72] text-cream/88">{t.footer.address}</div>
+                      <a
+                        href={addressUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-2 block text-[15px] leading-[1.72] text-cream/88 hover:text-cream"
+                      >
+                        {t.footer.address}
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -135,8 +146,16 @@ export const AboutPage = () => {
 
           <div ref={contentRef} className="relative min-w-0 flex-1 overflow-hidden px-5 lg:max-w-[980px] lg:px-0 xl:max-w-[1100px]">
             <div
-              className="fixed left-0 right-0 z-30 bg-paper px-5 pb-5 pt-2 transition-[top] duration-300 lg:left-auto lg:right-auto lg:w-[calc(100%-40%-5.5rem)] lg:px-0 lg:pb-8 lg:pt-2 lg:top-[76px] xl:w-[calc(100%-38%-6.5rem)]"
-              style={isMobileViewport ? { top: `${mobileProgressTop}px` } : undefined}
+              className="fixed left-0 right-0 top-0 z-30 bg-paper px-5 pb-0 pt-2 transition-all duration-300 ease-out lg:left-auto lg:right-auto lg:w-[calc(100%-40%-5.5rem)] lg:px-0 lg:pb-0 lg:pt-2 xl:w-[calc(100%-38%-6.5rem)]"
+              style={isMobileViewport ? { 
+                top: `${mobileProgressTop}px`,
+                opacity: scrollY > 240 ? 1 : 0,
+                pointerEvents: scrollY > 240 ? 'auto' : 'none'
+              } : {
+                top: 0,
+                opacity: scrollY > 240 ? 1 : 0,
+                pointerEvents: scrollY > 240 ? 'auto' : 'none'
+              }}
             >
               <div className="eyebrow text-navy/66">On this page</div>
               <div className="mt-1 text-[20px] leading-none text-navy">{t.aboutPage.eyebrow}</div>

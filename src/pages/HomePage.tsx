@@ -14,6 +14,7 @@ const partners = ["Ionescu & Partners", "Nestor Advisory", "Bucharest Estates", 
 
 export const HomePage = () => {
   const { locale, t } = useLocale();
+  const heroResponseNote = locale === "ru" ? "Ответим в течение 24 часов" : "Răspundem în termen de 24 de ore";
   const servicesPanel =
     locale === "ru"
       ? {
@@ -48,15 +49,15 @@ export const HomePage = () => {
         <div className={cn("hero-reveal-curtain", ready && "is-ready")}>
           <a href="#for-whom" className="hero-reveal-scroll" aria-label="Scroll to next section">
             <div className="hero-contact-icons">
-              <span className="hero-contact-icon" aria-label="Phone">
+              <a href="tel:+40757296443" className="hero-contact-icon" aria-label="Phone">
                 <Phone className="h-4 w-4" />
-              </span>
-              <span className="hero-contact-icon" aria-label="Viber">
+              </a>
+              <a href="viber://chat?number=%2B40757296443" className="hero-contact-icon" aria-label="Viber">
                 <MessageCircle className="h-4 w-4" />
-              </span>
-              <span className="hero-contact-icon" aria-label="Telegram">
+              </a>
+              <a href="https://t.me/" className="hero-contact-icon" aria-label="Telegram">
                 <Send className="h-4 w-4" />
-              </span>
+              </a>
             </div>
             <ArrowDown className="h-5 w-5" />
           </a>
@@ -137,9 +138,25 @@ export const HomePage = () => {
                 {t.hero.description}
             </p>
             <div className="mt-10">
-              <Button href={withLocalePath(locale, "/contact")} variant="solid">
+              <Button href={withLocalePath(locale, "/contact")} variant="solid-navy">
                   {t.hero.primaryCta}
               </Button>
+              <div className="mt-3 text-[12px] uppercase tracking-[0.16em] text-navy/52">
+                {heroResponseNote}
+              </div>
+            </div>
+            <div className={cn("hero-highlights mt-10", ready && "is-ready")}>
+              {t.hero.highlights.map((item, index) => (
+                <div
+                  key={item}
+                  className="hero-highlight-chip"
+                  style={{
+                    animationDelay: `${2.02 + index * 0.14}s`,
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -159,14 +176,23 @@ export const HomePage = () => {
                   transitionDelay: `${60 + index * 60}ms`,
                   transform: `translateY(${cardParallax[index]}px)`,
                 }}
-                className={`relative min-h-[380px] overflow-hidden p-8 ${index === 0 ? "bg-navy text-cream" : index === 1 ? "bg-cream text-ink" : "bg-paper text-ink"}`}
+                className={`relative min-h-[380px] overflow-hidden p-8 ${
+                  index === 0
+                    ? "bg-navy text-cream"
+                    : index === 1
+                      ? "bg-cream text-ink"
+                      : "border-l border-navy/12 bg-[hsl(var(--cream)/0.32)] text-ink"
+                }`}
               >
                 <div className="relative">
                   <h3 className="mt-2 font-serif text-[36px] italic leading-none">{card.title}</h3>
                   <div className={`mt-8 h-px w-full ${index === 0 ? "bg-cream/16" : "bg-navy/12"}`} />
                   <div className="mt-6 space-y-4">
                     {card.items.map((item) => (
-                      <div key={item} className={`pb-4 text-[16px] ${index === 0 ? "text-cream/82" : "text-ink/82"}`}>
+                      <div
+                        key={item}
+                        className={`pb-4 text-[16px] ${index === 0 ? "text-cream/82" : "text-ink/82"}`}
+                      >
                         {item}
                       </div>
                     ))}
@@ -215,11 +241,11 @@ export const HomePage = () => {
       <section className="section-y bg-paper">
         <div className="container-x grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div data-reveal="true" style={{ transitionDelay: "60ms" }}>
-            <div className="border border-navy/12 p-3">
+            <div className="p-3">
               <img
                 src={aboutPortraitSrc}
                 alt="Aliona Pantelei"
-                className="aspect-[4/5] w-full border border-navy/12 object-cover"
+                className="aspect-[4/5] w-full object-cover"
                 onError={(event) => {
                   event.currentTarget.onerror = null;
                   event.currentTarget.src = "/portrait-placeholder.svg";
@@ -234,7 +260,7 @@ export const HomePage = () => {
             <p className="mt-8 max-w-2xl text-[17px] leading-[1.7] text-ink/82">{t.aboutSnippet.text}</p>
             <div className="mt-10 grid gap-4 md:grid-cols-3">
               {t.aboutPage.values.map((value) => (
-                <div key={value} className="border border-navy/12 bg-cream px-5 py-6 text-center font-serif text-[22px] leading-[1.35] text-navy">
+                <div key={value} className="bg-cream px-5 py-6 text-center font-serif text-[22px] leading-[1.35] text-navy">
                   {value}
                 </div>
               ))}

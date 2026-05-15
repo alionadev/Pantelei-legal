@@ -5,9 +5,9 @@ import { withLocalePath } from "../../lib/locale";
 import type { Locale } from "../../lib/types";
 
 const items = [
-  { icon: Phone, value: "+40 757 296 443" },
-  { icon: Mail, value: "pantelei.legaladviser@gmail.com" },
-  { icon: MapPin, value: "București, România" },
+  { icon: Phone, value: "+40 757 296 443", href: "tel:+40757296443" },
+  { icon: Mail, value: "pantelei.legaladviser@gmail.com", href: "mailto:pantelei.legaladviser@gmail.com" },
+  { icon: MapPin, value: "București, România", href: "https://www.google.com/maps/search/?api=1&query=Bucure%C8%99ti%2C%20Rom%C3%A2nia" },
   { icon: Clock3, value: "Lun–Vin 9:00–18:00" },
 ];
 
@@ -29,8 +29,8 @@ export const SharedCta = ({
         {items.map((item, index) => {
           const Icon = item.icon;
           const isEmail = item.value.includes("@");
-          return (
-            <div key={item.value} className="flex min-h-[170px] flex-col justify-center gap-4 p-8">
+          const content = (
+            <>
               <Icon className="h-8 w-8 text-cream/76" />
               <div className="eyebrow text-cream/55">Contact</div>
               <div
@@ -40,7 +40,24 @@ export const SharedCta = ({
               >
                 {item.value}
               </div>
-            </div>
+            </>
+          );
+          return (
+            item.href ? (
+              <a
+                key={item.value}
+                href={item.href}
+                target={item.icon === MapPin ? "_blank" : undefined}
+                rel={item.icon === MapPin ? "noreferrer" : undefined}
+                className="flex min-h-[170px] flex-col justify-center gap-4 p-8 transition duration-300 hover:bg-cream/6"
+              >
+                {content}
+              </a>
+            ) : (
+              <div key={item.value} className="flex min-h-[170px] flex-col justify-center gap-4 p-8">
+                {content}
+              </div>
+            )
           );
         })}
       </div>

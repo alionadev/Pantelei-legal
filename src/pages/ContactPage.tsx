@@ -5,12 +5,24 @@ import { useLocale } from "../hooks/useLocale";
 import { formatPhoneInput } from "../lib/utils";
 
 const initialForm = { name: "", email: "", phone: "", subject: "", message: "" };
+type ContactRow = {
+  icon: typeof Phone | typeof Mail | typeof MapPin | typeof Clock3;
+  value: string;
+  href?: string;
+  external?: boolean;
+};
 
 export const ContactPage = () => {
   const { t } = useLocale();
   const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const consultationImageSrc = "/aliona-consultation.png";
+  const contactRows: ContactRow[] = [
+    { icon: Phone, value: "+40 757 296 443", href: "tel:+40757296443" },
+    { icon: Mail, value: "pantelei.legaladviser@gmail.com", href: "mailto:pantelei.legaladviser@gmail.com" },
+    { icon: MapPin, value: "București, România", href: "https://www.google.com/maps/search/?api=1&query=Bucure%C8%99ti%2C%20Rom%C3%A2nia", external: true },
+    { icon: Clock3, value: "Lun–Vin 9:00–18:00" },
+  ];
 
   const onChange = (field: keyof typeof initialForm) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const value = field === "phone" ? formatPhoneInput(event.target.value) : event.target.value;
@@ -59,13 +71,30 @@ export const ContactPage = () => {
             <div className="eyebrow text-navy/58">{t.contactPage.blockTitle}</div>
             <div className="double-rule mt-6" />
             <div className="mt-6 space-y-5">
-              {[Phone, Mail, MapPin, Clock3].map((Icon, index) => {
-                const values = ["+40 757 296 443", "pantelei.legaladviser@gmail.com", "București, România", "Lun–Vin 9:00–18:00"];
-                return (
-                  <div key={values[index]} className="flex items-start gap-4 border-b border-navy/10 pb-5">
+              {contactRows.map((item) => {
+                const Icon = item.icon;
+                const content = (
+                  <>
                     <Icon className="mt-1 h-5 w-5 text-navy/72" />
-                    <span className="text-[17px] leading-[1.7] text-ink/82">{values[index]}</span>
-                  </div>
+                    <span className="text-[17px] leading-[1.7] text-ink/82">{item.value}</span>
+                  </>
+                );
+                return (
+                  item.href ? (
+                    <a
+                      key={item.value}
+                      href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noreferrer" : undefined}
+                      className="flex items-start gap-4 border-b border-navy/10 pb-5 transition duration-300 hover:text-navy"
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div key={item.value} className="flex items-start gap-4 border-b border-navy/10 pb-5">
+                      {content}
+                    </div>
+                  )
                 );
               })}
             </div>
