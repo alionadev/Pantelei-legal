@@ -121,7 +121,7 @@ export const PracticePage = () => {
       <section className="section-y bg-paper">
         <div className="container-x grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
           <div data-reveal="true">
-            <h2 className="max-w-[8ch] font-serif text-[clamp(44px,6vw,84px)] leading-[0.94] tracking-[-0.03em] text-navy">
+            <h2 className="w-full max-w-none font-serif text-[clamp(44px,6vw,84px)] leading-[0.94] tracking-[-0.03em] text-navy">
               {locale === "ru" ? "Что входит" : "Ce include"}
             </h2>
           </div>

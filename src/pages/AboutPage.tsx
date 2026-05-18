@@ -82,9 +82,9 @@ export const AboutPage = () => {
 
   return (
     <section className="bg-paper">
-      <div className="container-x px-0 py-[clamp(36px,6vw,112px)] lg:max-w-[75vw] lg:ml-auto lg:mr-0">
-        <div className="flex flex-col gap-7 lg:flex-row lg:items-start lg:gap-12 xl:gap-16">
-          <aside className="w-full lg:sticky lg:top-[76px] lg:w-[35%] lg:flex-none xl:w-[35%]">
+      <div className="container-x px-0 py-[clamp(36px,6vw,112px)] lg:max-w-[82vw] lg:ml-auto lg:mr-0">
+        <div className="flex flex-col gap-7 lg:flex-row lg:items-start lg:gap-10 xl:gap-14">
+          <aside className="w-full lg:sticky lg:top-[76px] lg:w-[32%] lg:flex-none xl:w-[31%]">
             <div className="overflow-hidden bg-paper aspect-[4/3]">
               <img
                 src={portraitSrc}
@@ -144,9 +144,9 @@ export const AboutPage = () => {
             </div>
           </aside>
 
-          <div ref={contentRef} className="relative min-w-0 flex-1 overflow-hidden px-5 lg:max-w-[980px] lg:px-0 xl:max-w-[1100px]">
+          <div ref={contentRef} className="relative min-w-0 flex-1 overflow-hidden px-5 lg:px-0">
             <div
-              className="fixed left-0 right-0 top-0 z-30 bg-paper px-5 pb-0 pt-2 transition-all duration-300 ease-out lg:left-auto lg:right-auto lg:w-[calc(100%-40%-5.5rem)] lg:px-0 lg:pb-0 lg:pt-2 xl:w-[calc(100%-38%-6.5rem)]"
+              className="fixed left-0 right-0 top-0 z-30 bg-paper px-5 pb-0 pt-2 transition-all duration-300 ease-out lg:left-auto lg:right-auto lg:w-[calc(100%-36%-4.5rem)] lg:px-0 lg:pb-0 lg:pt-2 xl:w-[calc(100%-35%-5.5rem)]"
               style={isMobileViewport ? { 
                 top: `${mobileProgressTop}px`,
                 opacity: scrollY > 240 ? 1 : 0,
@@ -166,7 +166,7 @@ export const AboutPage = () => {
 
             <div className="space-y-10 pt-[124px] lg:space-y-20 lg:pt-[108px]">
               <section data-reveal="true">
-                <h1 className="max-w-[12ch] font-serif text-[clamp(50px,4.8vw,86px)] leading-[0.98] tracking-[-0.02em] text-navy">
+                <h1 className="w-full max-w-none text-balance font-serif text-[clamp(50px,4.8vw,86px)] leading-[0.98] tracking-[-0.02em] text-navy">
                   {t.aboutPage.title}
                 </h1>
                 <p className="mt-6 max-w-[48ch] text-[clamp(22px,2vw,31px)] leading-[1.56] text-ink/84 lg:mt-10 lg:leading-[1.62]">

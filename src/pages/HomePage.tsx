@@ -127,9 +127,16 @@ export const HomePage = () => {
               </div>
             </div>
             <div className="mt-6">
-              <h1 className="font-serif text-[clamp(54px,6vw,100px)] italic font-light leading-[0.94] tracking-[-0.03em] text-navy">
-                {t.hero.titleTop}
-                <span className="mt-3 block text-[clamp(42px,4.8vw,78px)] italic font-light tracking-[-0.025em] text-navy/92">
+              <h1 className="w-full max-w-none font-serif text-[clamp(54px,6vw,100px)] italic font-light leading-[0.94] tracking-[-0.03em] text-navy">
+                {locale === "ru" ? (
+                  <>
+                    Юридическая поддержка
+                    <span className="block">в&nbsp;Румынии</span>
+                  </>
+                ) : (
+                  t.hero.titleTop
+                )}
+                <span className="mt-3 block w-full text-[clamp(42px,4.8vw,78px)] italic font-light tracking-[-0.025em] text-navy/92">
                   {t.hero.titleBottom}
                 </span>
               </h1>
@@ -208,7 +215,7 @@ export const HomePage = () => {
         <div className="container-x relative grid gap-8 lg:grid-cols-[40%_minmax(0,1fr)] lg:gap-16">
           <div data-reveal="true" className="bg-navy p-8 text-cream md:p-10 xl:sticky xl:top-28 xl:h-fit xl:min-h-[360px]">
             <div className="eyebrow text-cream/62">{t.servicesHome.eyebrow}</div>
-            <h2 className="mt-7 max-w-[16ch] font-serif text-[clamp(34px,4vw,58px)] italic leading-[0.98] tracking-[-0.02em] text-cream">
+            <h2 className="mt-7 w-full max-w-none font-serif text-[clamp(34px,4vw,58px)] italic leading-[0.98] tracking-[-0.02em] text-cream">
               {servicesPanel.title}
             </h2>
             <p className="mt-8 max-w-[52ch] text-[16px] leading-[1.72] text-cream/76">{servicesPanel.text}</p>
@@ -254,7 +261,7 @@ export const HomePage = () => {
             </div>
           </div>
           <div data-reveal="true" style={{ transitionDelay: "120ms" }} className="border-l-2 border-navy pl-[clamp(24px,3vw,56px)]">
-            <h2 className="max-w-4xl font-serif text-[clamp(42px,5vw,74px)] leading-[1.02] tracking-[-0.015em]">
+            <h2 className="w-full max-w-none font-serif text-[clamp(42px,5vw,74px)] leading-[1.02] tracking-[-0.015em]">
               {t.aboutSnippet.title}
             </h2>
             <p className="mt-8 max-w-2xl text-[17px] leading-[1.7] text-ink/82">{t.aboutSnippet.text}</p>
