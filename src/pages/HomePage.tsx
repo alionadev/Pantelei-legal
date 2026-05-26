@@ -12,6 +12,12 @@ import { SharedCta } from "../components/sections/SharedCta";
 
 const partners = ["Ionescu & Partners", "Nestor Advisory", "Bucharest Estates", "Forum Tax Desk", "Arbiter House"];
 
+const WhatsAppIcon = ({ className = "h-4 w-4" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+    <path d="M19.05 4.91A9.82 9.82 0 0 0 12.03 2C6.61 2 2.2 6.4 2.2 11.82c0 1.73.45 3.42 1.31 4.91L2 22l5.42-1.42a9.8 9.8 0 0 0 4.6 1.17h.01c5.42 0 9.82-4.4 9.82-9.82a9.75 9.75 0 0 0-2.8-7.02Zm-7.02 15.17h-.01a8.14 8.14 0 0 1-4.15-1.14l-.3-.18-3.21.84.86-3.13-.2-.32a8.13 8.13 0 0 1-1.26-4.33c0-4.5 3.67-8.17 8.19-8.17 2.18 0 4.22.84 5.76 2.39a8.1 8.1 0 0 1 2.39 5.78c0 4.5-3.68 8.16-8.17 8.16Zm4.48-6.12c-.25-.13-1.47-.73-1.69-.81-.23-.08-.39-.13-.56.12-.16.24-.65.81-.79.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.25-.74-.66-1.24-1.47-1.39-1.72-.15-.24-.02-.38.11-.51.11-.11.25-.29.38-.43.13-.15.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.4-.41-.56-.41h-.48c-.17 0-.43.06-.66.31-.23.24-.87.85-.87 2.08 0 1.23.89 2.41 1.01 2.58.12.16 1.75 2.67 4.23 3.75.59.26 1.06.42 1.42.54.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.59.21-1.09.15-1.19-.06-.1-.22-.16-.47-.29Z" />
+  </svg>
+);
+
 export const HomePage = () => {
   const { locale, t } = useLocale();
   const heroResponseNote = locale === "ru" ? "Ответим в течение 24 часов" : "Răspundem în termen de 24 de ore";
@@ -30,7 +36,6 @@ export const HomePage = () => {
   const [ready, setReady] = useState(false);
   const [parallax, setParallax] = useState(0);
   const [cardParallax, setCardParallax] = useState([0, 0, 0]);
-  const [mobileContactsOpen, setMobileContactsOpen] = useState(false);
 
   useEffect(() => {
     setReady(true);
@@ -62,28 +67,16 @@ export const HomePage = () => {
             <ArrowDown className="h-5 w-5" />
           </a>
         </div>
-        <div className="hero-mobile-contact-toggle md:hidden">
-          <button
-            type="button"
-            aria-label="Open contact shortcuts"
-            onClick={() => setMobileContactsOpen((value) => !value)}
-            className="hero-mobile-contact-button"
-          >
-            <MessageCircle className="h-4 w-4" />
-          </button>
-          <div className={cn("hero-mobile-contact-menu", mobileContactsOpen && "is-open")}>
-            <a href="tel:+40757296443" className="hero-mobile-contact-link" aria-label="Phone">
-              <Phone className="h-4 w-4" />
-            </a>
-            <a href="viber://chat?number=%2B40757296443" className="hero-mobile-contact-link" aria-label="Viber">
-              <MessageCircle className="h-4 w-4" />
-            </a>
-            <a href="https://t.me/" className="hero-mobile-contact-link" aria-label="Telegram">
-              <Send className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-        <div className="container-x grid items-center gap-10 py-10 md:min-h-[68vh] md:grid-cols-[40%_minmax(0,1fr)] md:gap-16">
+        <a
+          href="https://wa.me/40757296443"
+          target="_blank"
+          rel="noreferrer"
+          className="hero-mobile-contact-toggle"
+          aria-label="Open WhatsApp"
+        >
+          <WhatsAppIcon className="h-7 w-7" />
+        </a>
+        <div className="container-x grid items-center gap-10 py-10 lg:min-h-[68vh] lg:grid-cols-[minmax(340px,0.48fr)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(420px,0.52fr)_minmax(0,0.96fr)] xl:gap-12 2xl:grid-cols-[minmax(460px,0.56fr)_minmax(0,0.92fr)] 2xl:gap-14">
           <div
             className={cn(
               "relative hidden justify-start md:flex",
@@ -127,7 +120,7 @@ export const HomePage = () => {
               </div>
             </div>
             <div className="mt-6">
-              <h1 className="w-full max-w-none font-serif text-[clamp(54px,6vw,100px)] italic font-light leading-[0.94] tracking-[-0.03em] text-navy">
+              <h1 className="w-full max-w-none text-[clamp(28px,8vw,72px)] font-medium leading-[0.96] tracking-[-0.035em] text-navy sm:text-[clamp(32px,5.8vw,72px)]">
                 {locale === "ru" ? (
                   <>
                     Юридическая поддержка
@@ -136,12 +129,12 @@ export const HomePage = () => {
                 ) : (
                   t.hero.titleTop
                 )}
-                <span className="mt-3 block w-full text-[clamp(42px,4.8vw,78px)] italic font-light tracking-[-0.025em] text-navy/92">
+                <span className="accent-serif mt-3 block w-full text-[clamp(20px,6vw,46px)] leading-[1.02] tracking-[-0.02em] text-navy/92 sm:text-[clamp(22px,4vw,46px)]">
                   {t.hero.titleBottom}
                 </span>
               </h1>
             </div>
-            <p className="mt-8 text-[18px] leading-[1.72] text-ink/72">
+            <p className="mt-6 max-w-[58ch] text-[15px] leading-[1.62] text-ink/72 sm:mt-8 sm:text-[clamp(16px,1.35vw,18px)] sm:leading-[1.68]">
                 {t.hero.description}
             </p>
             <div className="mt-10">
@@ -174,7 +167,7 @@ export const HomePage = () => {
       <section id="for-whom" className="section-y bg-paper">
         <div className="container-x">
           <SectionHeading eyebrow="" title={t.forWhom.title} />
-          <div className="mt-12 grid gap-6 xl:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 2xl:grid-cols-3">
             {t.forWhom.cards.map((card, index) => (
               <article
                 key={card.title}
@@ -183,7 +176,7 @@ export const HomePage = () => {
                   transitionDelay: `${60 + index * 60}ms`,
                   transform: `translateY(${cardParallax[index]}px)`,
                 }}
-                className={`relative min-h-[380px] overflow-hidden p-8 ${
+                className={`relative overflow-hidden p-6 sm:p-8 md:min-h-[320px] ${
                   index === 0
                     ? "bg-navy text-cream"
                     : index === 1
@@ -192,18 +185,32 @@ export const HomePage = () => {
                 }`}
               >
                 <div className="relative">
-                  <h3 className="mt-2 font-serif text-[36px] italic leading-none">{card.title}</h3>
-                  <div className={`mt-8 h-px w-full ${index === 0 ? "bg-cream/16" : "bg-navy/12"}`} />
-                  <div className="mt-6 space-y-4">
+                  <h3 className="card-title mt-2">{card.title}</h3>
+                  <div className={`mt-6 h-px w-full ${index === 0 ? "bg-cream/16" : "bg-navy/12"}`} />
+                  <ul className="mt-5 space-y-3.5">
                     {card.items.map((item) => (
-                      <div
+                      <li
                         key={item}
-                        className={`pb-4 text-[16px] ${index === 0 ? "text-cream/82" : "text-ink/82"}`}
+                        className={`grid grid-cols-[26px_minmax(0,1fr)] items-start gap-3 ${
+                          index === 0 ? "text-cream/82" : "text-ink/82"
+                        }`}
                       >
-                        {item}
-                      </div>
+                        <span className="mt-[0.42em] flex items-center gap-1.5" aria-hidden="true">
+                          <span
+                            className={`h-[5px] w-[5px] rounded-full ${
+                              index === 0 ? "bg-navy" : "bg-navy/58"
+                            }`}
+                          />
+                          <span
+                            className={`h-px w-4 ${
+                              index === 0 ? "bg-cream" : "bg-navy/20"
+                            }`}
+                          />
+                        </span>
+                        <span className="body-copy">{item}</span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               </article>
             ))}
@@ -212,13 +219,15 @@ export const HomePage = () => {
       </section>
 
       <section id="services" className="relative scroll-mt-28 overflow-hidden bg-paper text-ink">
-        <div className="container-x relative grid gap-8 lg:grid-cols-[40%_minmax(0,1fr)] lg:gap-16">
-          <div data-reveal="true" className="bg-navy p-8 text-cream md:p-10 xl:sticky xl:top-28 xl:h-fit xl:min-h-[360px]">
+        <div className="container-x relative grid gap-8 2xl:grid-cols-[minmax(360px,420px)_minmax(0,1fr)] 2xl:gap-14">
+          <div data-reveal="true" className="bg-navy p-7 text-cream sm:p-8 md:p-10 2xl:sticky 2xl:top-28 2xl:h-fit 2xl:min-h-[360px]">
             <div className="eyebrow text-cream/62">{t.servicesHome.eyebrow}</div>
-            <h2 className="mt-7 w-full max-w-none font-serif text-[clamp(34px,4vw,58px)] italic leading-[0.98] tracking-[-0.02em] text-cream">
+            <h2 className="mt-6 w-full max-w-none text-[clamp(28px,3.4vw,52px)] font-medium leading-[1.02] tracking-[-0.028em] text-cream">
               {servicesPanel.title}
             </h2>
-            <p className="mt-8 max-w-[52ch] text-[16px] leading-[1.72] text-cream/76">{servicesPanel.text}</p>
+            <p className="mt-6 max-w-none text-[15px] leading-[1.75] text-cream/76 sm:text-[16px]">
+              {servicesPanel.text}
+            </p>
           </div>
           <ol>
             {practiceData.map((practice, index) => (
@@ -227,16 +236,18 @@ export const HomePage = () => {
                   <div className="mb-4 h-[2px] w-full bg-navy/20 overflow-hidden">
                     <div className="h-full w-0 bg-navy transition-all duration-500 ease-out group-hover:w-full" />
                   </div>
-                  <div className="flex items-center justify-between gap-6">
-                    <div className="flex-1">
-                      <div className="font-serif text-[clamp(28px,3.5vw,48px)] italic leading-[0.98] text-navy/70 transition duration-300 group-hover:text-navy">
+                  <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_32px] md:items-center md:gap-6">
+                    <div className="min-w-0">
+                      <div className="text-[clamp(24px,2.8vw,38px)] font-medium leading-[1.08] tracking-[-0.026em] text-navy/70 transition duration-300 group-hover:text-navy">
                         {practice.title[locale]}
                       </div>
-                      <div className="mt-4 max-w-[50ch] text-[15px] leading-[1.7] text-navy/70">
+                      <div className="mt-3 max-w-[68ch] text-[15px] leading-[1.68] text-navy/70 sm:text-[16px]">
                         {practice.intro[locale]}
                       </div>
                     </div>
-                    <ArrowRight className="h-5 w-5 shrink-0 text-navy/70 transition duration-300 group-hover:text-navy group-hover:translate-x-2" />
+                    <div className="flex items-center justify-end md:self-center">
+                      <ArrowRight className="h-5 w-5 shrink-0 text-navy/70 transition duration-300 group-hover:text-navy group-hover:translate-x-2" />
+                    </div>
                   </div>
                 </Link>
               </li>
@@ -246,7 +257,7 @@ export const HomePage = () => {
       </section>
 
       <section className="section-y bg-paper">
-        <div className="container-x grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="container-x grid gap-10 xl:grid-cols-[minmax(280px,0.95fr)_minmax(0,1.05fr)]">
           <div data-reveal="true" style={{ transitionDelay: "60ms" }}>
             <div className="p-3">
               <img
@@ -260,14 +271,17 @@ export const HomePage = () => {
               />
             </div>
           </div>
-          <div data-reveal="true" style={{ transitionDelay: "120ms" }} className="border-l-2 border-navy pl-[clamp(24px,3vw,56px)]">
-            <h2 className="w-full max-w-none font-serif text-[clamp(42px,5vw,74px)] leading-[1.02] tracking-[-0.015em]">
+          <div data-reveal="true" style={{ transitionDelay: "120ms" }} className="border-t-2 border-navy pt-8 xl:border-l-2 xl:border-t-0 xl:pl-[clamp(24px,3vw,56px)] xl:pt-0">
+            <h2 className="section-title w-full max-w-none">
               {t.aboutSnippet.title}
             </h2>
-            <p className="mt-8 max-w-2xl text-[17px] leading-[1.7] text-ink/82">{t.aboutSnippet.text}</p>
-            <div className="mt-10 grid gap-4 md:grid-cols-3">
+            <p className="body-copy mt-8 max-w-2xl text-ink/82">{t.aboutSnippet.text}</p>
+            <div className="mt-10 grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
               {t.aboutPage.values.map((value) => (
-                <div key={value} className="bg-cream px-5 py-6 text-center font-serif text-[22px] leading-[1.35] text-navy">
+                <div
+                  key={value}
+                  className="bg-cream px-4 py-5 text-center text-[clamp(18px,2vw,22px)] font-medium leading-[1.18] tracking-[-0.02em] text-navy sm:px-5 sm:py-6"
+                >
                   {value}
                 </div>
               ))}
@@ -282,16 +296,16 @@ export const HomePage = () => {
       </section>
 
       <section className="section-y bg-cream">
-        <div className="container-x grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="container-x grid gap-12 xl:grid-cols-[minmax(260px,0.9fr)_minmax(0,1.1fr)]">
           <SectionHeading eyebrow={t.whyUs.eyebrow} title={t.whyUs.title} />
           <div className="space-y-6">
             {t.whyUs.items.map((item, index) => (
               <div key={item.title} data-reveal="true" style={{ transitionDelay: `${60 + index * 60}ms` }} className="pb-6">
-                <div className="flex gap-5">
+                <div className="flex gap-4 sm:gap-5">
                   <div className="w-12 shrink-0 font-serif text-[36px] italic leading-none text-navy/60">{String(index + 1).padStart(2, "0")}</div>
                   <div>
-                    <h3 className="font-serif text-[26px] italic leading-none text-navy">{item.title}</h3>
-                    <p className="mt-4 max-w-2xl text-[15px] leading-[1.75] text-ink/82">{item.text}</p>
+                    <h3 className="title-sm text-navy">{item.title}</h3>
+                    <p className="body-copy-sm mt-4 max-w-2xl text-ink/82">{item.text}</p>
                   </div>
                 </div>
               </div>
@@ -303,7 +317,7 @@ export const HomePage = () => {
       <section className="section-y bg-paper">
         <div className="container-x">
           <div className="double-rule" />
-          <div className="grid items-center gap-6 py-6 md:grid-cols-[260px_1fr]">
+          <div className="grid items-center gap-6 py-6 lg:grid-cols-[220px_minmax(0,1fr)]">
             <div className="eyebrow text-navy/66">{t.labels.collaboration}</div>
             <div className="overflow-hidden border-x border-navy/12 py-4">
               <div className="marquee-track">

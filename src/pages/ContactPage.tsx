@@ -36,11 +36,11 @@ export const ContactPage = () => {
   };
 
   return (
-    <section className="bg-cream py-[clamp(36px,5vw,72px)] lg:min-h-[calc(100vh-84px)] lg:flex lg:items-center">
-      <div className="container-x grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8">
+    <section className="bg-cream py-[clamp(36px,5vw,72px)] xl:min-h-[calc(100vh-84px)] xl:flex xl:items-center">
+      <div className="container-x grid gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(280px,0.92fr)] xl:gap-8">
         <div data-reveal="true">
           <SectionHeading eyebrow={t.contactPage.eyebrow} title={t.contactPage.title} />
-          <p className="mt-5 max-w-2xl text-[16px] leading-[1.65] text-ink/82 lg:mt-6">{t.contactPage.description}</p>
+          <p className="body-copy mt-5 max-w-2xl text-ink/82 lg:mt-6">{t.contactPage.description}</p>
           <form onSubmit={onSubmit} className="mt-7 grid gap-4 lg:mt-8">
             <input required value={form.name} onChange={onChange("name")} placeholder={t.contactPage.form.name} className="field py-3.5" />
             <div className="grid gap-4 md:grid-cols-2">
@@ -52,10 +52,10 @@ export const ContactPage = () => {
             <button type="submit" className="btn-base btn-solid-navy w-fit">
               {t.contactPage.form.submit}
             </button>
-            {submitted ? <p className="text-[15px] leading-[1.7] text-navy/78">{t.labels.success}</p> : null}
+            {submitted ? <p className="body-copy-sm text-navy/78">{t.labels.success}</p> : null}
           </form>
         </div>
-        <div className="space-y-4 lg:space-y-5" data-reveal="true" style={{ transitionDelay: "120ms" }}>
+        <div className="space-y-4 xl:space-y-5" data-reveal="true" style={{ transitionDelay: "120ms" }}>
           <div>
             <img
               src={consultationImageSrc}
@@ -67,7 +67,7 @@ export const ContactPage = () => {
               }}
             />
           </div>
-          <article className="border border-navy/12 bg-paper p-6 lg:p-7">
+          <article className="border border-navy/12 bg-paper p-6 xl:p-7">
             <div className="eyebrow text-navy/58">{t.contactPage.blockTitle}</div>
             <div className="double-rule mt-4" />
             <div className="mt-5 space-y-4">
@@ -76,7 +76,7 @@ export const ContactPage = () => {
                 const content = (
                   <>
                     <Icon className="mt-1 h-5 w-5 text-navy/72" />
-                    <span className="text-[16px] leading-[1.65] text-ink/82">{item.value}</span>
+                    <span className="body-copy text-ink/82">{item.value}</span>
                   </>
                 );
                 return (

@@ -22,22 +22,22 @@ export const Footer = ({ locale, nav, footer }: FooterProps) => (
   <footer className="bg-navy text-cream">
     <div className="container-x section-y pb-[clamp(28px,4vw,52px)]">
       <div className="double-rule-cream" />
-      <div className="grid gap-10 py-10 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
+      <div className="grid gap-10 py-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(180px,0.8fr)_minmax(180px,0.8fr)]">
         <div>
           <div className="eyebrow text-cream/72">Pantelei Legal</div>
           <a
             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("București, România")}`}
             target="_blank"
             rel="noreferrer"
-            className="mt-5 block max-w-md text-[17px] leading-[1.7] text-cream/82 transition duration-300 hover:text-cream"
+            className="body-copy mt-5 block max-w-md text-cream/82 transition duration-300 hover:text-cream"
           >
             București, România · Lun–Vin 9:00–18:00
           </a>
-          <div className="mt-3 flex flex-wrap gap-x-2 text-[17px] leading-[1.7] text-cream/82">
+          <div className="body-copy mt-3 flex flex-col gap-y-2 text-cream/82 sm:flex-row sm:flex-wrap sm:gap-x-2">
             <a href="tel:+40757296443" className="transition duration-300 hover:text-cream">
               +40 757 296 443
             </a>
-            <span className="text-cream/46">·</span>
+            <span className="hidden text-cream/46 sm:inline">·</span>
             <a href="mailto:pantelei.legaladviser@gmail.com" className="transition duration-300 hover:text-cream">
               pantelei.legaladviser@gmail.com
             </a>
@@ -46,9 +46,9 @@ export const Footer = ({ locale, nav, footer }: FooterProps) => (
         <div>
           <div className="eyebrow text-cream/72">{footer.navTitle}</div>
           <div className="mt-5 flex flex-col gap-3">
-            <Link to={withLocalePath(locale, "/")} className="editorial-link">
+            <a href={withLocalePath(locale, "/")} className="editorial-link">
               {nav.home}
-            </Link>
+            </a>
             <Link to={withLocalePath(locale, "/despre-aliona")} className="editorial-link">
               {nav.about}
             </Link>
@@ -74,7 +74,7 @@ export const Footer = ({ locale, nav, footer }: FooterProps) => (
             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(footer.address)}`}
             target="_blank"
             rel="noreferrer"
-            className="mt-8 block text-[15px] leading-[1.7] text-cream/68 transition duration-300 hover:text-cream/88"
+            className="body-copy-sm mt-8 block text-cream/68 transition duration-300 hover:text-cream/88"
           >
             {footer.address}
           </a>

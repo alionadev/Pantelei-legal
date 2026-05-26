@@ -15,9 +15,9 @@ export const BlogPostPage = () => {
   return (
     <section className="section-y bg-paper">
       <div className="container-x">
-        <div className="grid gap-12 xl:grid-cols-[0.9fr_1.3fr_0.8fr]">
+        <div className="grid gap-8 2xl:grid-cols-[minmax(220px,0.85fr)_minmax(0,1.3fr)_minmax(220px,0.8fr)] 2xl:gap-12">
           <aside data-reveal="true">
-            <div className="sticky top-28 border border-navy/12 bg-cream p-6">
+            <div className="border border-navy/12 bg-cream p-5 xl:p-6 2xl:sticky 2xl:top-28">
               <div className="eyebrow text-navy/58">{t.labels.contents}</div>
               <div className="mt-6 space-y-3">
                 {headings.map((heading) => (
@@ -50,13 +50,13 @@ export const BlogPostPage = () => {
             </div>
           </article>
           <aside data-reveal="true" style={{ transitionDelay: "180ms" }}>
-            <div className="sticky top-28 border border-navy/12 bg-cream p-6">
+            <div className="border border-navy/12 bg-cream p-5 xl:p-6 2xl:sticky 2xl:top-28">
               <div className="eyebrow text-navy/58">{t.labels.related}</div>
               <div className="mt-6 space-y-6">
                 {related.map((item) => (
                   <Link key={item.slug} to={withLocalePath(locale, `/blog/${item.slug}`)} className="block border-b border-navy/12 pb-5">
                     <span className="eyebrow text-navy/45">{t.blogPage.categories[item.category]}</span>
-                    <div className="mt-2 font-serif text-[28px] italic leading-none text-navy">{item.title[locale]}</div>
+                    <div className="title-sm mt-2 text-navy">{item.title[locale]}</div>
                   </Link>
                 ))}
               </div>

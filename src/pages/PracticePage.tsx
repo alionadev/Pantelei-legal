@@ -82,9 +82,10 @@ export const PracticePage = () => {
 
   return (
     <>
-      <section ref={heroRef} className="relative overflow-hidden bg-paper px-0 pb-[clamp(40px,5vw,72px)] pt-[clamp(56px,8vw,104px)] text-ink lg:pt-[34vh]">
-        <div className="container-x relative grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:grid-rows-[auto_auto] lg:items-start lg:gap-20">
-          <div data-reveal="true" className="max-w-none lg:pr-8 lg:row-start-1 lg:col-start-1">
+      <section ref={heroRef} className="relative overflow-hidden bg-paper px-0 pb-[clamp(40px,5vw,72px)] pt-[clamp(56px,8vw,104px)] text-ink">
+        <div className="container-x">
+          <div className="max-w-[1680px]">
+          <div data-reveal="true" className="max-w-none">
             <div className="mb-7 flex flex-wrap gap-3 lg:mb-8">
               {heroPills.map((pill) => (
                 <div key={pill} className="bg-cream px-4 py-3 text-[11px] uppercase tracking-[0.14em] text-navy/78">
@@ -92,44 +93,49 @@ export const PracticePage = () => {
                 </div>
               ))}
             </div>
-            <h1
-              className="w-full max-w-none font-serif text-[clamp(58px,7.2vw,122px)] leading-[0.9] tracking-[-0.03em] text-ink lg:w-[40vw]"
-            >
+            <h1 className="display-title w-full max-w-none text-ink xl:max-w-[17ch] 2xl:max-w-[18ch]">
               {practice.title[locale]}
             </h1>
             <p
               ref={introRef}
-              className="mt-10 w-full max-w-none text-[clamp(22px,2.35vw,34px)] font-semibold leading-[1.24] practice-fill-text-diagonal lg:mt-12 lg:w-[40vw]"
+              className="lead-copy mt-8 w-full max-w-none font-semibold practice-fill-text-diagonal lg:mt-10 xl:max-w-[42ch] 2xl:max-w-[46ch]"
               style={{ ["--fill-progress" as string]: `${introFill * 100}%` }}
             >
               {practice.intro[locale]}
             </p>
-          </div>
-
-          <div data-reveal="true" style={{ transitionDelay: "90ms" }} className="grid gap-8 lg:row-start-2 lg:col-start-2 lg:pl-[max(2vw,1rem)]">
             <p
               ref={summaryRef}
-              className="w-full max-w-none text-[16px] leading-[1.75] practice-fill-text-diagonal lg:ml-auto lg:w-[40vw] lg:text-[15px]"
-              style={{ ["--fill-progress" as string]: `${summaryFill * 100}%` }}
+              data-reveal="true"
+              style={{
+                transitionDelay: "90ms",
+                ["--fill-progress" as string]: `${summaryFill * 100}%`,
+              }}
+              className="body-copy mt-8 w-full max-w-none practice-fill-text-diagonal text-ink/80 lg:mt-10 xl:ml-auto xl:max-w-[46ch] 2xl:max-w-[52ch]"
             >
               {practice.summary[locale]}
             </p>
+          </div>
           </div>
         </div>
       </section>
 
       <section className="section-y bg-paper">
-        <div className="container-x grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+        <div className="container-x grid gap-8 2xl:grid-cols-[minmax(260px,0.56fr)_minmax(0,1.44fr)] 2xl:gap-12">
           <div data-reveal="true">
-            <h2 className="w-full max-w-none font-serif text-[clamp(44px,6vw,84px)] leading-[0.94] tracking-[-0.03em] text-navy">
+            <h2 className="section-title w-full max-w-none text-navy">
               {locale === "ru" ? "Что входит" : "Ce include"}
             </h2>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-3">
             {practice.services[locale].map((service, index) => (
-              <div key={service} data-reveal="true" style={{ transitionDelay: `${60 + index * 50}ms` }} className="flex items-start gap-5 border-b border-navy/12 pb-4">
-                <span className="font-serif text-[34px] italic leading-none text-navy/60">{String(index + 1).padStart(2, "0")}</span>
-                <p className="pt-1 text-[17px] leading-[1.7] text-ink/84">{service}</p>
+              <div
+                key={service}
+                data-reveal="true"
+                style={{ transitionDelay: `${60 + index * 50}ms` }}
+                className="grid grid-cols-[34px_minmax(0,1fr)] items-start gap-4 border-b border-navy/12 pb-3.5 sm:grid-cols-[40px_minmax(0,1fr)] sm:gap-5 sm:pb-4"
+              >
+                <span className="font-serif text-[30px] italic leading-none text-navy/60 sm:text-[34px]">{String(index + 1).padStart(2, "0")}</span>
+                <p className="body-copy text-ink/84">{service}</p>
               </div>
             ))}
           </div>
@@ -139,7 +145,7 @@ export const PracticePage = () => {
       <section className="section-y bg-cream">
         <div className="container-x">
           <SectionHeading eyebrow={t.practicePage.processTitle} title={processSectionTitle} />
-          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4 xl:items-stretch">
+          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 xl:items-stretch">
             {practice.process[locale].map((step, index) => {
               const { title, description } = parseProcessStep(step);
               return (
@@ -155,9 +161,9 @@ export const PracticePage = () => {
                   </div>
                   <div className="mt-6 space-y-4">
                     <div className="h-1 w-14 rounded-full bg-navy/10" />
-                    <h3 className="font-serif text-[24px] leading-[1.2] text-navy">{title}.</h3>
+                    <h3 className="title-sm text-navy">{title}.</h3>
                     {description ? (
-                      <p className="text-[16px] leading-[1.75] text-ink/84">{description}</p>
+                      <p className="body-copy text-ink/84">{description}</p>
                     ) : null}
                   </div>
                 </article>

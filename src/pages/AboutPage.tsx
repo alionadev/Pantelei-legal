@@ -82,9 +82,9 @@ export const AboutPage = () => {
 
   return (
     <section className="bg-paper">
-      <div className="container-x px-0 py-[clamp(36px,6vw,112px)] lg:max-w-[82vw] lg:ml-auto lg:mr-0">
-        <div className="flex flex-col gap-7 lg:flex-row lg:items-start lg:gap-10 xl:gap-14">
-          <aside className="w-full lg:sticky lg:top-[76px] lg:w-[32%] lg:flex-none xl:w-[31%]">
+      <div className="container-x py-[clamp(36px,6vw,112px)]">
+        <div className="flex flex-col gap-7 xl:flex-row xl:items-start xl:gap-10 2xl:gap-14">
+          <aside className="w-full xl:sticky xl:top-[76px] xl:w-[32%] xl:flex-none 2xl:w-[31%]">
             <div className="overflow-hidden bg-paper aspect-[4/3]">
               <img
                 src={portraitSrc}
@@ -99,7 +99,7 @@ export const AboutPage = () => {
 
             <div className="bg-navy text-cream">
               <div className="px-7 py-8 md:px-8 md:py-9">
-                <div className="font-serif text-[clamp(34px,2.8vw,48px)] italic leading-[0.94] tracking-[-0.02em]">Aliona Pantelei</div>
+                <div className="brand-mark">Aliona Pantelei</div>
                 <div className="mt-3 eyebrow text-cream/58">{t.aboutPage.eyebrow}</div>
               </div>
 
@@ -119,7 +119,7 @@ export const AboutPage = () => {
                     <Mail className="mt-1 h-4 w-4 text-cream/66" />
                     <div>
                       <div className="eyebrow text-cream/48">{t.labels.email}</div>
-                      <a href="mailto:pantelei.legaladviser@gmail.com" className="mt-2 block break-all text-[15px] text-cream/88">
+                      <a href="mailto:pantelei.legaladviser@gmail.com" className="mt-2 block text-[14px] leading-[1.5] text-cream/88 sm:text-[15px]">
                         pantelei.legaladviser@gmail.com
                       </a>
                     </div>
@@ -144,9 +144,9 @@ export const AboutPage = () => {
             </div>
           </aside>
 
-          <div ref={contentRef} className="relative min-w-0 flex-1 overflow-hidden px-5 lg:px-0">
+          <div ref={contentRef} className="relative min-w-0 flex-1 overflow-hidden">
             <div
-              className="fixed left-0 right-0 top-0 z-30 bg-paper px-5 pb-0 pt-2 transition-all duration-300 ease-out lg:left-auto lg:right-auto lg:w-[calc(100%-36%-4.5rem)] lg:px-0 lg:pb-0 lg:pt-2 xl:w-[calc(100%-35%-5.5rem)]"
+              className="fixed left-0 right-0 top-0 z-30 bg-paper px-[clamp(20px,5vw,80px)] pb-0 pt-2 transition-all duration-300 ease-out xl:left-auto xl:right-auto xl:w-[calc(100%-40%-3rem)] xl:px-0 xl:pb-0 xl:pt-2 2xl:w-[calc(100%-36%-4rem)]"
               style={isMobileViewport ? { 
                 top: `${mobileProgressTop}px`,
                 opacity: scrollY > 240 ? 1 : 0,
@@ -158,48 +158,48 @@ export const AboutPage = () => {
               }}
             >
               <div className="eyebrow text-navy/66">On this page</div>
-              <div className="mt-1 text-[20px] leading-none text-navy">{t.aboutPage.eyebrow}</div>
+              <div className="title-sm mt-1 text-navy">{t.aboutPage.eyebrow}</div>
               <div className="mt-4 h-[2px] w-full bg-navy/16">
                 <div className="h-full bg-navy transition-[width] duration-150 ease-out" style={{ width: `${progress * 100}%` }} />
               </div>
             </div>
 
-            <div className="space-y-10 pt-[124px] lg:space-y-20 lg:pt-[108px]">
+            <div className="space-y-10 pt-[124px] xl:space-y-20 xl:pt-[108px]">
               <section data-reveal="true">
-                <h1 className="w-full max-w-none text-balance font-serif text-[clamp(50px,4.8vw,86px)] leading-[0.98] tracking-[-0.02em] text-navy">
+                <h1 className="section-title w-full max-w-none text-balance text-navy">
                   {t.aboutPage.title}
                 </h1>
-                <p className="mt-6 max-w-[48ch] text-[clamp(22px,2vw,31px)] leading-[1.56] text-ink/84 lg:mt-10 lg:leading-[1.62]">
+                <p className="lead-copy mt-6 max-w-[48ch] text-ink/84 xl:mt-10">
                   {t.aboutPage.bio}
                 </p>
               </section>
 
-              <section data-reveal="true" style={{ transitionDelay: "60ms" }} className="border-t-2 border-navy/18 pt-7 lg:pt-12">
+              <section data-reveal="true" style={{ transitionDelay: "60ms" }} className="border-t-2 border-navy/18 pt-7 xl:pt-12">
                 <div className="eyebrow text-navy/66">{t.aboutPage.educationTitle}</div>
-                <div className="mt-5 grid gap-3 lg:mt-8 lg:gap-6">
+                <div className="mt-5 grid gap-3 xl:mt-8 xl:gap-6">
                   {t.aboutPage.education.map((item) => (
-                    <article key={item} className="border-l-[4px] border-navy bg-navy/5 px-4 py-4 lg:px-7 lg:py-6">
-                      <p className="max-w-[54ch] text-[19px] leading-[1.58] text-ink/84 lg:text-[22px] lg:leading-[1.64]">{item}</p>
+                    <article key={item} className="border-l-[4px] border-navy bg-navy/5 px-4 py-4 xl:px-7 xl:py-6">
+                      <p className="body-copy max-w-[54ch] text-ink/84 sm:text-[17px] lg:text-[18px]">{item}</p>
                     </article>
                   ))}
                 </div>
               </section>
 
-              <section data-reveal="true" style={{ transitionDelay: "120ms" }} className="border-t-2 border-navy/18 pt-7 lg:pt-12">
+              <section data-reveal="true" style={{ transitionDelay: "120ms" }} className="border-t-2 border-navy/18 pt-7 xl:pt-12">
                 <div className="eyebrow text-navy/66">{t.aboutPage.valuesTitle}</div>
-                <div className="mt-5 flex flex-wrap gap-2.5 lg:mt-8 lg:gap-4">
+                <div className="mt-5 flex flex-wrap gap-2.5 xl:mt-8 xl:gap-4">
                   {t.aboutPage.values.map((value) => (
-                    <div key={value} className="border-l-[4px] border-navy bg-navy/6 px-4 py-3.5 text-[16px] font-medium text-navy lg:px-6 lg:py-5 lg:text-[19px]">
+                    <div key={value} className="border-l-[4px] border-navy bg-navy/6 px-4 py-3.5 text-[15px] font-medium text-navy sm:text-[16px] xl:px-6 xl:py-5 xl:text-[18px]">
                       {value}
                     </div>
                   ))}
                 </div>
               </section>
 
-              <section data-reveal="true" style={{ transitionDelay: "180ms" }} className="border-t-2 border-navy/18 pt-7 lg:pt-12">
+              <section data-reveal="true" style={{ transitionDelay: "180ms" }} className="border-t-2 border-navy/18 pt-7 xl:pt-12">
                 <div className="eyebrow text-navy/66">{t.aboutPage.experienceTitle}</div>
-                <div className="mt-5 border-l-[5px] border-navy pl-4 lg:mt-8 lg:pl-7">
-                  <p className="max-w-[38ch] font-serif text-[clamp(28px,2.8vw,50px)] italic leading-[1.12] text-navy lg:leading-[1.18]">
+                <div className="mt-5 border-l-[5px] border-navy pl-4 xl:mt-8 xl:pl-7">
+                  <p className="accent-serif max-w-[38ch] text-[clamp(24px,2.6vw,40px)] leading-[1.18] text-navy">
                     {t.aboutPage.experience}
                   </p>
                 </div>

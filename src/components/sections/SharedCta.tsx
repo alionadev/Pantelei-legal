@@ -3,6 +3,7 @@ import { Button } from "../ui/Button";
 import { SectionHeading } from "../ui/SectionHeading";
 import { withLocalePath } from "../../lib/locale";
 import type { Locale } from "../../lib/types";
+import { cn } from "../../lib/utils";
 
 const items = [
   { icon: Phone, value: "+40 757 296 443", href: "tel:+40757296443" },
@@ -25,17 +26,25 @@ export const SharedCta = ({
   <section className="section-y bg-navy text-cream">
     <div className="container-x">
       <SectionHeading eyebrow={eyebrow} title={title} align="center" inverse />
-      <div className="mt-14 grid divide-y divide-cream/14 border border-cream/16 md:grid-cols-2 md:divide-x xl:grid-cols-4 xl:divide-y-0">
+      <div className="mt-12 grid border border-cream/16 md:grid-cols-2 2xl:grid-cols-4">
         {items.map((item, index) => {
           const Icon = item.icon;
           const isEmail = item.value.includes("@");
+          const cardClasses = cn(
+            "flex min-h-[170px] flex-col justify-center gap-4 p-6 sm:p-8",
+            "border-cream/14",
+            index > 0 && "border-t",
+            index % 2 === 1 && "md:border-l md:border-t-0",
+            index >= 2 && "md:border-t",
+            index >= 1 && "2xl:border-l 2xl:border-t-0",
+          );
           const content = (
             <>
               <Icon className="h-8 w-8 text-cream/76" />
               <div className="eyebrow text-cream/55">Contact</div>
               <div
-                className={`font-serif italic leading-[1.05] text-[clamp(22px,8vw,34px)] ${
-                  isEmail ? "break-all text-[clamp(18px,6.2vw,30px)] leading-[1.12]" : ""
+                className={`text-[clamp(16px,2vw,24px)] font-medium leading-[1.2] tracking-[-0.02em] ${
+                  isEmail ? "text-[clamp(14px,1.55vw,20px)] leading-[1.26] [overflow-wrap:anywhere]" : ""
                 }`}
               >
                 {item.value}
@@ -49,12 +58,12 @@ export const SharedCta = ({
                 href={item.href}
                 target={item.icon === MapPin ? "_blank" : undefined}
                 rel={item.icon === MapPin ? "noreferrer" : undefined}
-                className="flex min-h-[170px] flex-col justify-center gap-4 p-8 transition duration-300 hover:bg-cream/6"
+                className={cn(cardClasses, "transition duration-300 hover:bg-cream/6")}
               >
                 {content}
               </a>
             ) : (
-              <div key={item.value} className="flex min-h-[170px] flex-col justify-center gap-4 p-8">
+              <div key={item.value} className={cardClasses}>
                 {content}
               </div>
             )

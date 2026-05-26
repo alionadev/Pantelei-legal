@@ -23,12 +23,13 @@ type NavigationProps = {
 };
 
 const navItems = [
+  { labelKey: "home", href: "/" },
   { labelKey: "services", href: "/#services" },
   { labelKey: "about", href: "/despre-aliona" },
   { labelKey: "blog", href: "/blog" },
   { labelKey: "contact", href: "/contact" },
   { labelKey: "faq", href: "/faq" },
-] as const;
+] as const satisfies readonly { labelKey: keyof NavigationProps["nav"]; href: string }[];
 
 export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationProps) => {
   const [open, setOpen] = useState(false);
@@ -129,7 +130,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
 
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-transform duration-300",
+          "fixed inset-x-0 top-[44px] z-50 transition-transform duration-300",
           desktopDropdownOpen ? "bg-navy/98 text-cream" : "bg-transparent text-navy",
           collapsed && !open ? "-translate-y-full" : "translate-y-0",
         )}
@@ -143,20 +144,37 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
           )}
         >
           <div className="flex min-w-0 items-center gap-4 lg:hidden">
-            <Link
-              to={withLocalePath(locale, "/")}
+            <a
+              href={withLocalePath(locale, "/")}
               onClick={closeAll}
               className={cn(
-                "truncate font-serif text-[26px] italic leading-none tracking-[-0.02em]",
+                "brand-mark max-w-[calc(100vw-140px)] text-[20px] sm:text-[22px]",
                 desktopDropdownOpen ? "text-cream" : "text-navy",
               )}
             >
               Aliona Pantelei
-            </Link>
+            </a>
           </div>
 
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-6 xl:flex">
             {navItems.map((item) => {
+              if (item.labelKey === "home") {
+                return (
+                  <a
+                    key={item.labelKey}
+                    href={withLocalePath(locale, "/")}
+                    onClick={closeAll}
+                    className={cn(
+                      "nav-link",
+                      desktopDropdownOpen ? "text-cream opacity-82 hover:opacity-100" : "text-navy",
+                      isRouteActive(pathname, item.href) && "opacity-100",
+                    )}
+                  >
+                    {nav[item.labelKey]}
+                  </a>
+                );
+              }
+
               if (item.labelKey === "services") {
                 return (
                   <div key={item.labelKey}>
@@ -279,16 +297,16 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
 
         <div
           className={cn(
-            "hidden overflow-hidden bg-navy text-cream transition-all duration-300 lg:block",
+            "hidden overflow-hidden bg-navy text-cream transition-all duration-300 xl:block",
             desktopDropdownOpen ? "max-h-[540px] opacity-100" : "max-h-0 opacity-0",
           )}
         >
-          <div className="container-x py-8 lg:px-[10vw]">
+          <div className="container-x py-8 xl:px-[10vw]">
             {activeDropdown === "services" ? (
-              <div className="grid gap-0 lg:grid-cols-[0.54fr_0.9fr_0.7fr]">
-                <div className="border-b border-cream/14 pb-8 lg:border-b-0 lg:pr-10">
-                  <h3 className="font-serif text-[46px] italic leading-[0.96] text-cream">{servicesIntro.title}</h3>
-                  <p className="mt-6 max-w-[28ch] text-[16px] leading-[1.75] text-cream/72">{servicesIntro.text}</p>
+              <div className="grid gap-0 xl:grid-cols-[minmax(220px,0.54fr)_minmax(0,0.9fr)_minmax(260px,0.7fr)]">
+                <div className="border-b border-cream/14 pb-8 xl:border-b-0 xl:pr-10">
+                  <h3 className="section-title text-cream">{servicesIntro.title}</h3>
+                  <p className="body-copy mt-6 max-w-[28ch] text-cream/72">{servicesIntro.text}</p>
                   <Link
                     to={servicesAnchor}
                     onClick={closeAll}
@@ -299,7 +317,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
                   </Link>
                 </div>
 
-                <div className="border-b border-cream/14 py-8 lg:border-b-0 lg:border-l lg:border-r lg:border-cream/12 lg:px-10 lg:py-0">
+                <div className="border-b border-cream/14 py-8 xl:border-b-0 xl:border-l xl:border-r xl:border-cream/12 xl:px-10 xl:py-0">
                   <div className="grid gap-x-10 gap-y-2 md:grid-cols-2">
                     {practiceData.map((practice) => (
                       <Link
@@ -309,7 +327,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
                         className="group/item border-b border-cream/12 py-4 transition duration-300 hover:opacity-72"
                       >
                         <div className="flex items-center justify-between gap-4">
-                          <span className="font-serif text-[24px] italic leading-none text-cream">{practice.title[locale]}</span>
+                          <span className="title-sm text-cream">{practice.title[locale]}</span>
                           <ArrowRight className="h-4 w-4 shrink-0 text-cream transition duration-300 group-hover/item:translate-x-1" />
                         </div>
                       </Link>
@@ -317,7 +335,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
                   </div>
                 </div>
 
-                <div className="pt-8 lg:pl-10 lg:pt-0">
+                <div className="pt-8 xl:pl-10 xl:pt-0">
                   <Link
                     to={withLocalePath(locale, "/contact")}
                     onClick={closeAll}
@@ -325,10 +343,10 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
                   >
                     <div>
                       <div className="eyebrow text-cream/58">{nav.contact}</div>
-                      <h3 className="mt-6 max-w-[12ch] font-serif text-[48px] italic leading-[0.96] text-cream">
+                      <h3 className="section-title mt-6 max-w-[12ch] text-cream">
                         {servicesCta.title}
                       </h3>
-                      <p className="mt-6 max-w-md text-[16px] leading-[1.7] text-cream/72">{servicesCta.text}</p>
+                      <p className="body-copy mt-6 max-w-md text-cream/72">{servicesCta.text}</p>
                     </div>
                     <div className="mt-10 flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-cream">
                       <span>{servicesCta.button}</span>
@@ -338,10 +356,10 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
                 </div>
               </div>
             ) : activeDropdown === "blog" ? (
-              <div className="grid gap-0 lg:grid-cols-[0.56fr_1fr]">
-                <div className="border-b border-cream/14 pb-8 lg:border-b-0 lg:pr-10">
-                  <h3 className="font-serif text-[46px] italic leading-[0.96] text-cream">{blogIntro.title}</h3>
-                  <p className="mt-6 max-w-[30ch] text-[16px] leading-[1.75] text-cream/72">{blogIntro.text}</p>
+              <div className="grid gap-0 xl:grid-cols-[minmax(220px,0.56fr)_minmax(0,1fr)]">
+                <div className="border-b border-cream/14 pb-8 xl:border-b-0 xl:pr-10">
+                  <h3 className="section-title text-cream">{blogIntro.title}</h3>
+                  <p className="body-copy mt-6 max-w-[30ch] text-cream/72">{blogIntro.text}</p>
                   <Link
                     to={withLocalePath(locale, "/blog")}
                     onClick={closeAll}
@@ -352,7 +370,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
                   </Link>
                 </div>
 
-                <div className="pt-8 lg:border-l lg:border-cream/12 lg:pl-10 lg:pt-0">
+                <div className="pt-8 xl:border-l xl:border-cream/12 xl:pl-10 xl:pt-0">
                   <div className="eyebrow text-cream/58">{blogPanelLabel}</div>
                   <div className="mt-4">
                     {blogData.map((post, index) => (
@@ -374,7 +392,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
                             }).format(new Date(post.date))}{" "}
                             · {post.readTime}
                           </div>
-                          <h4 className="mt-3 font-serif text-[30px] italic leading-[1] text-cream transition duration-300 group-hover/post:text-cream/72">
+                          <h4 className="title-sm mt-3 text-cream transition duration-300 group-hover/post:text-cream/72">
                             {post.title[locale]}
                           </h4>
                         </div>
@@ -415,7 +433,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
                 item.labelKey === "services" ? (
                   <div key={item.labelKey}>
                     <div className="flex items-center justify-between gap-4 border-b border-cream/12 py-4">
-                      <Link to={servicesAnchor} className="font-serif text-[34px] italic leading-none text-cream" onClick={closeAll}>
+                      <Link to={servicesAnchor} className="title-sm text-cream" onClick={closeAll}>
                         {nav.services}
                       </Link>
                       <button type="button" onClick={() => setServicesOpen((value) => !value)} className="text-cream">
@@ -440,15 +458,27 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
                     </div>
                   </div>
                 ) : (
-                  <Link
-                    key={item.labelKey}
-                    to={withLocalePath(locale, item.href)}
-                    className="group flex items-center justify-between gap-6 border-b border-cream/12 py-4 font-serif text-[34px] italic leading-none text-cream transition duration-300 hover:text-cream/74"
-                    onClick={closeAll}
-                  >
-                    <span>{nav[item.labelKey]}</span>
-                    <ArrowRight className="h-4 w-4 shrink-0 transition duration-300 group-hover:translate-x-1" />
-                  </Link>
+                  item.labelKey === "home" ? (
+                    <a
+                      key={item.labelKey}
+                      href={withLocalePath(locale, "/")}
+                      className="group title-sm flex items-center justify-between gap-6 border-b border-cream/12 py-4 text-cream transition duration-300 hover:text-cream/74"
+                      onClick={closeAll}
+                    >
+                      <span>{nav[item.labelKey]}</span>
+                      <ArrowRight className="h-4 w-4 shrink-0 transition duration-300 group-hover:translate-x-1" />
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.labelKey}
+                      to={withLocalePath(locale, item.href)}
+                      className="group title-sm flex items-center justify-between gap-6 border-b border-cream/12 py-4 text-cream transition duration-300 hover:text-cream/74"
+                      onClick={closeAll}
+                    >
+                      <span>{nav[item.labelKey]}</span>
+                      <ArrowRight className="h-4 w-4 shrink-0 transition duration-300 group-hover:translate-x-1" />
+                    </Link>
+                  )
                 ),
               )}
             </div>
@@ -456,7 +486,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
 
           <div className="border-t border-cream/12 pt-6">
             <div className="eyebrow text-cream/52">{locale === "ru" ? "Контакт" : "Contact"}</div>
-            <a href="tel:+40757296443" className="mt-4 block font-serif text-[28px] italic leading-none text-cream">
+            <a href="tel:+40757296443" className="title-sm mt-4 block text-cream">
               +40 757 296 443
             </a>
             <a href="mailto:pantelei.legaladviser@gmail.com" className="mt-3 block text-[15px] text-cream/74">
