@@ -20,7 +20,7 @@ const WhatsAppIcon = ({ className = "h-4 w-4" }: { className?: string }) => (
 
 export const HomePage = () => {
   const { locale, t } = useLocale();
-  const heroResponseNote = locale === "ru" ? "Ответим в течение 24 часов" : "Răspundem în termen de 24 de ore";
+  const heroResponseNote = locale === "ru" ? "Ответим в течение дня" : "Răspundem în termen de 24 de ore";
   const servicesPanel =
     locale === "ru"
       ? {

@@ -413,7 +413,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
 
       <div
         className={cn(
-          "fixed inset-y-0 right-0 z-[65] w-full bg-navy text-cream transition-transform duration-500 ease-out lg:hidden",
+          "fixed inset-y-0 right-0 z-[65] w-full bg-navy pt-[44px] text-cream transition-transform duration-500 ease-out lg:hidden",
           open ? "translate-x-0" : "translate-x-full",
         )}
       >
@@ -421,7 +421,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
           type="button"
           onClick={() => setOpen(false)}
           aria-label="Close mobile navigation"
-          className="absolute right-5 top-5 z-[75] flex h-12 w-12 items-center justify-center text-cream"
+          className="absolute right-5 top-[49px] z-[75] flex h-12 w-12 items-center justify-center text-cream"
         >
           <X className="h-6 w-6" />
         </button>
