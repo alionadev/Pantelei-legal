@@ -59,7 +59,7 @@ export const Layout = () => {
       </a>
       <a
         href={withLocalePath(locale, "/")}
-        className="fixed left-0 top-0 z-[80] hidden h-screen w-[clamp(72px,8vw,120px)] items-start justify-center pt-[18px] xl:flex"
+        className="fixed left-0 top-[44px] z-[80] hidden h-[calc(100vh-44px)] w-[clamp(72px,8vw,120px)] items-start justify-center pt-[18px] xl:flex"
         aria-label="Pantelei Legal"
       >
         <div className={logoCollapsed ? "origin-top scale-[0.78] transition duration-300" : "origin-top scale-100 transition duration-300"}>
