@@ -121,7 +121,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
         onClick={() => setOpen((value) => !value)}
         aria-label={open ? "Close navigation" : "Open navigation"}
         className={cn(
-          "fixed right-5 top-5 z-[70] hidden h-12 w-12 items-center justify-center bg-transparent text-navy transition-all duration-300 lg:flex",
+          "fixed right-5 top-[49px] z-[70] hidden h-12 w-12 items-center justify-center bg-transparent text-navy transition-all duration-300 lg:flex",
           desktopBurgerVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-4 opacity-0",
         )}
       >
