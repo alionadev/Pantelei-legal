@@ -9,6 +9,7 @@ type ButtonProps = {
   onClick?: () => void;
   variant?: "solid" | "solid-cream" | "solid-navy" | "outline-navy" | "outline-cream";
   className?: string;
+  icon?: ReactNode;
 };
 
 const variants = {
@@ -19,14 +20,15 @@ const variants = {
   "outline-cream": "btn-outline-cream",
 };
 
-export const Button = ({ children, href, onClick, variant = "solid", className }: ButtonProps) => {
+export const Button = ({ children, href, onClick, variant = "solid", className, icon }: ButtonProps) => {
   const classes = cn("btn-base", variants[variant], className);
+  const buttonIcon = icon ?? <ArrowRight className="h-4 w-4 shrink-0" />;
 
   if (href) {
     return (
       <Link to={href} className={classes}>
         <span>{children}</span>
-        <ArrowRight className="h-4 w-4 shrink-0" />
+        {buttonIcon}
       </Link>
     );
   }
@@ -34,7 +36,7 @@ export const Button = ({ children, href, onClick, variant = "solid", className }
   return (
     <button type="button" onClick={onClick} className={classes}>
       <span>{children}</span>
-      <ArrowRight className="h-4 w-4 shrink-0" />
+      {buttonIcon}
     </button>
   );
 };

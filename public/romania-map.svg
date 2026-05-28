@@ -1,0 +1,32 @@
+<svg width="760" height="560" viewBox="0 0 760 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="760" height="560" fill="#FFFFFF"/>
+  <g opacity="0.08" stroke="#111111" stroke-width="1">
+    <path d="M80 80H680"/>
+    <path d="M80 160H680"/>
+    <path d="M80 240H680"/>
+    <path d="M80 320H680"/>
+    <path d="M80 400H680"/>
+    <path d="M80 480H680"/>
+    <path d="M120 56V504"/>
+    <path d="M220 56V504"/>
+    <path d="M320 56V504"/>
+    <path d="M420 56V504"/>
+    <path d="M520 56V504"/>
+    <path d="M620 56V504"/>
+  </g>
+  <path
+    d="M214 183L256 152L314 144L368 164L421 149L481 178L548 179L588 218L560 263L586 305L548 351L505 363L476 406L415 397L371 421L314 398L262 411L227 369L179 354L163 304L188 260L168 222L214 183Z"
+    fill="#111111"
+  />
+  <path
+    d="M214 183L256 152L314 144L368 164L421 149L481 178L548 179L588 218L560 263L586 305L548 351L505 363L476 406L415 397L371 421L314 398L262 411L227 369L179 354L163 304L188 260L168 222L214 183Z"
+    stroke="#111111"
+    stroke-width="6"
+    stroke-linejoin="round"
+  />
+  <path d="M303 234C332 211 370 207 403 225C437 244 454 282 445 319C438 350 414 375 382 383C347 392 310 378 291 348C268 312 273 258 303 234Z" fill="#FFFFFF" opacity="0.15"/>
+  <path d="M184 452H576" stroke="#111111" stroke-width="2"/>
+  <path d="M184 466H478" stroke="#111111" stroke-width="2" opacity="0.42"/>
+  <text x="184" y="116" fill="#111111" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="5">ROMANIA</text>
+  <text x="184" y="493" fill="#111111" font-family="Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="4" opacity="0.62">BUCHAREST · LEGAL SUPPORT</text>
+</svg>

@@ -21,15 +21,18 @@ const WhatsAppIcon = ({ className = "h-4 w-4" }: { className?: string }) => (
 export const HomePage = () => {
   const { locale, t } = useLocale();
   const heroResponseNote = locale === "ru" ? "Ответим в течение дня" : "Răspundem în termen de 24 de ore";
+  const servicesLorem =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+  const servicesCtaLabel = locale === "ru" ? "Все услуги" : "Toate serviciile";
   const servicesPanel =
     locale === "ru"
       ? {
           title: "Практики и сопровождение",
-          text: "Юридическая поддержка для частных клиентов, предпринимателей и компаний в Румынии: от запуска бизнеса и иммиграционных процедур до сделок с недвижимостью и подготовки документов.",
+          text: servicesLorem,
         }
       : {
           title: "Practici și asistență juridică",
-          text: "Asistență juridică pentru clienți privați, antreprenori și companii în România: de la lansarea afacerii și proceduri de imigrare până la tranzacții imobiliare și documentație completă.",
+          text: servicesLorem,
         };
   const heroPortraitSrc = "/aliona-portrait-main.png";
   const aboutPortraitSrc = "/aliona-office.png";
@@ -52,7 +55,7 @@ export const HomePage = () => {
     <>
       <section className="relative flex min-h-[68vh] items-center overflow-hidden bg-paper text-ink lg:-mx-[10vw] lg:w-[calc(100%+20vw)] lg:px-[10vw]">
         <div className={cn("hero-reveal-curtain", ready && "is-ready")}>
-          <a href="#for-whom" className="hero-reveal-scroll" aria-label="Scroll to next section">
+          <div className="hero-reveal-scroll" aria-label="Hero quick actions">
             <div className="hero-contact-icons">
               <a href="tel:+40757296443" className="hero-contact-icon" aria-label="Phone">
                 <Phone className="h-4 w-4" />
@@ -64,8 +67,10 @@ export const HomePage = () => {
                 <Send className="h-4 w-4" />
               </a>
             </div>
-            <ArrowDown className="h-5 w-5" />
-          </a>
+            <a href="#for-whom" aria-label="Scroll to next section">
+              <ArrowDown className="h-5 w-5" />
+            </a>
+          </div>
         </div>
         <a
           href="https://wa.me/40757296443"
@@ -76,7 +81,7 @@ export const HomePage = () => {
         >
           <WhatsAppIcon className="h-7 w-7" />
         </a>
-        <div className="container-x grid items-center gap-10 py-10 lg:min-h-[68vh] lg:grid-cols-[minmax(340px,0.48fr)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(420px,0.52fr)_minmax(0,0.96fr)] xl:gap-12 2xl:grid-cols-[minmax(460px,0.56fr)_minmax(0,0.92fr)] 2xl:gap-14">
+        <div className="container-x grid items-center gap-10 py-10 lg:min-h-[68vh] lg:grid-cols-[minmax(280px,0.38fr)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(320px,0.42fr)_minmax(0,1fr)] xl:gap-12 2xl:grid-cols-[minmax(360px,0.44fr)_minmax(0,1fr)] 2xl:gap-14">
           <div
             className={cn(
               "relative hidden justify-start md:flex",
@@ -90,7 +95,7 @@ export const HomePage = () => {
                   <img
                     src={heroPortraitSrc}
                     alt="Aliona Pantelei"
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full scale-[1.85] object-cover object-[50%_34%]"
                     onError={(event) => {
                       event.currentTarget.onerror = null;
                       event.currentTarget.src = "/portrait-placeholder.svg";
@@ -107,11 +112,11 @@ export const HomePage = () => {
             )}
           >
             <div className="mb-8 lg:hidden">
-              <div className="relative mx-auto aspect-[4/5] max-w-[420px] overflow-hidden bg-cream">
+              <div className="relative mx-auto aspect-[4/5] max-w-[340px] overflow-hidden bg-cream">
                 <img
                   src={heroPortraitSrc}
                   alt="Aliona Pantelei"
-                  className="h-full w-full object-cover object-center"
+                  className="h-full w-full scale-[1.85] object-cover object-[50%_34%]"
                   onError={(event) => {
                     event.currentTarget.onerror = null;
                     event.currentTarget.src = "/portrait-placeholder.svg";
@@ -120,7 +125,7 @@ export const HomePage = () => {
               </div>
             </div>
             <div className="mt-6">
-              <h1 className="w-full max-w-none text-[clamp(28px,8vw,72px)] font-medium leading-[0.96] tracking-[-0.035em] text-navy sm:text-[clamp(32px,5.8vw,72px)]">
+              <h1 className="display-title w-full max-w-none text-navy">
                 {locale === "ru" ? (
                   <>
                     Юридическая поддержка
@@ -129,21 +134,24 @@ export const HomePage = () => {
                 ) : (
                   t.hero.titleTop
                 )}
-                <span className="accent-serif mt-3 block w-full text-[clamp(20px,6vw,46px)] leading-[1.02] tracking-[-0.02em] text-navy/92 sm:text-[clamp(22px,4vw,46px)]">
+                <span className="accent-serif mt-3 block w-full text-[44px] leading-[1.02] text-navy/92">
                   {t.hero.titleBottom}
                 </span>
               </h1>
             </div>
-            <p className="mt-6 max-w-[58ch] text-[15px] leading-[1.62] text-ink/72 sm:mt-8 sm:text-[clamp(16px,1.35vw,18px)] sm:leading-[1.68]">
+            <p className="body-copy mt-6 max-w-[58ch] whitespace-pre-line text-ink/72 sm:mt-8">
                 {t.hero.description}
             </p>
-            <div className="mt-10">
-              <Button href={withLocalePath(locale, "/contact")} variant="solid-navy">
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button href={withLocalePath(locale, "/contact")} variant="solid-navy" icon={<WhatsAppIcon className="h-5 w-5 shrink-0" />}>
                   {t.hero.primaryCta}
               </Button>
-              <div className="mt-3 text-[12px] uppercase tracking-[0.16em] text-navy/52">
+              <Button href={withLocalePath(locale, "/brief")} variant="outline-navy">
+                  {t.hero.briefCta}
+              </Button>
+            </div>
+            <div className="eyebrow mt-3 text-navy/52">
                 {heroResponseNote}
-              </div>
             </div>
             <div className={cn("hero-highlights mt-10", ready && "is-ready")}>
               {t.hero.highlights.map((item, index) => (
@@ -195,15 +203,10 @@ export const HomePage = () => {
                           index === 0 ? "text-cream/82" : "text-ink/82"
                         }`}
                       >
-                        <span className="mt-[0.42em] flex items-center gap-1.5" aria-hidden="true">
+                        <span className="mt-[0.62em] flex justify-center" aria-hidden="true">
                           <span
-                            className={`h-[5px] w-[5px] rounded-full ${
-                              index === 0 ? "bg-navy" : "bg-navy/58"
-                            }`}
-                          />
-                          <span
-                            className={`h-px w-4 ${
-                              index === 0 ? "bg-cream" : "bg-navy/20"
+                            className={`h-2 w-2 rotate-45 ${
+                              index === 0 ? "bg-cream/86" : "bg-navy/72"
                             }`}
                           />
                         </span>
@@ -219,33 +222,42 @@ export const HomePage = () => {
       </section>
 
       <section id="services" className="relative scroll-mt-28 overflow-hidden bg-paper text-ink">
-        <div className="container-x relative grid gap-8 2xl:grid-cols-[minmax(360px,420px)_minmax(0,1fr)] 2xl:gap-14">
-          <div data-reveal="true" className="bg-navy p-7 text-cream sm:p-8 md:p-10 2xl:sticky 2xl:top-28 2xl:h-fit 2xl:min-h-[360px]">
+        <div className="container-x relative grid gap-8 xl:grid-cols-2 xl:items-start xl:gap-12 2xl:gap-16">
+          <div data-reveal="true" className="bg-navy p-8 text-cream sm:p-9 md:p-12 xl:min-h-[380px] 2xl:min-h-[420px]">
             <div className="eyebrow text-cream/62">{t.servicesHome.eyebrow}</div>
-            <h2 className="mt-6 w-full max-w-none text-[clamp(28px,3.4vw,52px)] font-medium leading-[1.02] tracking-[-0.028em] text-cream">
+            <h2 className="section-title mt-7 w-full max-w-[14ch] text-cream">
               {servicesPanel.title}
             </h2>
-            <p className="mt-6 max-w-none text-[15px] leading-[1.75] text-cream/76 sm:text-[16px]">
+            <p className="body-copy mt-8 max-w-[62ch] text-cream/78">
               {servicesPanel.text}
             </p>
+            <div className="eyebrow mt-12 inline-flex items-center gap-3 border-l-2 border-cream/42 pl-4 text-cream/82">
+              <span>{servicesCtaLabel}</span>
+              <ArrowRight className="h-4 w-4" />
+            </div>
           </div>
-          <ol>
+          <ol className="w-full">
             {practiceData.map((practice, index) => (
-              <li key={practice.slug} data-reveal="true" style={{ transitionDelay: `${60 + index * 45}ms` }} className="py-5 md:py-6">
+              <li
+                key={practice.slug}
+                data-reveal="true"
+                style={{ transitionDelay: `${60 + index * 45}ms` }}
+                className={index === 0 ? "pb-5 md:pb-6" : "py-5 md:py-6"}
+              >
                 <Link to={withLocalePath(locale, `/servicii/${practice.slug}`)} className="group">
                   <div className="mb-4 h-[2px] w-full bg-navy/20 overflow-hidden">
                     <div className="h-full w-0 bg-navy transition-all duration-500 ease-out group-hover:w-full" />
                   </div>
-                  <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_32px] md:items-center md:gap-6">
+                  <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_20px] md:items-start md:gap-4">
                     <div className="min-w-0">
-                      <div className="text-[clamp(24px,2.8vw,38px)] font-medium leading-[1.08] tracking-[-0.026em] text-navy/70 transition duration-300 group-hover:text-navy">
+                      <div className="card-title max-w-[18ch] text-navy/82 transition duration-300 group-hover:text-navy">
                         {practice.title[locale]}
                       </div>
-                      <div className="mt-3 max-w-[68ch] text-[15px] leading-[1.68] text-navy/70 sm:text-[16px]">
-                        {practice.intro[locale]}
+                      <div className="body-copy mt-3 max-w-[72ch] text-navy/72">
+                        {servicesLorem}
                       </div>
                     </div>
-                    <div className="flex items-center justify-end md:self-center">
+                    <div className="flex items-center justify-end pt-2">
                       <ArrowRight className="h-5 w-5 shrink-0 text-navy/70 transition duration-300 group-hover:text-navy group-hover:translate-x-2" />
                     </div>
                   </div>
@@ -275,12 +287,12 @@ export const HomePage = () => {
             <h2 className="section-title w-full max-w-none">
               {t.aboutSnippet.title}
             </h2>
-            <p className="body-copy mt-8 max-w-2xl text-ink/82">{t.aboutSnippet.text}</p>
+            <p className="body-copy mt-8 max-w-[78ch] text-ink/82">{t.aboutSnippet.text}</p>
             <div className="mt-10 grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
               {t.aboutPage.values.map((value) => (
                 <div
                   key={value}
-                  className="bg-cream px-4 py-5 text-center text-[clamp(18px,2vw,22px)] font-medium leading-[1.18] tracking-[-0.02em] text-navy sm:px-5 sm:py-6"
+                  className="card-title bg-cream px-4 py-5 text-center text-navy sm:px-5 sm:py-6"
                 >
                   {value}
                 </div>
@@ -302,7 +314,7 @@ export const HomePage = () => {
             {t.whyUs.items.map((item, index) => (
               <div key={item.title} data-reveal="true" style={{ transitionDelay: `${60 + index * 60}ms` }} className="pb-6">
                 <div className="flex gap-4 sm:gap-5">
-                  <div className="w-12 shrink-0 font-serif text-[36px] italic leading-none text-navy/60">{String(index + 1).padStart(2, "0")}</div>
+                  <div className="w-12 shrink-0 text-[36px] italic leading-none text-navy/60">{String(index + 1).padStart(2, "0")}</div>
                   <div>
                     <h3 className="title-sm text-navy">{item.title}</h3>
                     <p className="body-copy-sm mt-4 max-w-2xl text-ink/82">{item.text}</p>

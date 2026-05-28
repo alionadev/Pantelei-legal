@@ -7,6 +7,7 @@ import { BlogPage } from "./pages/BlogPage";
 import { BlogPostPage } from "./pages/BlogPostPage";
 import { FaqPage } from "./pages/FaqPage";
 import { ContactPage } from "./pages/ContactPage";
+import { BriefPage } from "./pages/BriefPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
 const App = () => (
@@ -19,6 +20,7 @@ const App = () => (
       <Route path="blog/:slug" element={<BlogPostPage />} />
       <Route path="faq" element={<FaqPage />} />
       <Route path="contact" element={<ContactPage />} />
+      <Route path="brief" element={<BriefPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
     <Route path="/ru" element={<Layout />}>
@@ -29,6 +31,7 @@ const App = () => (
       <Route path="blog/:slug" element={<BlogPostPage />} />
       <Route path="faq" element={<FaqPage />} />
       <Route path="contact" element={<ContactPage />} />
+      <Route path="brief" element={<BriefPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
     <Route path="/ru/" element={<Navigate to="/ru" replace />} />

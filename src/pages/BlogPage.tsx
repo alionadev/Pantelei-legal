@@ -55,7 +55,7 @@ export const BlogPage = () => {
               <h2 className="card-title mt-5 text-navy sm:mt-8">
                 {post.title[locale]}
               </h2>
-              <p className="body-copy-sm mt-4 flex-1 text-ink/82 sm:mt-6 sm:text-[16px]">
+              <p className="body-copy mt-4 flex-1 text-ink/82 sm:mt-6">
                 {post.excerpt[locale]}
               </p>
               <div className="mt-6 flex items-center justify-between gap-4 sm:mt-8">

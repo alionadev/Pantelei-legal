@@ -146,7 +146,7 @@ export const AboutPage = () => {
 
           <div ref={contentRef} className="relative min-w-0 flex-1 overflow-hidden">
             <div
-              className="fixed left-0 right-0 top-0 z-30 bg-paper px-[clamp(20px,5vw,80px)] pb-0 pt-2 transition-all duration-300 ease-out xl:left-auto xl:right-auto xl:w-[calc(100%-40%-3rem)] xl:px-0 xl:pb-0 xl:pt-2 2xl:w-[calc(100%-36%-4rem)]"
+              className="fixed left-0 right-0 top-0 z-30 bg-paper px-[clamp(20px,5vw,80px)] pb-0 pt-14 transition-all duration-300 ease-out xl:left-auto xl:right-auto xl:w-[calc(100%-40%-3rem)] xl:px-0 xl:pb-0 xl:pt-14 2xl:w-[calc(100%-36%-4rem)]"
               style={isMobileViewport ? { 
                 top: `${mobileProgressTop}px`,
                 opacity: scrollY > 240 ? 1 : 0,
@@ -166,12 +166,57 @@ export const AboutPage = () => {
 
             <div className="space-y-10 pt-[124px] xl:space-y-20 xl:pt-[108px]">
               <section data-reveal="true">
-                <h1 className="section-title w-full max-w-none text-balance text-navy">
+                <h2 className="section-title w-full max-w-none text-navy">
                   {t.aboutPage.title}
-                </h1>
-                <p className="lead-copy mt-6 max-w-[48ch] text-ink/84 xl:mt-10">
+                </h2>
+                <p className="body-copy mt-6 w-full max-w-none text-ink/84 xl:mt-10">
                   {t.aboutPage.bio}
                 </p>
+              </section>
+
+              <section data-reveal="true" style={{ transitionDelay: "40ms" }} className="border-t-2 border-navy/18 pt-7 xl:pt-12">
+                <div className="space-y-9 xl:space-y-12">
+                  <div>
+                    <div className="eyebrow font-bold text-navy/78">{t.aboutPage.expertiseTitle}</div>
+                    <div className="mt-5 flex flex-wrap gap-1.5 xl:mt-7">
+                      {t.aboutPage.expertiseTags.map((tag) => (
+                        <div key={tag} className="bg-navy/10 px-4 py-3 text-[16px] font-normal leading-tight text-ink xl:px-5 xl:py-3.5">
+                          {tag}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="eyebrow font-bold text-navy/78">{t.aboutPage.industriesTitle}</div>
+                    <div className="mt-5 flex flex-wrap gap-1.5 xl:mt-7">
+                      {t.aboutPage.industriesTags.map((tag) => (
+                        <div key={tag} className="bg-navy/10 px-4 py-3 text-[16px] font-normal leading-tight text-ink xl:px-5 xl:py-3.5">
+                          {tag}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section data-reveal="true" style={{ transitionDelay: "50ms" }} className="border-t-2 border-navy/18 pt-7 xl:pt-12">
+                <h2 className="section-title text-navy">{t.aboutPage.representativeTitle}</h2>
+                <div className="mt-8 xl:mt-12">
+                  <div className="eyebrow font-bold text-navy/78">{t.aboutPage.representativeEyebrow}</div>
+                  <div className="mt-7 space-y-5 pl-1.5 xl:mt-9 xl:space-y-6 xl:pl-2">
+                    {t.aboutPage.representativeItems.map((item) => (
+                      <div key={item} className="grid grid-cols-[18px_minmax(0,1fr)] gap-4 sm:gap-5">
+                        <span className="mt-[0.56em] h-2 w-2 rotate-45 bg-navy/80" />
+                        <p className="text-[16px] font-normal leading-[1.55] text-ink/84">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <button type="button" className="mt-8 inline-flex items-center gap-5 text-[16px] font-bold uppercase tracking-[0.12em] text-navy/88">
+                    <span className="text-[34px] font-normal leading-none">+</span>
+                    <span>{t.aboutPage.representativeMore}</span>
+                  </button>
+                </div>
               </section>
 
               <section data-reveal="true" style={{ transitionDelay: "60ms" }} className="border-t-2 border-navy/18 pt-7 xl:pt-12">
@@ -179,7 +224,7 @@ export const AboutPage = () => {
                 <div className="mt-5 grid gap-3 xl:mt-8 xl:gap-6">
                   {t.aboutPage.education.map((item) => (
                     <article key={item} className="border-l-[4px] border-navy bg-navy/5 px-4 py-4 xl:px-7 xl:py-6">
-                      <p className="body-copy max-w-[54ch] text-ink/84 sm:text-[17px] lg:text-[18px]">{item}</p>
+                      <p className="body-copy max-w-[54ch] text-ink/84">{item}</p>
                     </article>
                   ))}
                 </div>
@@ -189,7 +234,7 @@ export const AboutPage = () => {
                 <div className="eyebrow text-navy/66">{t.aboutPage.valuesTitle}</div>
                 <div className="mt-5 flex flex-wrap gap-2.5 xl:mt-8 xl:gap-4">
                   {t.aboutPage.values.map((value) => (
-                    <div key={value} className="border-l-[4px] border-navy bg-navy/6 px-4 py-3.5 text-[15px] font-medium text-navy sm:text-[16px] xl:px-6 xl:py-5 xl:text-[18px]">
+                    <div key={value} className="body-copy border-l-[4px] border-navy bg-navy/6 px-4 py-3.5 font-medium text-navy xl:px-6 xl:py-5">
                       {value}
                     </div>
                   ))}

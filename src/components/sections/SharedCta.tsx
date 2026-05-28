@@ -43,8 +43,8 @@ export const SharedCta = ({
               <Icon className="h-8 w-8 text-cream/76" />
               <div className="eyebrow text-cream/55">Contact</div>
               <div
-                className={`text-[clamp(16px,2vw,24px)] font-medium leading-[1.2] tracking-[-0.02em] ${
-                  isEmail ? "text-[clamp(14px,1.55vw,20px)] leading-[1.26] [overflow-wrap:anywhere]" : ""
+                className={`body-copy font-medium ${
+                  isEmail ? "[overflow-wrap:anywhere]" : ""
                 }`}
               >
                 {item.value}
