@@ -71,6 +71,21 @@
   --cream: 33 36% 94%;
   --ink: 0 0% 4%;
   --paper: 0 0% 100%;
+  --fs-display: 44px;
+  --fs-section-title: 32px;
+  --fs-title-sm: 22px;
+  --fs-body: 15px;
+  --fs-body-sm: 14px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --fs-display: 72px;
+    --fs-section-title: 44px;
+    --fs-title-sm: 32px;
+    --fs-body: 16px;
+    --fs-body-sm: 16px;
+  }
 }
 
 *,
@@ -159,7 +174,7 @@ textarea {
 
   .display-title {
     font-family: "Neue Montreal", sans-serif;
-    font-size: 72px;
+    font-size: var(--fs-display);
     line-height: 0.98;
     letter-spacing: 0;
     font-style: normal;
@@ -169,7 +184,7 @@ textarea {
 
   .section-title {
     font-family: "Neue Montreal", sans-serif;
-    font-size: 44px;
+    font-size: var(--fs-section-title);
     line-height: 1.02;
     letter-spacing: 0;
     font-style: normal;
@@ -189,7 +204,7 @@ textarea {
 
   .title-sm {
     font-family: "Neue Montreal", sans-serif;
-    font-size: 32px;
+    font-size: var(--fs-title-sm);
     line-height: 1.14;
     letter-spacing: 0;
     font-style: normal;
@@ -203,19 +218,19 @@ textarea {
   }
 
   .lead-copy {
-    font-size: 16px;
+    font-size: var(--fs-body);
     line-height: 1.7;
     text-wrap: pretty;
   }
 
   .body-copy {
-    font-size: 16px;
+    font-size: var(--fs-body);
     line-height: 1.7;
     text-wrap: pretty;
   }
 
   .body-copy-sm {
-    font-size: 16px;
+    font-size: var(--fs-body-sm);
     line-height: 1.65;
     text-wrap: pretty;
   }
