@@ -133,7 +133,7 @@ export const HomePage = () => {
               </div>
             </div>
             <div className="mt-2 sm:mt-4">
-              <h1 className="w-full max-w-none text-navy text-[30px] leading-[1.04] sm:text-[36px] lg:display-title">
+              <h1 className="w-full max-w-none text-navy text-[30px] leading-[1.04] sm:text-[36px] lg:text-[72px] lg:leading-[0.98]">
                 {locale === "ru" ? (
                   <>
                     Юридическая поддержка
@@ -142,7 +142,7 @@ export const HomePage = () => {
                 ) : (
                   loremTitle
                 )}
-                <span className="accent-serif mt-2 block w-full text-[32px] leading-[1.04] text-navy/92 sm:mt-3 sm:text-[40px] lg:text-[44px]">
+                <span className="accent-serif mt-2 block w-full text-[32px] leading-[1.04] text-navy/92 sm:mt-3 sm:text-[40px] lg:text-[44px] lg:leading-[1.02]">
                   {loremTitle}
                 </span>
               </h1>
@@ -276,9 +276,9 @@ export const HomePage = () => {
       </section>
 
       <section className="section-y bg-paper">
-        <div className="container-x grid gap-10 xl:grid-cols-[minmax(260px,0.82fr)_minmax(0,1.18fr)] xl:items-center">
+        <div className="container-x grid gap-10 xl:grid-cols-2 xl:items-center">
           <div data-reveal="true" style={{ transitionDelay: "60ms" }}>
-            <div className="mx-auto w-full max-w-[520px] p-2 xl:max-w-[560px]">
+            <div className="mx-auto w-full max-w-[560px] p-2 xl:max-w-none">
               <img
                 src={aboutPortraitSrc}
                 alt="Aliona Pantelei"
