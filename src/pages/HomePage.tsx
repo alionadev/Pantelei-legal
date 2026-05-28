@@ -20,20 +20,28 @@ const WhatsAppIcon = ({ className = "h-4 w-4" }: { className?: string }) => (
 
 export const HomePage = () => {
   const { locale, t } = useLocale();
-  const heroResponseNote = locale === "ru" ? "Ответим в течение дня" : "Răspundem în termen de 24 de ore";
+  const heroResponseNote = "Lorem ipsum dolor sit amet";
+  const loremTitle = "Lorem ipsum dolor sit amet";
+  const loremBody =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+  const loremItems = ["Lorem ipsum", "Dolor sit amet", "Consectetur elit"];
+  const loremCards = [
+    { title: "Lorem ipsum dolor", items: ["Lorem ipsum dolor sit amet", "Consectetur adipiscing elit", "Sed do eiusmod tempor"] },
+    { title: "Sit amet consectetur", items: ["Lorem ipsum dolor sit amet", "Consectetur adipiscing elit", "Sed do eiusmod tempor"] },
+    { title: "Adipiscing elit sed", items: ["Lorem ipsum dolor sit amet", "Consectetur adipiscing elit", "Sed do eiusmod tempor"] },
+  ];
+  const loremWhyUs = [
+    { title: "Lorem ipsum dolor", text: loremBody },
+    { title: "Sit amet consectetur", text: loremBody },
+    { title: "Adipiscing elit sed", text: loremBody },
+  ];
   const servicesLorem =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-  const servicesCtaLabel = locale === "ru" ? "Все услуги" : "Toate serviciile";
-  const servicesPanel =
-    locale === "ru"
-      ? {
-          title: "Практики и сопровождение",
-          text: servicesLorem,
-        }
-      : {
-          title: "Practici și asistență juridică",
-          text: servicesLorem,
-        };
+  const servicesCtaLabel = "Lorem ipsum";
+  const servicesPanel = {
+    title: "Lorem ipsum dolor sit amet",
+    text: servicesLorem,
+  };
   const heroPortraitSrc = "/aliona-portrait-main.png";
   const aboutPortraitSrc = "/aliona-office.png";
   const [ready, setReady] = useState(false);
@@ -132,29 +140,29 @@ export const HomePage = () => {
                     <span className="block">в&nbsp;Румынии</span>
                   </>
                 ) : (
-                  t.hero.titleTop
+                  loremTitle
                 )}
                 <span className="accent-serif mt-2 block w-full text-[32px] leading-[1.04] text-navy/92 sm:mt-3 sm:text-[40px] lg:text-[44px]">
-                  {t.hero.titleBottom}
+                  {loremTitle}
                 </span>
               </h1>
             </div>
             <p className="mt-5 max-w-[58ch] whitespace-pre-line text-[16px] leading-[1.5] text-ink/80 sm:mt-7 sm:text-[17px] lg:body-copy">
-                {t.hero.description}
+                {loremBody}
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button href={withLocalePath(locale, "/contact")} variant="solid-navy" icon={<WhatsAppIcon className="h-5 w-5 shrink-0" />}>
-                  {t.hero.primaryCta}
+                  Lorem ipsum
               </Button>
               <Button href={withLocalePath(locale, "/brief")} variant="outline-navy">
-                  {t.hero.briefCta}
+                  Lorem ipsum
               </Button>
             </div>
             <div className="eyebrow mt-3 text-navy/52">
                 {heroResponseNote}
             </div>
             <div className={cn("hero-highlights mt-10", ready && "is-ready")}>
-              {t.hero.highlights.map((item, index) => (
+              {loremItems.map((item, index) => (
                 <div
                   key={item}
                   className="hero-highlight-chip"
@@ -174,9 +182,9 @@ export const HomePage = () => {
 
       <section id="for-whom" className="section-y bg-paper">
         <div className="container-x">
-          <SectionHeading eyebrow="" title={t.forWhom.title} />
+          <SectionHeading eyebrow="" title={loremTitle} />
           <div className="mt-12 grid gap-6 md:grid-cols-2 2xl:grid-cols-3">
-            {t.forWhom.cards.map((card, index) => (
+            {loremCards.map((card, index) => (
               <article
                 key={card.title}
                 data-reveal="true"
@@ -199,17 +207,16 @@ export const HomePage = () => {
                     {card.items.map((item) => (
                       <li
                         key={item}
-                        className={`grid grid-cols-[26px_minmax(0,1fr)] items-start gap-3 ${
+                        className={`grid grid-cols-[18px_minmax(0,1fr)] items-start gap-4 ${
                           index === 0 ? "text-cream/82" : "text-ink/82"
                         }`}
                       >
-                        <span className="mt-[0.62em] flex justify-center" aria-hidden="true">
-                          <span
-                            className={`h-2 w-2 rotate-45 ${
-                              index === 0 ? "bg-cream/86" : "bg-navy/72"
-                            }`}
-                          />
-                        </span>
+                        <span
+                          aria-hidden="true"
+                          className={`mt-[0.64em] block h-1.5 w-1.5 shrink-0 rotate-45 ${
+                            index === 0 ? "bg-cream" : "bg-navy"
+                          }`}
+                        />
                         <span className="body-copy">{item}</span>
                       </li>
                     ))}
@@ -224,7 +231,7 @@ export const HomePage = () => {
       <section id="services" className="relative scroll-mt-28 overflow-hidden bg-paper text-ink">
         <div className="container-x relative grid gap-8 xl:grid-cols-2 xl:items-start xl:gap-12 2xl:gap-16">
           <div data-reveal="true" className="bg-navy p-8 text-cream sm:p-9 md:p-12 xl:min-h-[380px] 2xl:min-h-[420px]">
-            <div className="eyebrow text-cream/62">{t.servicesHome.eyebrow}</div>
+            <div className="eyebrow text-cream/62">Lorem ipsum</div>
             <h2 className="mt-7 w-full max-w-[14ch] text-[26px] leading-[1.08] text-cream sm:text-[30px] lg:section-title">
               {servicesPanel.title}
             </h2>
@@ -251,7 +258,7 @@ export const HomePage = () => {
                   <div className="grid grid-cols-[minmax(0,1fr)_20px] items-end gap-3 md:gap-4">
                     <div className="min-w-0">
                       <div className="max-w-[18ch] text-[24px] leading-[1.12] text-navy/82 transition duration-300 group-hover:text-navy sm:text-[27px] md:text-[30px]">
-                        {practice.title[locale]}
+                        Lorem ipsum dolor sit amet
                       </div>
                       <div className="body-copy mt-2.5 max-w-[72ch] text-navy/72 md:mt-3">
                         {servicesLorem}
@@ -269,13 +276,13 @@ export const HomePage = () => {
       </section>
 
       <section className="section-y bg-paper">
-        <div className="container-x grid gap-10 xl:grid-cols-[minmax(280px,0.95fr)_minmax(0,1.05fr)]">
+        <div className="container-x grid gap-10 xl:grid-cols-[minmax(260px,0.82fr)_minmax(0,1.18fr)] xl:items-center">
           <div data-reveal="true" style={{ transitionDelay: "60ms" }}>
-            <div className="p-3">
+            <div className="mx-auto w-full max-w-[520px] p-2 xl:max-w-[560px]">
               <img
                 src={aboutPortraitSrc}
                 alt="Aliona Pantelei"
-                className="aspect-[4/5] w-full object-cover"
+                className="aspect-[4/5] w-full object-cover object-center"
                 onError={(event) => {
                   event.currentTarget.onerror = null;
                   event.currentTarget.src = "/portrait-placeholder.svg";
@@ -283,22 +290,28 @@ export const HomePage = () => {
               />
             </div>
           </div>
-          <div data-reveal="true" style={{ transitionDelay: "120ms" }} className="border-t-2 border-navy pt-8 xl:border-l-2 xl:border-t-0 xl:pl-[clamp(24px,3vw,56px)] xl:pt-0">
+          <div
+            data-reveal="true"
+            style={{ transitionDelay: "120ms" }}
+            className="border-t-2 border-navy pt-8 xl:flex xl:min-h-[560px] xl:items-center xl:border-l-2 xl:border-t-0 xl:pl-[clamp(24px,3vw,56px)] xl:pt-0"
+          >
+            <div className="w-full">
             <h2 className="section-title w-full max-w-none">
               {t.aboutSnippet.title}
             </h2>
             <p className="body-copy mt-8 max-w-[78ch] text-ink/82">{t.aboutSnippet.text}</p>
-            <div className="mt-10 grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
-              {t.aboutPage.values.map((value) => (
-                <div key={value} className="bg-cream px-4 py-5 text-center text-[22px] leading-[1.14] text-navy sm:px-5 sm:py-6 sm:text-[26px]">
+            <div className="mt-6 grid gap-3 xl:grid-cols-3">
+              {loremItems.map((value) => (
+                <div key={value} className="border-l-[4px] border-navy bg-[#ececef] px-4 py-2.5 text-[14px] font-medium leading-[1.25] text-navy xl:px-5 xl:py-3 xl:text-[15px]">
                   {value}
                 </div>
               ))}
             </div>
             <div className="mt-10">
               <Button href={withLocalePath(locale, "/despre-aliona")} variant="outline-navy">
-                {t.aboutSnippet.cta}
+                Lorem ipsum
               </Button>
+            </div>
             </div>
           </div>
         </div>
@@ -306,9 +319,9 @@ export const HomePage = () => {
 
       <section className="section-y bg-cream">
         <div className="container-x grid gap-12 xl:grid-cols-[minmax(260px,0.9fr)_minmax(0,1.1fr)]">
-          <SectionHeading eyebrow={t.whyUs.eyebrow} title={t.whyUs.title} />
+          <SectionHeading eyebrow="Lorem ipsum" title={loremTitle} />
           <div className="space-y-6">
-            {t.whyUs.items.map((item, index) => (
+            {loremWhyUs.map((item, index) => (
               <div key={item.title} data-reveal="true" style={{ transitionDelay: `${60 + index * 60}ms` }} className="pb-6">
                 <div className="flex gap-4 sm:gap-5">
                   <div className="w-12 shrink-0 text-[36px] italic leading-none text-navy/60">{String(index + 1).padStart(2, "0")}</div>
@@ -327,7 +340,7 @@ export const HomePage = () => {
         <div className="container-x">
           <div className="double-rule" />
           <div className="grid items-center gap-6 py-6 lg:grid-cols-[220px_minmax(0,1fr)]">
-            <div className="eyebrow text-navy/66">{t.labels.collaboration}</div>
+            <div className="eyebrow text-navy/66">Lorem ipsum</div>
             <div className="overflow-hidden border-x border-navy/12 py-4">
               <div className="marquee-track">
                 {[...partners, ...partners].map((partner, index) => (
@@ -342,7 +355,7 @@ export const HomePage = () => {
         </div>
       </section>
 
-      <SharedCta locale={locale} eyebrow={t.cta.eyebrow} title={t.cta.title} button={t.cta.button} />
+      <SharedCta locale={locale} eyebrow="Lorem ipsum" title={loremTitle} button="Lorem ipsum" />
     </>
   );
 };
