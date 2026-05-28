@@ -71,7 +71,7 @@ export const AboutPage = () => {
             <div className="bg-navy text-cream">
               <div className="px-6 py-7 md:px-9 md:py-10">
                 <div className="text-[36px] font-medium leading-[0.96] tracking-[-0.02em] sm:text-[42px] md:text-[52px]">Aliona Pantelei</div>
-                <div className="mt-4 text-[12px] font-bold uppercase tracking-[0.12em] text-[#2f92ff] md:text-[16px]">Legal Consulting</div>
+                <div className="mt-4 text-[12px] font-bold uppercase tracking-[0.12em] text-[#2f92ff] md:text-[16px]">Lorem ipsum</div>
               </div>
 
               <div className="border-t border-cream/14 px-6 py-7 md:px-9 md:py-10">
@@ -209,7 +209,7 @@ export const AboutPage = () => {
               <section id="experience" data-reveal="true" style={{ transitionDelay: "180ms" }} className="border-t-2 border-navy/18 pt-7 xl:pt-12">
                 <h2 className="text-[18px] font-medium leading-[1.3] text-navy">{t.aboutPage.experienceTitle}</h2>
                 <div className="mt-5 border-l-[5px] border-navy pl-4 xl:mt-8 xl:pl-7">
-                  <p className="accent-serif max-w-[38ch] text-[clamp(24px,2.6vw,40px)] leading-[1.18] text-navy">
+                  <p className="accent-serif max-w-[38ch] text-[16px] leading-[1.5] text-navy">
                     {t.aboutPage.experience}
                   </p>
                 </div>

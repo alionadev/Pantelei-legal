@@ -81,7 +81,7 @@ export const HomePage = () => {
         >
           <WhatsAppIcon className="h-7 w-7" />
         </a>
-        <div className="container-x grid items-center gap-10 py-10 lg:min-h-[68vh] lg:grid-cols-[minmax(280px,0.38fr)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(320px,0.42fr)_minmax(0,1fr)] xl:gap-12 2xl:grid-cols-[minmax(360px,0.44fr)_minmax(0,1fr)] 2xl:gap-14">
+        <div className="container-x grid items-center gap-8 py-6 sm:gap-10 sm:py-8 lg:min-h-[68vh] lg:grid-cols-[minmax(280px,0.38fr)_minmax(0,1fr)] lg:gap-10 lg:py-10 xl:grid-cols-[minmax(320px,0.42fr)_minmax(0,1fr)] xl:gap-12 2xl:grid-cols-[minmax(360px,0.44fr)_minmax(0,1fr)] 2xl:gap-14">
           <div
             className={cn(
               "relative hidden justify-start md:flex",
@@ -112,11 +112,11 @@ export const HomePage = () => {
             )}
           >
             <div className="mb-8 lg:hidden">
-              <div className="relative mx-auto aspect-[4/5] max-w-[340px] overflow-hidden bg-cream">
+              <div className="relative w-full aspect-[7/8] overflow-hidden bg-cream">
                 <img
                   src={heroPortraitSrc}
                   alt="Aliona Pantelei"
-                  className="h-full w-full scale-[1.85] object-cover object-[50%_34%]"
+                  className="h-full w-full scale-[1.9] object-cover object-[52%_32%]"
                   onError={(event) => {
                     event.currentTarget.onerror = null;
                     event.currentTarget.src = "/portrait-placeholder.svg";
@@ -124,8 +124,8 @@ export const HomePage = () => {
                 />
               </div>
             </div>
-            <div className="mt-6">
-              <h1 className="display-title w-full max-w-none text-navy">
+            <div className="mt-2 sm:mt-4">
+              <h1 className="w-full max-w-none text-navy text-[30px] leading-[1.04] sm:text-[36px] lg:display-title">
                 {locale === "ru" ? (
                   <>
                     Юридическая поддержка
@@ -134,12 +134,12 @@ export const HomePage = () => {
                 ) : (
                   t.hero.titleTop
                 )}
-                <span className="accent-serif mt-3 block w-full text-[44px] leading-[1.02] text-navy/92">
+                <span className="accent-serif mt-2 block w-full text-[32px] leading-[1.04] text-navy/92 sm:mt-3 sm:text-[40px] lg:text-[44px]">
                   {t.hero.titleBottom}
                 </span>
               </h1>
             </div>
-            <p className="body-copy mt-6 max-w-[58ch] whitespace-pre-line text-ink/72 sm:mt-8">
+            <p className="mt-5 max-w-[58ch] whitespace-pre-line text-[16px] leading-[1.5] text-ink/80 sm:mt-7 sm:text-[17px] lg:body-copy">
                 {t.hero.description}
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -193,7 +193,7 @@ export const HomePage = () => {
                 }`}
               >
                 <div className="relative">
-                  <h3 className="card-title mt-2">{card.title}</h3>
+                  <h3 className="mt-2 text-[24px] leading-[1.12] sm:text-[27px] md:text-[30px]">{card.title}</h3>
                   <div className={`mt-6 h-px w-full ${index === 0 ? "bg-cream/16" : "bg-navy/12"}`} />
                   <ul className="mt-5 space-y-3.5">
                     {card.items.map((item) => (
@@ -225,7 +225,7 @@ export const HomePage = () => {
         <div className="container-x relative grid gap-8 xl:grid-cols-2 xl:items-start xl:gap-12 2xl:gap-16">
           <div data-reveal="true" className="bg-navy p-8 text-cream sm:p-9 md:p-12 xl:min-h-[380px] 2xl:min-h-[420px]">
             <div className="eyebrow text-cream/62">{t.servicesHome.eyebrow}</div>
-            <h2 className="section-title mt-7 w-full max-w-[14ch] text-cream">
+            <h2 className="mt-7 w-full max-w-[14ch] text-[26px] leading-[1.08] text-cream sm:text-[30px] lg:section-title">
               {servicesPanel.title}
             </h2>
             <p className="body-copy mt-8 max-w-[62ch] text-cream/78">
@@ -242,22 +242,22 @@ export const HomePage = () => {
                 key={practice.slug}
                 data-reveal="true"
                 style={{ transitionDelay: `${60 + index * 45}ms` }}
-                className={index === 0 ? "pb-5 md:pb-6" : "py-5 md:py-6"}
+                className={index === 0 ? "pb-5 pt-2 md:pb-6 md:pt-3" : "py-5 md:py-6"}
               >
                 <Link to={withLocalePath(locale, `/servicii/${practice.slug}`)} className="group">
-                  <div className="mb-4 h-[2px] w-full bg-navy/20 overflow-hidden">
+                  <div className="mb-5 h-[2px] w-full bg-navy/20 overflow-hidden md:mb-4">
                     <div className="h-full w-0 bg-navy transition-all duration-500 ease-out group-hover:w-full" />
                   </div>
-                  <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_20px] md:items-start md:gap-4">
+                  <div className="grid grid-cols-[minmax(0,1fr)_20px] items-end gap-3 md:gap-4">
                     <div className="min-w-0">
-                      <div className="card-title max-w-[18ch] text-navy/82 transition duration-300 group-hover:text-navy">
+                      <div className="max-w-[18ch] text-[24px] leading-[1.12] text-navy/82 transition duration-300 group-hover:text-navy sm:text-[27px] md:text-[30px]">
                         {practice.title[locale]}
                       </div>
-                      <div className="body-copy mt-3 max-w-[72ch] text-navy/72">
+                      <div className="body-copy mt-2.5 max-w-[72ch] text-navy/72 md:mt-3">
                         {servicesLorem}
                       </div>
                     </div>
-                    <div className="flex items-center justify-end pt-2">
+                    <div className="flex items-end justify-end pb-1">
                       <ArrowRight className="h-5 w-5 shrink-0 text-navy/70 transition duration-300 group-hover:text-navy group-hover:translate-x-2" />
                     </div>
                   </div>
@@ -290,10 +290,7 @@ export const HomePage = () => {
             <p className="body-copy mt-8 max-w-[78ch] text-ink/82">{t.aboutSnippet.text}</p>
             <div className="mt-10 grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
               {t.aboutPage.values.map((value) => (
-                <div
-                  key={value}
-                  className="card-title bg-cream px-4 py-5 text-center text-navy sm:px-5 sm:py-6"
-                >
+                <div key={value} className="bg-cream px-4 py-5 text-center text-[22px] leading-[1.14] text-navy sm:px-5 sm:py-6 sm:text-[26px]">
                   {value}
                 </div>
               ))}
