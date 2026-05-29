@@ -15,6 +15,10 @@ export const practiceData: Practice[] = [
       ro: "Deschiderea unei afaceri în România poate părea dificilă pentru un antreprenor străin, mai ales atunci când documentele, instituțiile și termenele nu sunt clare de la început. Cunosc toate etapele procesului, de la alegerea formei juridice până la obținerea certificatului de înregistrare și pregătirea companiei pentru activitate. Îi ajut pe clienți să aleagă structura potrivită, să evite greșelile de redactare și să înțeleagă obligațiile administrative. Preiau comunicarea cu instituțiile, verific actele și coordonez pașii necesari astfel încât lansarea afacerii să fie coerentă. Scopul este ca proiectul să pornească legal, curat și fără blocaje birocratice inutile.",
       ru: "Открытие бизнеса в Румынии может показаться сложным для иностранного предпринимателя, особенно когда непонятны документы, сроки и требования учреждений. Я сопровождаю процесс от выбора правовой формы до получения свидетельства о регистрации и подготовки компании к работе. Помогаю выбрать подходящую структуру, избежать ошибок в документах и заранее понять административные обязанности. Беру на себя коммуникацию с учреждениями, проверку актов и координацию всех этапов. Цель — запустить бизнес законно, спокойно и без лишних бюрократических задержек.",
     },
+    includedDescription: {
+      ro: "Serviciul acoperă pașii administrativi și juridici necesari pentru lansarea unei companii funcționale în România. În practică, asta înseamnă pregătirea actelor, coordonarea înregistrării, verificarea cerințelor fiscale și obținerea elementelor fără de care firma nu poate opera corect. Fiecare etapă este adaptată formei juridice alese și tipului de activitate.",
+      ru: "Услуга охватывает административные и юридические шаги, необходимые для запуска работающей компании в Румынии. На практике это подготовка документов, координация регистрации, проверка налоговых требований и получение элементов, без которых компания не сможет корректно работать. Каждый этап адаптируется под выбранную правовую форму и вид деятельности.",
+    },
     services: {
       ro: [
         "Înregistrarea SRL, PFA, sucursalei",
@@ -84,6 +88,10 @@ export const practiceData: Practice[] = [
       ro: "Outsourcingul juridic este potrivit pentru companiile care au nevoie de sprijin constant, dar nu justifică încă un departament juridic intern. Analizez contractele, procedurile și relațiile comerciale astfel încât riscurile să fie identificate înainte să devină costuri. Ofer suport pentru negocieri, redactare, revizuire și comunicare cu partenerii de business. Colaborarea poate fi punctuală sau recurentă, în funcție de volumul activității și de prioritățile companiei. Obiectivul este să aveți decizii mai clare, documente mai sigure și reacții rapide atunci când apar situații sensibile.",
       ru: "Юридический аутсорсинг подходит компаниям, которым нужна постоянная поддержка, но отдельный юридический отдел пока не оправдан. Я анализирую договоры, процедуры и коммерческие отношения так, чтобы риски выявлялись заранее, а не после появления затрат. Помогаю с переговорами, подготовкой документов, проверкой условий и коммуникацией с партнерами. Сотрудничество может быть разовым или регулярным, в зависимости от объема задач и приоритетов бизнеса. Цель — дать компании понятные решения, надежные документы и быструю реакцию в чувствительных ситуациях.",
     },
+    includedDescription: {
+      ro: "În acest serviciu intră suportul juridic de zi cu zi pentru contracte, decizii comerciale și situații care cer reacție rapidă. Accentul este pus pe prevenție: clauze verificate, documente clare, negocieri controlate și răspunsuri pregătite înainte ca problema să escaladeze. Formatul poate fi ajustat pentru nevoi punctuale sau pentru colaborare recurentă.",
+      ru: "В услугу входит ежедневная юридическая поддержка по договорам, коммерческим решениям и ситуациям, где нужна быстрая реакция. Акцент сделан на профилактике: проверенные условия, понятные документы, контролируемые переговоры и подготовленные ответы до того, как проблема станет серьезной. Формат можно настроить под разовые задачи или регулярное сопровождение.",
+    },
     services: {
       ro: [
         "Verificare și redactare contracte",
@@ -135,6 +143,10 @@ export const practiceData: Practice[] = [
     summary: {
       ro: "Procedurile de imigrare cer documente coerente, termene respectate și o strategie adaptată situației personale sau familiale. Verific eligibilitatea, istoricul documentelor și posibilele vulnerabilități înainte de depunere. Pregătesc dosarul astfel încât informațiile să fie clare, complete și conforme cu cerințele autorităților. Ofer sprijin pentru permis de ședere, rezidență permanentă, cetățenie și documente conexe. Scopul este să reduceți riscul de refuz, întârzieri sau solicitări suplimentare inutile.",
       ru: "Иммиграционные процедуры требуют согласованных документов, соблюдения сроков и стратегии, адаптированной к личной или семейной ситуации. Я проверяю основания, историю документов и возможные уязвимости до подачи. Помогаю подготовить пакет так, чтобы сведения были понятными, полными и соответствовали требованиям органов. Сопровождаю оформление ВНЖ, ПМЖ, гражданства и связанных документов. Цель — снизить риск отказа, задержек и лишних дополнительных запросов.",
+    },
+    includedDescription: {
+      ro: "Serviciul include analiza situației, verificarea documentelor existente și pregătirea dosarului pentru autorități. Sunt urmărite atât cerințele formale, cât și coerența informațiilor prezentate, pentru ca dosarul să fie ușor de verificat și susținut. Asistența poate acoperi proceduri individuale, familiale sau situații în care lipsesc acte ori există istorice administrative sensibile.",
+      ru: "Услуга включает анализ ситуации, проверку имеющихся документов и подготовку пакета для органов. Учитываются не только формальные требования, но и логика представленных сведений, чтобы дело было понятным и устойчивым при проверке. Сопровождение может касаться индивидуальных, семейных процедур или ситуаций с недостающими документами и сложной административной историей.",
     },
     services: {
       ro: [
@@ -188,6 +200,10 @@ export const practiceData: Practice[] = [
       ro: "O tranzacție imobiliară sigură începe cu verificarea atentă a actelor, a istoricului proprietății și a obligațiilor care pot afecta cumpărătorul. Analizez documentele înainte de semnare, identific riscurile și explic consecințele juridice ale fiecărei clauze importante. Ofer sprijin în negocierea contractelor, promisiunilor bilaterale și condițiilor de plată. Colaborez cu notarul, agentul sau cealaltă parte pentru ca procesul să fie clar și controlat. Scopul este să cumpărați sau să vindeți imobilul fără surprize juridice după finalizarea tranzacției.",
       ru: "Безопасная сделка с недвижимостью начинается с внимательной проверки документов, истории объекта и обязательств, которые могут повлиять на покупателя. Я анализирую документы до подписания, выявляю риски и объясняю последствия важных условий договора. Помогаю в переговорах по договору, предварительному соглашению и условиям оплаты. Координирую коммуникацию с нотариусом, агентом или другой стороной, чтобы процесс был понятным и контролируемым. Цель — купить или продать объект без юридических сюрпризов после завершения сделки.",
     },
+    includedDescription: {
+      ro: "În pachet intră verificarea documentelor imobilului, analiza contractelor propuse și asistența în comunicarea cu părțile implicate. Sunt urmărite riscurile legate de proprietate, termene, avans, condiții suspensive și obligații care pot apărea după semnare. Scopul acestei etape este ca decizia de cumpărare sau vânzare să fie luată cu informații clare.",
+      ru: "В пакет входит проверка документов на объект, анализ предложенных договоров и сопровождение коммуникации со сторонами сделки. Проверяются риски, связанные с правом собственности, сроками, авансом, отлагательными условиями и обязательствами после подписания. Цель этого этапа — чтобы решение о покупке или продаже принималось на понятной юридической основе.",
+    },
     services: {
       ro: [
         "Verificarea actelor de proprietate",
@@ -239,6 +255,10 @@ export const practiceData: Practice[] = [
     summary: {
       ro: "Documentele juridice trebuie să fie clare, complete și potrivite scopului pentru care sunt folosite. Verific actele existente, redactez documente noi și adaptez conținutul la cerințele instituțiilor sau ale partenerilor implicați. Ofer sprijin pentru traduceri legalizate, corespondență oficială și dosare care trebuie depuse fără erori. Atenția se concentrează pe formulări, termene, anexele necesare și coerența întregului pachet. Scopul este ca documentele să poată fi folosite imediat, fără corectări repetate sau întârzieri administrative.",
       ru: "Юридические документы должны быть понятными, полными и соответствовать цели, для которой используются. Я проверяю существующие акты, готовлю новые документы и адаптирую содержание под требования учреждений или участников процесса. Помогаю с заверенными переводами, официальной перепиской и пакетами документов, которые нужно подать без ошибок. Внимание уделяется формулировкам, срокам, приложениям и логике всего комплекта. Цель — чтобы документы можно было использовать сразу, без постоянных исправлений и административных задержек.",
+    },
+    includedDescription: {
+      ro: "Serviciul acoperă pregătirea, verificarea și adaptarea documentelor pentru utilizare practică în relația cu instituții, parteneri sau proceduri oficiale. Sunt revizuite formulările, anexele, traducerile și coerența pachetului înainte de depunere sau transmitere. Accentul este pe documente care pot fi folosite imediat, fără reveniri repetate pentru corecturi.",
+      ru: "Услуга охватывает подготовку, проверку и адаптацию документов для практического использования в отношениях с учреждениями, партнерами или в официальных процедурах. Проверяются формулировки, приложения, переводы и согласованность всего пакета до подачи или отправки. Акцент — на документах, которые можно использовать сразу, без повторных исправлений.",
     },
     services: {
       ro: [

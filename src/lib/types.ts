@@ -12,6 +12,7 @@ export type Practice = {
   title: Record<Locale, string>;
   intro: Record<Locale, string>;
   summary: Record<Locale, string>;
+  includedDescription: Record<Locale, string>;
   services: Record<Locale, string[]>;
   process: Record<Locale, string[]>;
   faq: Array<{

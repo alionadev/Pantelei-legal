@@ -116,7 +116,7 @@ export const PracticePage = () => {
               {t.practicePage.servicesTitle}
             </h2>
             <p className="body-copy mt-8 w-full max-w-none whitespace-pre-line text-ink/72">
-              {practice.summary[locale]}
+              {practice.includedDescription[locale]}
             </p>
           </div>
           <div className="space-y-0">
