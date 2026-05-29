@@ -22,7 +22,7 @@ export const HomePage = () => {
   const { locale, t } = useLocale();
   const heroResponseNote = locale === "ru" ? "Ответим в течение 24 часов" : "Răspundem în termen de 24 de ore";
   const servicesPanel = {
-    title: locale === "ru" ? "Практики и сопровождение" : "Practici și asistență juridică",
+    title: locale === "ru" ? "Услуги и сопровождение" : "Practici și asistență juridică",
     text:
       locale === "ru"
         ? "Юридическая поддержка для частных клиентов, предпринимателей и компаний в Румынии: от запуска бизнеса и иммиграционных процедур до сделок с недвижимостью и подготовки документов."

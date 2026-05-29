@@ -250,7 +250,7 @@ export const translations = {
     nav: {
       home: "Главная",
       about: "Об Алёне",
-      services: "Практики",
+      services: "Услуги",
       blog: "Блог",
       faq: "FAQ",
       contact: "Контакты",

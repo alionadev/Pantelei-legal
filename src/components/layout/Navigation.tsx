@@ -63,7 +63,7 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
     locale === "ru"
       ? {
           title: "Услуги",
-          text: "Практики для частных клиентов, предпринимателей и компаний в Румынии.",
+          text: "Услуги для частных клиентов, предпринимателей и компаний в Румынии.",
         }
       : {
           title: "Servicii",
@@ -318,17 +318,19 @@ export const Navigation = ({ locale, pathname, switchLocale, nav }: NavigationPr
                 </div>
 
                 <div className="border-b border-cream/14 py-8 xl:border-b-0 xl:border-l xl:border-r xl:border-cream/12 xl:px-10 xl:py-0">
-                  <div className="grid gap-x-10 gap-y-2 md:grid-cols-2">
+                  <div className="grid gap-x-12 gap-y-2 md:grid-cols-[repeat(2,minmax(0,1fr))]">
                     {practiceData.map((practice) => (
                       <Link
                         key={practice.slug}
                         to={withLocalePath(locale, `/servicii/${practice.slug}`)}
                         onClick={closeAll}
-                        className="group/item border-b border-cream/12 py-4 transition duration-300 hover:opacity-72"
+                        className="group/item min-w-0 border-b border-cream/12 py-4 transition duration-300 hover:opacity-72"
                       >
-                        <div className="flex items-center justify-between gap-4">
-                          <span className="title-sm text-cream">{practice.title[locale]}</span>
-                          <ArrowRight className="h-4 w-4 shrink-0 text-cream transition duration-300 group-hover/item:translate-x-1" />
+                        <div className="grid min-w-0 grid-cols-[minmax(0,1fr)_48px] items-start gap-7">
+                          <span className="min-w-0 max-w-full whitespace-normal break-normal text-[26px] font-medium leading-[1.12] text-cream [overflow-wrap:normal] 2xl:text-[28px]">
+                            {practice.title[locale]}
+                          </span>
+                          <ArrowRight className="mt-[0.42em] h-4 w-4 justify-self-end text-cream transition duration-300 group-hover/item:translate-x-1" />
                         </div>
                       </Link>
                     ))}
