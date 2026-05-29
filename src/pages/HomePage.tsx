@@ -34,6 +34,7 @@ export const HomePage = () => {
     { title: "Lorem ipsum dolor", text: loremBody },
     { title: "Sit amet consectetur", text: loremBody },
     { title: "Adipiscing elit sed", text: loremBody },
+    { title: "Sed do eiusmod", text: loremBody },
   ];
   const servicesLorem =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
@@ -46,14 +47,12 @@ export const HomePage = () => {
   const aboutPortraitSrc = "/aliona-office.png";
   const [ready, setReady] = useState(false);
   const [parallax, setParallax] = useState(0);
-  const [cardParallax, setCardParallax] = useState([0, 0, 0]);
 
   useEffect(() => {
     setReady(true);
     const onScroll = () => {
       const scrollY = window.scrollY;
       setParallax(scrollY * 0.08);
-      setCardParallax([scrollY * -0.02, scrollY * -0.015, scrollY * -0.01]);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -187,11 +186,6 @@ export const HomePage = () => {
             {loremCards.map((card, index) => (
               <article
                 key={card.title}
-                data-reveal="true"
-                style={{
-                  transitionDelay: `${60 + index * 60}ms`,
-                  transform: `translateY(${cardParallax[index]}px)`,
-                }}
                 className={`relative overflow-hidden p-6 sm:p-8 md:min-h-[320px] ${
                   index === 0
                     ? "bg-navy text-cream"
@@ -228,19 +222,21 @@ export const HomePage = () => {
         </div>
       </section>
 
-      <section id="services" className="relative scroll-mt-28 overflow-hidden bg-paper text-ink">
+      <section id="services" className="relative scroll-mt-28 overflow-visible bg-paper text-ink">
         <div className="container-x relative grid gap-8 xl:grid-cols-2 xl:items-start xl:gap-12 2xl:gap-16">
-          <div data-reveal="true" className="bg-navy p-8 text-cream sm:p-9 md:p-12 xl:min-h-[380px] 2xl:min-h-[420px]">
-            <div className="eyebrow text-cream/62">Lorem ipsum</div>
-            <h2 className="mt-7 w-full max-w-[14ch] text-[26px] leading-[1.08] text-cream sm:text-[30px] lg:section-title">
-              {servicesPanel.title}
-            </h2>
-            <p className="body-copy mt-8 max-w-[62ch] text-cream/78">
-              {servicesPanel.text}
-            </p>
-            <div className="eyebrow mt-12 inline-flex items-center gap-3 border-l-2 border-cream/42 pl-4 text-cream/82">
-              <span>{servicesCtaLabel}</span>
-              <ArrowRight className="h-4 w-4" />
+          <div className="xl:sticky xl:top-[96px] xl:self-start">
+            <div className="bg-navy p-8 text-cream sm:p-9 md:p-12 xl:min-h-[380px] 2xl:min-h-[420px]">
+              <div className="eyebrow text-cream/62">Lorem ipsum</div>
+              <h2 className="mt-7 w-full max-w-[14ch] text-[26px] leading-[1.08] text-cream sm:text-[30px] lg:section-title">
+                {servicesPanel.title}
+              </h2>
+              <p className="body-copy mt-8 max-w-[62ch] text-cream/78">
+                {servicesPanel.text}
+              </p>
+              <div className="eyebrow mt-12 inline-flex items-center gap-3 border-l-2 border-cream/42 pl-4 text-cream/82">
+                <span>{servicesCtaLabel}</span>
+                <ArrowRight className="h-4 w-4" />
+              </div>
             </div>
           </div>
           <ol className="w-full">
@@ -317,19 +313,19 @@ export const HomePage = () => {
         </div>
       </section>
 
-      <section className="section-y bg-cream">
-        <div className="container-x grid gap-12 xl:grid-cols-[minmax(260px,0.9fr)_minmax(0,1.1fr)]">
+      <section className="section-y bg-cream text-ink">
+        <div className="container-x">
           <SectionHeading eyebrow="Lorem ipsum" title={loremTitle} />
-          <div className="space-y-6">
+          <div className="mt-12 grid grid-cols-[minmax(0,1fr)] items-stretch gap-5 md:grid-cols-[repeat(2,minmax(0,1fr))] 2xl:grid-cols-[repeat(4,minmax(0,1fr))]">
             {loremWhyUs.map((item, index) => (
-              <div key={item.title} data-reveal="true" style={{ transitionDelay: `${60 + index * 60}ms` }} className="pb-6">
-                <div className="flex gap-4 sm:gap-5">
-                  <div className="w-12 shrink-0 text-[36px] italic leading-none text-navy/60">{String(index + 1).padStart(2, "0")}</div>
-                  <div>
-                    <h3 className="title-sm text-navy">{item.title}</h3>
-                    <p className="body-copy-sm mt-4 max-w-2xl text-ink/82">{item.text}</p>
-                  </div>
+              <div key={item.title} data-reveal="true" style={{ transitionDelay: `${60 + index * 60}ms` }} className="flex h-full min-h-[240px] min-w-0 w-full flex-col border border-cream/18 bg-cream p-5 text-ink sm:p-6 2xl:min-h-[260px] 2xl:p-7">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="eyebrow text-navy">Lorem</div>
+                  <div className="text-[34px] italic leading-none text-navy/62">{String(index + 1).padStart(2, "0")}</div>
                 </div>
+                <div className="mt-9 h-1 w-16 bg-navy/12" />
+                <h3 className="mt-7 min-w-0 break-words text-[22px] font-medium leading-[1.14] text-navy [overflow-wrap:anywhere] 2xl:text-[24px]">{item.title}</h3>
+                <p className="body-copy-sm mt-5 min-w-0 break-words text-ink/82 [overflow-wrap:anywhere]">{item.text}</p>
               </div>
             ))}
           </div>

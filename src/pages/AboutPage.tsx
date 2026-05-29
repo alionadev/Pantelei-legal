@@ -1,55 +1,10 @@
-import { useEffect, useRef, useState } from "react";
 import { useLocale } from "../hooks/useLocale";
 
 export const AboutPage = () => {
   const { t } = useLocale();
   const portraitSrc = "/aliona-office.png";
-  const contentRef = useRef<HTMLDivElement | null>(null);
-  const [progress, setProgress] = useState(0);
-  const [isMobileViewport, setIsMobileViewport] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
 
   const addressUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(t.footer.address)}`;
-
-  useEffect(() => {
-    const updateScrollState = () => {
-      const element = contentRef.current;
-      if (element) {
-        const contentTop = element.offsetTop;
-        const contentHeight = element.offsetHeight;
-        const viewportHeight = window.innerHeight;
-        const start = contentTop - viewportHeight * 0.18;
-        const end = contentTop + contentHeight - viewportHeight * 0.72;
-        const total = Math.max(end - start, 1);
-        const next = Math.min(Math.max((window.scrollY - start) / total, 0), 1);
-        setProgress(next);
-      }
-
-      setScrollY(window.scrollY);
-    };
-
-    updateScrollState();
-    window.addEventListener("scroll", updateScrollState, { passive: true });
-    window.addEventListener("resize", updateScrollState);
-
-    return () => {
-      window.removeEventListener("scroll", updateScrollState);
-      window.removeEventListener("resize", updateScrollState);
-    };
-  }, []);
-
-  useEffect(() => {
-    const updateViewport = () => {
-      setIsMobileViewport(window.innerWidth < 1024);
-    };
-
-    updateViewport();
-    window.addEventListener("resize", updateViewport);
-
-    return () => {
-      window.removeEventListener("resize", updateViewport);
-    };
-  }, []);
 
   return (
     <section className="bg-paper">
@@ -106,30 +61,8 @@ export const AboutPage = () => {
             </div>
           </aside>
 
-          <div ref={contentRef} className="relative min-w-0 flex-1 overflow-hidden px-5 md:px-8 xl:px-0">
-            <div
-              className="fixed left-0 right-0 top-0 z-[110] bg-paper px-5 pb-0 pt-3 transition-all duration-300 ease-out md:px-8 xl:left-auto xl:right-auto xl:w-[calc(100%-40%-3rem)] xl:px-0 xl:pt-4 2xl:w-[calc(100%-36%-4rem)]"
-              style={isMobileViewport ? {
-                top: "44px",
-                opacity: scrollY > 150 ? 1 : 0,
-                pointerEvents: scrollY > 150 ? "auto" : "none"
-              } : {
-                top: 0,
-                opacity: scrollY > 150 ? 1 : 0,
-                pointerEvents: scrollY > 150 ? "auto" : "none"
-              }}
-            >
-              <div className="relative h-11 w-full">
-                <div className="flex h-full items-center text-[16px] font-medium text-navy md:text-[18px]">
-                  {t.aboutPage.eyebrow}
-                </div>
-                <div className="absolute bottom-0 left-1/2 h-[3px] w-screen -translate-x-1/2 bg-navy/16">
-                  <div className="h-full bg-[#1d4ed8] transition-[width] duration-500 ease-out" style={{ width: `${Math.max(progress * 100, 2)}%` }} />
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-10 pt-[82px] xl:space-y-20 xl:pt-[108px]">
+          <div className="relative min-w-0 flex-1 overflow-hidden px-5 md:px-8 xl:px-0">
+            <div className="space-y-10 xl:space-y-20">
               <section id="overview" data-reveal="true">
                 <h2 className="text-[18px] font-medium leading-[1.3] text-navy">
                   {t.aboutPage.title}

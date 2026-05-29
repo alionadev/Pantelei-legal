@@ -36,7 +36,7 @@ export const ContactPage = () => {
   };
 
   return (
-    <section className="bg-cream py-[clamp(36px,5vw,72px)] xl:min-h-[calc(100vh-84px)] xl:flex xl:items-center">
+    <section className="bg-paper py-[clamp(36px,5vw,72px)] xl:min-h-[calc(100vh-84px)] xl:flex xl:items-center">
       <div className="container-x grid gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(280px,0.92fr)] xl:gap-8">
         <div data-reveal="true">
           <SectionHeading eyebrow={t.contactPage.eyebrow} title={t.contactPage.title} />
