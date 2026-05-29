@@ -14,57 +14,23 @@ const practiceHeroImages: Record<string, string> = {
   "drept-fiscal": "/23fc3aa844165b7355390b5f9c6a3c2b.jpg",
 };
 
-const loremHeroPills = ["Lorem ipsum", "Dolor sit amet"];
-const loremHeroTitle = "Lorem ipsum dolor sit amet\nConsectetur adipiscing elit";
-const loremHeroDescription =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
-const loremIncludedDescription =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.\nUt labore et dolore magna aliqua, ut enim ad minim veniam quis nostrud exercitation.\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.\nExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.";
-const loremServices = [
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  "Sed do eiusmod tempor incididunt ut labore et dolore.",
-  "Ut enim ad minim veniam quis nostrud exercitation.",
-  "Duis aute irure dolor in reprehenderit in voluptate.",
-  "Excepteur sint occaecat cupidatat non proident.",
-];
-const loremProcess = [
-  {
-    title: "Lorem ipsum",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.",
-  },
-  {
-    title: "Dolor sit amet",
-    description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-  },
-  {
-    title: "Consectetur elit",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
-  },
-  {
-    title: "Sed do eiusmod",
-    description: "Excepteur sint occaecat cupidatat non proident sunt in culpa.",
-  },
-];
-const loremFaq = [
-  {
-    question: "Lorem ipsum dolor sit amet?",
-    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
-  },
-  {
-    question: "Consectetur adipiscing elit?",
-    answer: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
-  },
-  {
-    question: "Sed do eiusmod tempor?",
-    answer: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-  },
-];
-
 export const PracticePage = () => {
   const { slug } = useParams();
-  const { locale } = useLocale();
+  const { locale, t } = useLocale();
   const practice = practiceData.find((item) => item.slug === slug) ?? practiceData[0];
   const heroImageSrc = practiceHeroImages[practice.slug] ?? "/23fc3aa844165b7355390b5f9c6a3c2b.jpg";
+  const processSteps = practice.process[locale].map((step) => {
+    const [title, ...descriptionParts] = step.split(". ");
+
+    return {
+      title,
+      description: descriptionParts.join(". "),
+    };
+  });
+  const faqItems = practice.faq.map((item) => ({
+    question: item.question[locale],
+    answer: item.answer[locale],
+  }));
   const heroRef = useRef<HTMLElement | null>(null);
   const introRef = useRef<HTMLParagraphElement | null>(null);
   const [introFill, setIntroFill] = useState(0);
@@ -105,14 +71,14 @@ export const PracticePage = () => {
           <div className="grid w-full max-w-none gap-8 xl:grid-cols-[minmax(0,50%)_minmax(0,50%)] xl:items-center xl:gap-0">
             <div data-reveal="true" className="contents xl:block xl:pr-[clamp(40px,5vw,96px)]">
               <div className="order-1 hidden flex-wrap gap-3 xl:mb-8 xl:flex">
-                {loremHeroPills.map((pill) => (
+                {[t.practicePage.eyebrow, t.servicesHome.eyebrow].map((pill) => (
                   <div key={pill} className="bg-cream px-4 py-3 text-[11px] uppercase tracking-[0.14em] text-navy/78">
                     {pill}
                   </div>
                 ))}
               </div>
               <h1 className="order-1 w-full max-w-none whitespace-pre-line text-[clamp(42px,13vw,72px)] font-medium leading-[0.98] tracking-[-0.02em] text-ink xl:display-title">
-                {loremHeroTitle}
+                {practice.title[locale]}
               </h1>
               <div className="order-2 h-[4px] w-full bg-navy xl:hidden" />
               <p
@@ -120,7 +86,7 @@ export const PracticePage = () => {
                 className="order-3 w-full max-w-none whitespace-pre-line practice-fill-text-diagonal text-[16px] leading-[1.55] text-ink/84 xl:mt-10"
                 style={{ ["--fill-progress" as string]: `${introFill * 100}%` }}
               >
-                {loremHeroDescription}
+                {practice.summary[locale]}
               </p>
             </div>
 
@@ -147,14 +113,14 @@ export const PracticePage = () => {
         <div className="container-x grid gap-10 xl:grid-cols-2 xl:gap-14 2xl:gap-16">
           <div data-reveal="true" className="xl:pr-[clamp(32px,4vw,72px)]">
             <h2 className="section-title w-full max-w-none text-navy">
-              Lorem ipsum
+              {t.practicePage.servicesTitle}
             </h2>
             <p className="body-copy mt-8 w-full max-w-none whitespace-pre-line text-ink/72">
-              {loremIncludedDescription}
+              {practice.summary[locale]}
             </p>
           </div>
           <div className="space-y-0">
-            {loremServices.map((service, index) => (
+            {practice.services[locale].map((service, index) => (
               <div
                 key={service}
                 data-reveal="true"
@@ -171,25 +137,35 @@ export const PracticePage = () => {
 
       <section className="section-y bg-cream">
         <div className="container-x">
-          <SectionHeading eyebrow="Lorem ipsum" title="Lorem ipsum dolor sit amet" />
+          <SectionHeading eyebrow={t.practicePage.eyebrow} title={t.practicePage.processTitle} />
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 xl:items-stretch">
-            {loremProcess.map((step, index) => (
+            {processSteps.map((step, index) => (
+              (() => {
+                const isLast = index === processSteps.length - 1;
+                const mdOrphan = processSteps.length % 2 === 1;
+                const xlSingleOrphan = processSteps.length % 3 === 1;
+                const mdSpanClass = isLast && mdOrphan ? "md:col-span-2" : "";
+                const xlSpanClass = isLast && xlSingleOrphan ? "xl:col-span-3 2xl:col-span-1" : "";
+
+                return (
                 <article
                   key={step.title}
                   data-reveal="true"
                   style={{ transitionDelay: `${60 + index * 60}ms` }}
-                  className="group overflow-hidden rounded-3xl border border-navy/12 bg-paper p-8 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(36,55,105,0.08)]"
+                  className={`group overflow-hidden rounded-3xl border border-navy/12 bg-paper p-8 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(36,55,105,0.08)] ${mdSpanClass} ${xlSpanClass}`}
                 >
                   <div className="flex items-center justify-between gap-4">
-                    <span className="eyebrow text-navy/58">Lorem</span>
+                    <span className="eyebrow text-navy/58">{t.practicePage.eyebrow}</span>
                     <span className="text-[32px] italic leading-none text-navy/70">{String(index + 1).padStart(2, "0")}</span>
                   </div>
                   <div className="mt-6 space-y-4">
                     <div className="h-1 w-14 rounded-full bg-navy/10" />
                     <h3 className="title-sm text-navy">{step.title}.</h3>
-                    <p className="body-copy text-ink/84">{step.description}</p>
+                    <p className="body-copy text-ink/84">{step.description || step.title}</p>
                   </div>
                 </article>
+                );
+              })()
             ))}
           </div>
         </div>
@@ -197,14 +173,14 @@ export const PracticePage = () => {
 
       <section className="section-y bg-paper">
         <div className="container-x">
-          <SectionHeading eyebrow="Lorem ipsum" title="Lorem ipsum dolor sit amet" />
+          <SectionHeading eyebrow={t.practicePage.eyebrow} title={t.practicePage.faqTitle} />
           <div className="mt-12">
-            <Accordion items={loremFaq} />
+            <Accordion items={faqItems} />
           </div>
         </div>
       </section>
 
-      <SharedCta locale={locale} eyebrow="Lorem ipsum" title="Lorem ipsum dolor sit amet" button="Lorem ipsum" />
+      <SharedCta locale={locale} eyebrow={t.cta.eyebrow} title={t.cta.title} button={t.cta.button} />
     </>
   );
 };

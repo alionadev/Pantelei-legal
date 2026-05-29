@@ -31,7 +31,7 @@ export const SharedCta = ({
           const Icon = item.icon;
           const isEmail = item.value.includes("@");
           const cardClasses = cn(
-            "flex min-h-[170px] flex-col justify-center gap-4 p-6 sm:p-8",
+            "flex min-h-[120px] flex-col justify-center gap-3 p-5 sm:p-6",
             "border-cream/14",
             index > 0 && "border-t",
             index % 2 === 1 && "md:border-l md:border-t-0",

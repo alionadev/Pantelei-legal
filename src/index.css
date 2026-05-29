@@ -241,7 +241,7 @@ textarea {
   }
 
   .btn-base {
-    @apply relative inline-flex items-center justify-center overflow-hidden px-[clamp(36px,4vw,56px)] py-[17px] text-center text-[11px] uppercase tracking-[0.16em] transition duration-300;
+    @apply relative inline-flex items-center justify-center gap-[10px] overflow-hidden px-[clamp(36px,4vw,56px)] py-[17px] text-center text-[11px] uppercase tracking-[0.16em] transition duration-300;
     font-variant: small-caps;
   }
 
@@ -266,10 +266,6 @@ textarea {
     color: hsl(var(--navy));
   }
 
-  .btn-solid svg {
-    transition: transform 0.3s ease;
-  }
-
   .btn-solid::before {
     content: "";
     position: absolute;
@@ -288,11 +284,6 @@ textarea {
     transform: scaleX(1);
   }
 
-  .btn-solid:hover svg {
-    transform: translateX(4px);
-    transition: transform 0.3s ease;
-  }
-
   .btn-solid-cream {
     @apply bg-cream text-navy hover:bg-navy hover:text-cream;
   }
@@ -306,16 +297,8 @@ textarea {
     display: none;
   }
 
-  .btn-solid-navy svg {
-    transition: transform 0.3s ease;
-  }
-
   .btn-solid-navy:hover {
     color: hsl(var(--cream));
-  }
-
-  .btn-solid-navy:hover svg {
-    transform: translateX(4px);
   }
 
   .btn-outline-navy {

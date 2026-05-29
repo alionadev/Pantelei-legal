@@ -20,28 +20,13 @@ const WhatsAppIcon = ({ className = "h-4 w-4" }: { className?: string }) => (
 
 export const HomePage = () => {
   const { locale, t } = useLocale();
-  const heroResponseNote = "Lorem ipsum dolor sit amet";
-  const loremTitle = "Lorem ipsum dolor sit amet";
-  const loremBody =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-  const loremItems = ["Lorem ipsum", "Dolor sit amet", "Consectetur elit"];
-  const loremCards = [
-    { title: "Lorem ipsum dolor", items: ["Lorem ipsum dolor sit amet", "Consectetur adipiscing elit", "Sed do eiusmod tempor"] },
-    { title: "Sit amet consectetur", items: ["Lorem ipsum dolor sit amet", "Consectetur adipiscing elit", "Sed do eiusmod tempor"] },
-    { title: "Adipiscing elit sed", items: ["Lorem ipsum dolor sit amet", "Consectetur adipiscing elit", "Sed do eiusmod tempor"] },
-  ];
-  const loremWhyUs = [
-    { title: "Lorem ipsum dolor", text: loremBody },
-    { title: "Sit amet consectetur", text: loremBody },
-    { title: "Adipiscing elit sed", text: loremBody },
-    { title: "Sed do eiusmod", text: loremBody },
-  ];
-  const servicesLorem =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-  const servicesCtaLabel = "Lorem ipsum";
+  const heroResponseNote = locale === "ru" ? "Ответим в течение 24 часов" : "Răspundem în termen de 24 de ore";
   const servicesPanel = {
-    title: "Lorem ipsum dolor sit amet",
-    text: servicesLorem,
+    title: locale === "ru" ? "Практики и сопровождение" : "Practici și asistență juridică",
+    text:
+      locale === "ru"
+        ? "Юридическая поддержка для частных клиентов, предпринимателей и компаний в Румынии: от запуска бизнеса и иммиграционных процедур до сделок с недвижимостью и подготовки документов."
+        : "Asistență juridică pentru clienți privați, antreprenori și companii în România: de la lansarea afacerii și proceduri de imigrare până la tranzacții imobiliare și documentație completă.",
   };
   const heroPortraitSrc = "/aliona-portrait-main.png";
   const aboutPortraitSrc = "/aliona-office.png";
@@ -88,27 +73,25 @@ export const HomePage = () => {
         >
           <WhatsAppIcon className="h-7 w-7" />
         </a>
-        <div className="container-x grid items-center gap-8 py-6 sm:gap-10 sm:py-8 lg:min-h-[68vh] lg:grid-cols-[minmax(280px,0.38fr)_minmax(0,1fr)] lg:gap-10 lg:py-10 xl:grid-cols-[minmax(320px,0.42fr)_minmax(0,1fr)] xl:gap-12 2xl:grid-cols-[minmax(360px,0.44fr)_minmax(0,1fr)] 2xl:gap-14">
+        <div className="container-x grid items-center gap-8 py-6 sm:gap-10 sm:py-8 lg:min-h-[68vh] lg:grid-cols-2 lg:gap-12 lg:py-10 2xl:gap-16">
           <div
             className={cn(
-              "relative hidden justify-start md:flex",
+              "relative hidden w-full justify-start md:flex",
               ready ? "scale-100 opacity-100" : "scale-[0.3] opacity-0",
             )}
             style={{ transitionDelay: "200ms" }}
           >
-            <div className="flex w-full items-stretch gap-8">
-              <div className="w-full" style={{ transform: `translateY(${parallax}px)` }}>
-                <div className="relative aspect-[4/5] overflow-hidden bg-cream">
-                  <img
-                    src={heroPortraitSrc}
-                    alt="Aliona Pantelei"
-                    className="h-full w-full scale-[1.85] object-cover object-[50%_34%]"
-                    onError={(event) => {
-                      event.currentTarget.onerror = null;
-                      event.currentTarget.src = "/portrait-placeholder.svg";
-                    }}
-                  />
-                </div>
+            <div className="w-full" style={{ transform: `translateY(${parallax}px)` }}>
+              <div className="relative aspect-[4/5] w-full overflow-hidden bg-cream">
+                <img
+                  src={heroPortraitSrc}
+                  alt="Aliona Pantelei"
+                  className="h-full w-full scale-[1.35] object-cover object-[50%_36%]"
+                  onError={(event) => {
+                    event.currentTarget.onerror = null;
+                    event.currentTarget.src = "/portrait-placeholder.svg";
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -133,35 +116,28 @@ export const HomePage = () => {
             </div>
             <div className="mt-2 sm:mt-4">
               <h1 className="w-full max-w-none text-navy text-[30px] leading-[1.04] sm:text-[36px] lg:text-[72px] lg:leading-[0.98]">
-                {locale === "ru" ? (
-                  <>
-                    Юридическая поддержка
-                    <span className="block">в&nbsp;Румынии</span>
-                  </>
-                ) : (
-                  loremTitle
-                )}
+                {t.hero.titleTop}
                 <span className="accent-serif mt-2 block w-full text-[32px] leading-[1.04] text-navy/92 sm:mt-3 sm:text-[40px] lg:text-[44px] lg:leading-[1.02]">
-                  {loremTitle}
+                  {t.hero.titleBottom}
                 </span>
               </h1>
             </div>
             <p className="mt-5 max-w-[58ch] whitespace-pre-line text-[16px] leading-[1.5] text-ink/80 sm:mt-7 sm:text-[17px] lg:body-copy">
-                {loremBody}
+                {t.hero.description}
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button href={withLocalePath(locale, "/contact")} variant="solid-navy" icon={<WhatsAppIcon className="h-5 w-5 shrink-0" />}>
-                  Lorem ipsum
+                  {t.hero.primaryCta}
               </Button>
               <Button href={withLocalePath(locale, "/brief")} variant="outline-navy">
-                  Lorem ipsum
+                  {t.hero.briefCta}
               </Button>
             </div>
             <div className="eyebrow mt-3 text-navy/52">
                 {heroResponseNote}
             </div>
             <div className={cn("hero-highlights mt-10", ready && "is-ready")}>
-              {loremItems.map((item, index) => (
+              {t.hero.highlights.map((item, index) => (
                 <div
                   key={item}
                   className="hero-highlight-chip"
@@ -181,9 +157,9 @@ export const HomePage = () => {
 
       <section id="for-whom" className="section-y bg-paper">
         <div className="container-x">
-          <SectionHeading eyebrow="" title={loremTitle} />
+          <SectionHeading eyebrow={t.forWhom.eyebrow} title={t.forWhom.title} />
           <div className="mt-12 grid gap-6 md:grid-cols-2 2xl:grid-cols-3">
-            {loremCards.map((card, index) => (
+            {t.forWhom.cards.map((card, index) => (
               <article
                 key={card.title}
                 className={`relative overflow-hidden p-6 sm:p-8 md:min-h-[320px] ${
@@ -223,20 +199,16 @@ export const HomePage = () => {
       </section>
 
       <section id="services" className="relative scroll-mt-28 overflow-visible bg-paper text-ink">
-        <div className="container-x relative grid gap-8 xl:grid-cols-2 xl:items-start xl:gap-12 2xl:gap-16">
+        <div className="container-x relative grid gap-8 py-[clamp(48px,6vw,96px)] xl:grid-cols-2 xl:items-start xl:gap-12 2xl:gap-16">
           <div className="xl:sticky xl:top-[96px] xl:self-start">
-            <div className="bg-navy p-8 text-cream sm:p-9 md:p-12 xl:min-h-[380px] 2xl:min-h-[420px]">
-              <div className="eyebrow text-cream/62">Lorem ipsum</div>
+            <div className="bg-navy p-8 text-cream sm:p-10 md:p-12">
+              <div className="eyebrow text-cream/62">{t.servicesHome.eyebrow}</div>
               <h2 className="mt-7 w-full max-w-[14ch] text-[26px] leading-[1.08] text-cream sm:text-[30px] lg:section-title">
                 {servicesPanel.title}
               </h2>
               <p className="body-copy mt-8 max-w-[62ch] text-cream/78">
                 {servicesPanel.text}
               </p>
-              <div className="eyebrow mt-12 inline-flex items-center gap-3 border-l-2 border-cream/42 pl-4 text-cream/82">
-                <span>{servicesCtaLabel}</span>
-                <ArrowRight className="h-4 w-4" />
-              </div>
             </div>
           </div>
           <ol className="w-full">
@@ -254,10 +226,10 @@ export const HomePage = () => {
                   <div className="grid grid-cols-[minmax(0,1fr)_20px] items-end gap-3 md:gap-4">
                     <div className="min-w-0">
                       <div className="max-w-[18ch] text-[24px] leading-[1.12] text-navy/82 transition duration-300 group-hover:text-navy sm:text-[27px] md:text-[30px]">
-                        Lorem ipsum dolor sit amet
+                        {practice.title[locale]}
                       </div>
                       <div className="body-copy mt-2.5 max-w-[72ch] text-navy/72 md:mt-3">
-                        {servicesLorem}
+                        {practice.intro[locale]}
                       </div>
                     </div>
                     <div className="flex items-end justify-end pb-1">
@@ -274,11 +246,11 @@ export const HomePage = () => {
       <section className="section-y bg-paper">
         <div className="container-x grid gap-10 xl:grid-cols-2 xl:items-center">
           <div data-reveal="true" style={{ transitionDelay: "60ms" }}>
-            <div className="mx-auto w-full max-w-[560px] p-2 xl:max-w-none">
+            <div className="mx-auto aspect-square w-full max-w-[560px] overflow-hidden p-2 xl:max-w-none">
               <img
                 src={aboutPortraitSrc}
                 alt="Aliona Pantelei"
-                className="aspect-[4/5] w-full object-cover object-center"
+                className="h-full w-full scale-[1.6] object-cover object-center"
                 onError={(event) => {
                   event.currentTarget.onerror = null;
                   event.currentTarget.src = "/portrait-placeholder.svg";
@@ -297,7 +269,7 @@ export const HomePage = () => {
             </h2>
             <p className="body-copy mt-8 max-w-[78ch] text-ink/82">{t.aboutSnippet.text}</p>
             <div className="mt-6 grid gap-3 xl:grid-cols-3">
-              {loremItems.map((value) => (
+              {t.hero.highlights.map((value) => (
                 <div key={value} className="border-l-[4px] border-navy bg-[#ececef] px-4 py-2.5 text-[14px] font-medium leading-[1.25] text-navy xl:px-5 xl:py-3 xl:text-[15px]">
                   {value}
                 </div>
@@ -305,7 +277,7 @@ export const HomePage = () => {
             </div>
             <div className="mt-10">
               <Button href={withLocalePath(locale, "/despre-aliona")} variant="outline-navy">
-                Lorem ipsum
+                {t.aboutSnippet.cta}
               </Button>
             </div>
             </div>
@@ -313,21 +285,37 @@ export const HomePage = () => {
         </div>
       </section>
 
-      <section className="section-y bg-cream text-ink">
+      <section className="section-y -mx-[10vw] w-[calc(100%+20vw)] bg-cream px-[10vw] text-navy">
         <div className="container-x">
-          <SectionHeading eyebrow="Lorem ipsum" title={loremTitle} />
-          <div className="mt-12 grid grid-cols-[minmax(0,1fr)] items-stretch gap-5 md:grid-cols-[repeat(2,minmax(0,1fr))] 2xl:grid-cols-[repeat(4,minmax(0,1fr))]">
-            {loremWhyUs.map((item, index) => (
-              <div key={item.title} data-reveal="true" style={{ transitionDelay: `${60 + index * 60}ms` }} className="flex h-full min-h-[240px] min-w-0 w-full flex-col border border-cream/18 bg-cream p-5 text-ink sm:p-6 2xl:min-h-[260px] 2xl:p-7">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="eyebrow text-navy">Lorem</div>
-                  <div className="text-[34px] italic leading-none text-navy/62">{String(index + 1).padStart(2, "0")}</div>
-                </div>
-                <div className="mt-9 h-1 w-16 bg-navy/12" />
-                <h3 className="mt-7 min-w-0 break-words text-[22px] font-medium leading-[1.14] text-navy [overflow-wrap:anywhere] 2xl:text-[24px]">{item.title}</h3>
-                <p className="body-copy-sm mt-5 min-w-0 break-words text-ink/82 [overflow-wrap:anywhere]">{item.text}</p>
-              </div>
-            ))}
+          <div className="grid gap-12 lg:grid-cols-[minmax(300px,0.9fr)_minmax(0,1.35fr)] lg:gap-16 xl:gap-20">
+            <div>
+              <h2 className="section-title font-medium text-navy">
+                {t.whyUs.title}
+              </h2>
+              <div className="mt-8 h-[7px] w-full border-y border-navy" />
+            </div>
+            <ol className="space-y-10 lg:space-y-12">
+              {t.whyUs.items.slice(0, 3).map((item, index) => (
+                <li
+                  key={item.title}
+                  data-reveal="true"
+                  style={{ transitionDelay: `${60 + index * 60}ms` }}
+                  className="grid grid-cols-[52px_minmax(0,1fr)] items-start gap-5 sm:grid-cols-[64px_minmax(0,1fr)] sm:gap-6"
+                >
+                  <span className="section-title font-medium italic text-navy">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3 className="title-sm min-w-0 break-words font-medium text-navy [overflow-wrap:anywhere]">
+                      {item.title}
+                    </h3>
+                    <p className="body-copy mt-5 min-w-0 break-words text-navy/78 [overflow-wrap:anywhere]">
+                      {item.text}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
@@ -336,7 +324,7 @@ export const HomePage = () => {
         <div className="container-x">
           <div className="double-rule" />
           <div className="grid items-center gap-6 py-6 lg:grid-cols-[220px_minmax(0,1fr)]">
-            <div className="eyebrow text-navy/66">Lorem ipsum</div>
+            <div className="eyebrow text-navy/66">{t.labels.collaboration}</div>
             <div className="overflow-hidden border-x border-navy/12 py-4">
               <div className="marquee-track">
                 {[...partners, ...partners].map((partner, index) => (
@@ -351,7 +339,7 @@ export const HomePage = () => {
         </div>
       </section>
 
-      <SharedCta locale={locale} eyebrow="Lorem ipsum" title={loremTitle} button="Lorem ipsum" />
+      <SharedCta locale={locale} eyebrow={t.cta.eyebrow} title={t.cta.title} button={t.cta.button} />
     </>
   );
 };

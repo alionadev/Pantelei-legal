@@ -1,8 +1,17 @@
+import { useState } from "react";
 import { useLocale } from "../hooks/useLocale";
 
 export const AboutPage = () => {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
   const portraitSrc = "/aliona-office.png";
+  const [representativeExpanded, setRepresentativeExpanded] = useState(false);
+  const visibleRepresentativeItems = representativeExpanded
+    ? t.aboutPage.representativeItems
+    : t.aboutPage.representativeItems.slice(0, 4);
+  const hasMoreRepresentativeItems = t.aboutPage.representativeItems.length > visibleRepresentativeItems.length;
+  const representativeToggleLabel = representativeExpanded
+    ? locale === "ru" ? "Свернуть" : "Mai puține detalii"
+    : t.aboutPage.representativeMore;
 
   const addressUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(t.footer.address)}`;
 
@@ -26,7 +35,7 @@ export const AboutPage = () => {
             <div className="bg-navy text-cream">
               <div className="px-6 py-7 md:px-9 md:py-10">
                 <div className="text-[36px] font-medium leading-[0.96] tracking-[-0.02em] sm:text-[42px] md:text-[52px]">Aliona Pantelei</div>
-                <div className="mt-4 text-[12px] font-bold uppercase tracking-[0.12em] text-[#2f92ff] md:text-[16px]">Lorem ipsum</div>
+                <div className="mt-4 text-[12px] font-bold uppercase tracking-[0.12em] text-[#2f92ff] md:text-[16px]">{t.aboutPage.eyebrow}</div>
               </div>
 
               <div className="border-t border-cream/14 px-6 py-7 md:px-9 md:py-10">
@@ -64,9 +73,9 @@ export const AboutPage = () => {
           <div className="relative min-w-0 flex-1 overflow-hidden px-5 md:px-8 xl:px-0">
             <div className="space-y-10 xl:space-y-20">
               <section id="overview" data-reveal="true">
-                <h2 className="text-[18px] font-medium leading-[1.3] text-navy">
+                <h3 className="title-sm text-navy">
                   {t.aboutPage.title}
-                </h2>
+                </h3>
                 <p className="body-copy mt-6 w-full max-w-none text-ink/84 xl:mt-10">
                   {t.aboutPage.bio}
                 </p>
@@ -103,17 +112,24 @@ export const AboutPage = () => {
                 <div className="mt-8 xl:mt-12">
                   <h3 className="text-[18px] font-medium leading-[1.3] text-navy">{t.aboutPage.representativeEyebrow}</h3>
                   <div className="mt-7 space-y-5 pl-1.5 xl:mt-9 xl:space-y-6 xl:pl-2">
-                    {t.aboutPage.representativeItems.map((item) => (
+                    {visibleRepresentativeItems.map((item) => (
                       <div key={item} className="grid grid-cols-[18px_minmax(0,1fr)] gap-4 sm:gap-5">
                         <span className="mt-[0.56em] h-2 w-2 rotate-45 bg-navy/80" />
                         <p className="body-copy text-ink/84">{item}</p>
                       </div>
                     ))}
                   </div>
-                  <button type="button" className="eyebrow mt-8 inline-flex items-center gap-5 font-bold text-navy/88">
-                    <span className="text-[34px] font-normal leading-none">+</span>
-                    <span>{t.aboutPage.representativeMore}</span>
-                  </button>
+                  {(hasMoreRepresentativeItems || representativeExpanded) && (
+                    <button
+                      type="button"
+                      aria-expanded={representativeExpanded}
+                      onClick={() => setRepresentativeExpanded((value) => !value)}
+                      className="eyebrow mt-8 inline-flex items-center gap-5 font-bold text-navy/88"
+                    >
+                      <span className="text-[34px] font-normal leading-none">{representativeExpanded ? "−" : "+"}</span>
+                      <span>{representativeToggleLabel}</span>
+                    </button>
+                  )}
                 </div>
               </section>
 
