@@ -12,8 +12,8 @@ export const practiceData: Practice[] = [
       ru: "Регистрация компаний в Румынии — от выбора правовой формы до получения необходимых сертификатов и лицензий. Экономим ваше время и избавляем от бюрократии.",
     },
     summary: {
-      ro: "Deschiderea unei afaceri în România poate părea dificilă pentru un antreprenor străin. Cunosc toate etapele procesului, de la pregătirea documentelor până la obținerea certificatului de înregistrare. Îi ajut pe clienți să aleagă forma juridică optimă (SRL, PFA, sucursală) și rezolv toate aspectele birocratice.",
-      ru: "Открытие бизнеса в Румынии может показаться сложным для иностранного предпринимателя. Я знаю все этапы процесса, от подготовки документов до получения Свидетельства о регистрации. Помогаю клиентам выбрать оптимальную правовую форму (SRL, PFA, филиал) и решаю все бюрократические вопросы.",
+      ro: "Deschiderea unei afaceri în România poate părea dificilă pentru un antreprenor străin, mai ales atunci când documentele, instituțiile și termenele nu sunt clare de la început. Cunosc toate etapele procesului, de la alegerea formei juridice până la obținerea certificatului de înregistrare și pregătirea companiei pentru activitate. Îi ajut pe clienți să aleagă structura potrivită, să evite greșelile de redactare și să înțeleagă obligațiile administrative. Preiau comunicarea cu instituțiile, verific actele și coordonez pașii necesari astfel încât lansarea afacerii să fie coerentă. Scopul este ca proiectul să pornească legal, curat și fără blocaje birocratice inutile.",
+      ru: "Открытие бизнеса в Румынии может показаться сложным для иностранного предпринимателя, особенно когда непонятны документы, сроки и требования учреждений. Я сопровождаю процесс от выбора правовой формы до получения свидетельства о регистрации и подготовки компании к работе. Помогаю выбрать подходящую структуру, избежать ошибок в документах и заранее понять административные обязанности. Беру на себя коммуникацию с учреждениями, проверку актов и координацию всех этапов. Цель — запустить бизнес законно, спокойно и без лишних бюрократических задержек.",
     },
     services: {
       ro: [
@@ -81,12 +81,28 @@ export const practiceData: Practice[] = [
       ru: "Юридический аутсорсинг для компаний, которым нужны понятные договоры, безопасные переговоры и постоянное сопровождение.",
     },
     summary: {
-      ro: "Economisiți pe un jurist intern și reduceți riscurile.",
-      ru: "Экономите на штатном юристе и снижаете риски.",
+      ro: "Outsourcingul juridic este potrivit pentru companiile care au nevoie de sprijin constant, dar nu justifică încă un departament juridic intern. Analizez contractele, procedurile și relațiile comerciale astfel încât riscurile să fie identificate înainte să devină costuri. Ofer suport pentru negocieri, redactare, revizuire și comunicare cu partenerii de business. Colaborarea poate fi punctuală sau recurentă, în funcție de volumul activității și de prioritățile companiei. Obiectivul este să aveți decizii mai clare, documente mai sigure și reacții rapide atunci când apar situații sensibile.",
+      ru: "Юридический аутсорсинг подходит компаниям, которым нужна постоянная поддержка, но отдельный юридический отдел пока не оправдан. Я анализирую договоры, процедуры и коммерческие отношения так, чтобы риски выявлялись заранее, а не после появления затрат. Помогаю с переговорами, подготовкой документов, проверкой условий и коммуникацией с партнерами. Сотрудничество может быть разовым или регулярным, в зависимости от объема задач и приоритетов бизнеса. Цель — дать компании понятные решения, надежные документы и быструю реакцию в чувствительных ситуациях.",
     },
     services: {
-      ro: ["Verificare și redactare contracte", "Suport în negocieri", "Asistență juridică permanentă"],
-      ru: ["Проверка и составление договоров", "Поддержка в переговорах", "Постоянное сопровождение"],
+      ro: [
+        "Verificare și redactare contracte",
+        "Suport juridic în negocieri comerciale",
+        "Asistență juridică permanentă pentru management",
+        "Analiza riscurilor din relațiile cu partenerii",
+        "Pregătirea notificărilor și răspunsurilor oficiale",
+        "Revizuirea procedurilor interne și operaționale",
+        "Consultanță rapidă pentru decizii de business",
+      ],
+      ru: [
+        "Проверка и составление договоров",
+        "Юридическая поддержка в коммерческих переговорах",
+        "Постоянное сопровождение для менеджмента",
+        "Анализ рисков в отношениях с партнерами",
+        "Подготовка уведомлений и официальных ответов",
+        "Проверка внутренних и операционных процедур",
+        "Быстрые консультации по бизнес-решениям",
+      ],
     },
     process: {
       ro: ["Audit juridic al relației comerciale", "Setarea priorităților de business", "Documentare și negociere", "Implementare și follow-up"],
@@ -117,12 +133,28 @@ export const practiceData: Practice[] = [
       ru: "Помощь в процедурах иммиграции и получения гражданства для тех, кто переезжает или оформляет статус в Румынии.",
     },
     summary: {
-      ro: "Treceți prin proces mai rapid și fără refuzuri.",
-      ru: "Проходите процесс быстрее и без отказов.",
+      ro: "Procedurile de imigrare cer documente coerente, termene respectate și o strategie adaptată situației personale sau familiale. Verific eligibilitatea, istoricul documentelor și posibilele vulnerabilități înainte de depunere. Pregătesc dosarul astfel încât informațiile să fie clare, complete și conforme cu cerințele autorităților. Ofer sprijin pentru permis de ședere, rezidență permanentă, cetățenie și documente conexe. Scopul este să reduceți riscul de refuz, întârzieri sau solicitări suplimentare inutile.",
+      ru: "Иммиграционные процедуры требуют согласованных документов, соблюдения сроков и стратегии, адаптированной к личной или семейной ситуации. Я проверяю основания, историю документов и возможные уязвимости до подачи. Помогаю подготовить пакет так, чтобы сведения были понятными, полными и соответствовали требованиям органов. Сопровождаю оформление ВНЖ, ПМЖ, гражданства и связанных документов. Цель — снизить риск отказа, задержек и лишних дополнительных запросов.",
     },
     services: {
-      ro: ["Permis de ședere", "Rezidență permanentă", "Cetățenie română", "Pregătirea documentelor"],
-      ru: ["ВНЖ, ПМЖ", "Гражданство Румынии", "Подготовка документов"],
+      ro: [
+        "Permis de ședere temporară",
+        "Rezidență permanentă",
+        "Cetățenie română",
+        "Pregătirea și verificarea documentelor",
+        "Analiza eligibilității și a istoricului personal",
+        "Programări și comunicare cu autoritățile",
+        "Asistență pentru documente familiale conexe",
+      ],
+      ru: [
+        "Временный вид на жительство",
+        "Постоянное резидентство",
+        "Гражданство Румынии",
+        "Подготовка и проверка документов",
+        "Анализ оснований и личной истории",
+        "Записи и коммуникация с органами",
+        "Помощь с сопутствующими семейными документами",
+      ],
     },
     process: {
       ro: ["Verificare documente și istoric", "Identificarea vulnerabilităților", "Structurarea tranzacției", "Asistență până la finalizare"],
@@ -153,12 +185,28 @@ export const practiceData: Practice[] = [
       ru: "Юридическая защита при покупке недвижимости, проверке объекта и безопасном оформлении сделки.",
     },
     summary: {
-      ro: "Cumpărați imobilul în siguranță.",
-      ru: "Покупаете недвижимость безопасно.",
+      ro: "O tranzacție imobiliară sigură începe cu verificarea atentă a actelor, a istoricului proprietății și a obligațiilor care pot afecta cumpărătorul. Analizez documentele înainte de semnare, identific riscurile și explic consecințele juridice ale fiecărei clauze importante. Ofer sprijin în negocierea contractelor, promisiunilor bilaterale și condițiilor de plată. Colaborez cu notarul, agentul sau cealaltă parte pentru ca procesul să fie clar și controlat. Scopul este să cumpărați sau să vindeți imobilul fără surprize juridice după finalizarea tranzacției.",
+      ru: "Безопасная сделка с недвижимостью начинается с внимательной проверки документов, истории объекта и обязательств, которые могут повлиять на покупателя. Я анализирую документы до подписания, выявляю риски и объясняю последствия важных условий договора. Помогаю в переговорах по договору, предварительному соглашению и условиям оплаты. Координирую коммуникацию с нотариусом, агентом или другой стороной, чтобы процесс был понятным и контролируемым. Цель — купить или продать объект без юридических сюрпризов после завершения сделки.",
     },
     services: {
-      ro: ["Verificarea imobilului", "Redactarea contractelor", "Asistență în tranzacție"],
-      ru: ["Проверка объекта", "Составление договоров", "Сопровождение сделки"],
+      ro: [
+        "Verificarea actelor de proprietate",
+        "Analiza istoricului juridic al imobilului",
+        "Revizuirea promisiunilor bilaterale",
+        "Redactarea și negocierea contractelor",
+        "Verificarea riscurilor privind avansul și termenele",
+        "Comunicare cu notarul și părțile implicate",
+        "Asistență până la semnarea finală",
+      ],
+      ru: [
+        "Проверка документов на объект",
+        "Анализ юридической истории недвижимости",
+        "Проверка предварительных договоров",
+        "Подготовка и согласование договоров",
+        "Проверка рисков по авансу и срокам",
+        "Коммуникация с нотариусом и сторонами",
+        "Сопровождение до финального подписания",
+      ],
     },
     process: {
       ro: ["Evaluare confidențială", "Stabilirea obiectivelor reale", "Negociere sau acțiune judiciară", "Protejarea interesului pe termen lung"],
@@ -189,12 +237,28 @@ export const practiceData: Practice[] = [
       ru: "Подготовка юридических документов, заверенные переводы и официальная переписка без ошибок.",
     },
     summary: {
-      ro: "Toate documentele corespund cerințelor legale.",
-      ru: "Все документы соответствуют требованиям законодательства.",
+      ro: "Documentele juridice trebuie să fie clare, complete și potrivite scopului pentru care sunt folosite. Verific actele existente, redactez documente noi și adaptez conținutul la cerințele instituțiilor sau ale partenerilor implicați. Ofer sprijin pentru traduceri legalizate, corespondență oficială și dosare care trebuie depuse fără erori. Atenția se concentrează pe formulări, termene, anexele necesare și coerența întregului pachet. Scopul este ca documentele să poată fi folosite imediat, fără corectări repetate sau întârzieri administrative.",
+      ru: "Юридические документы должны быть понятными, полными и соответствовать цели, для которой используются. Я проверяю существующие акты, готовлю новые документы и адаптирую содержание под требования учреждений или участников процесса. Помогаю с заверенными переводами, официальной перепиской и пакетами документов, которые нужно подать без ошибок. Внимание уделяется формулировкам, срокам, приложениям и логике всего комплекта. Цель — чтобы документы можно было использовать сразу, без постоянных исправлений и административных задержек.",
     },
     services: {
-      ro: ["Documente juridice", "Traduceri legalizate", "Corespondență oficială"],
-      ru: ["Юридические документы", "Заверенные переводы", "Официальная переписка"],
+      ro: [
+        "Redactarea documentelor juridice",
+        "Verificarea actelor înainte de depunere",
+        "Traduceri legalizate și coordonare",
+        "Corespondență oficială cu instituțiile",
+        "Pregătirea dosarelor pentru autorități",
+        "Adaptarea documentelor pentru utilizare în România",
+        "Corectarea formulărilor și a anexelor lipsă",
+      ],
+      ru: [
+        "Подготовка юридических документов",
+        "Проверка актов перед подачей",
+        "Заверенные переводы и координация",
+        "Официальная переписка с учреждениями",
+        "Подготовка пакетов для органов",
+        "Адаптация документов для использования в Румынии",
+        "Корректировка формулировок и недостающих приложений",
+      ],
     },
     process: {
       ro: ["Revizuirea actelor fiscale", "Strategie de apărare", "Redactare contestații și puncte de vedere", "Reprezentare procedurală"],
